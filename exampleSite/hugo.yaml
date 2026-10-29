@@ -83,7 +83,8 @@ params:
       icon: "whatsapp"
   forms:
     provider: "formspree"
-    contactAction: "https://formspree.io/f/mzdoayvd"
+    contactAction: "https://formspree.io/f/xxx"
+    ajax: true
     contactSubject: "Asterra Systems website inquiry"
     requireConsent: false
     newsletterAction: ""
