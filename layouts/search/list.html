@@ -1,5 +1,5 @@
 {{ define "main" }}
-  {{ if site.Params.features.search }}
+  {{ if and site.Params.features.search (site.Home.OutputFormats.Get "JSON") }}
     {{ partial "page-hero.html" . }}
     <section class="section search-page">
       <div class="container container--narrow">
@@ -7,6 +7,10 @@
         <input id="search-page-input" class="search-page__input" type="search" placeholder="{{ i18n "searchPlaceholder" }}" autocomplete="off">
         <div id="search-results" class="search-results" aria-live="polite"></div>
       </div>
+    </section>
+  {{ else if site.Params.features.search }}
+    <section class="section">
+      <div class="container container--narrow"><p class="empty-state">{{ i18n "searchUnavailable" }}</p></div>
     </section>
   {{ else }}
     <section class="section">

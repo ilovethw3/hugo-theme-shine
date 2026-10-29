@@ -3,12 +3,6 @@
 {{ with $items }}
   <section class="section faq-section">
     <div class="container container--narrow">
-      <div class="section-heading">
-        <div>
-          <span class="eyebrow">{{ i18n "faq" }}</span>
-          <h2>{{ i18n "faqTitle" }}</h2>
-        </div>
-      </div>
       <div class="faq-list">
         {{ range $index, $item := . }}
           <details class="faq-item"{{ if eq $index 0 }} open{{ end }}>

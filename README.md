@@ -19,17 +19,14 @@ and YAML data files.
 
 ## Main content types
 
-- products: list and detail pages, galleries, specifications, related products,
-  and quote buttons.
+- products: modular index and detail pages, galleries, specifications, related
+  products, downloads, and quote buttons.
 - solutions: solution cards and detail pages.
 - projects: project/case-study pages.
 - news: articles with categories and dates.
 - team: team member profiles.
 - company: modular company page with hero, story, stats, capabilities, timeline,
   certifications, team, and call-to-action sections.
-- products: modular product index, automatic product-category navigation, product
-  detail modules, galleries, lightbox image viewing, specifications, downloads,
-  certifications, applications, and related products.
 
 ## Homepage sections
 
@@ -64,6 +61,9 @@ the translated files together:
 
 The example site includes an archetype at archetypes/products/index.md. New
 products can start from it with `hugo new content products/new-product/index.md`.
+The theme also ships starter archetypes for products, solutions, projects, and
+news, so a site using the theme directly can create those content types without
+copying the example site.
 Set draft: true while the product is being prepared; change it to false when it
 is ready to publish. Product images and download files can be referenced from
 static/ or added to the product content bundle. Bundle files are preferred when
@@ -85,7 +85,9 @@ from the visible summary.
 The product gallery supports thumbnail switching, a full-screen lightbox,
 previous/next controls, keyboard arrows and Escape, and touch swiping on mobile.
 Set `showQuoteButton: false` to hide both the overview quote button and the
-bottom quote call-to-action.
+bottom quote call-to-action. The global `params.features.quoteForm: false`
+switch hides quote actions throughout the theme, including the product detail
+overview button.
 
 Product and solution body content can use the `video` shortcode. It supports
 local Page Bundle files, public URLs such as Cloudflare R2 object URLs, and
@@ -111,6 +113,12 @@ page front matter:
       background: "/images/company-banner.jpg"
       backgroundAlt: "Company facility"
       overlay: 0.45
+
+Images referenced by products, solutions, projects, news articles, company
+content, team members, page banners, and homepage sections can be stored beside
+the relevant Markdown page as Page Bundle resources. The theme resolves a local
+resource first and falls back to the configured static path. A neutral
+placeholder is included at `/images/placeholder.svg` for pages without artwork.
 
 ## Solution maintenance
 
@@ -153,7 +161,9 @@ News uses dedicated list and article templates configured in data/news.yaml.
 Articles are sorted newest first and can use `news-categories`, `author`,
 `cover`, `relatedNews`, and the automatic Hugo `ReadingTime` value. Start new
 articles from archetypes/news/index.md. News category filters are generated from
-the `news-categories` front matter field.
+the `news-categories` front matter field. Product, solution, project, and news
+indexes use the site's `paginate` setting; product category pages use the same
+pagination setting.
 
 ## Multilingual sites
 
@@ -176,8 +186,16 @@ The search page and header search entry are controlled by the site parameter:
         search: false
 
 When disabled, the search entry is hidden and the search page shows the disabled
-state. When enabled, Hugo generates a language-specific JSON index and the
-browser filters it locally.
+state. When enabled, the home output must include JSON:
+
+    outputs:
+      home:
+        - HTML
+        - JSON
+
+If the JSON output is missing, the theme hides the search entry and shows a
+configuration notice instead of failing silently. When enabled and configured,
+Hugo generates a language-specific JSON index and the browser filters it locally.
 
 ## Contact form
 
@@ -226,6 +244,17 @@ The footer supports independent visibility switches under `params.footer`:
 `features.newsletter` is enabled and `forms.newsletterAction` is configured.
 The footer description uses the current language's home-page description before
 falling back to `params.seo.description`.
+
+Products and solutions can show category dropdowns in the main menu. The theme
+keeps the legacy behavior for menu items whose `pageRef` is `products` or
+`solutions`, but custom routes can opt in explicitly or disable the dropdown:
+
+    params:
+      dropdown: products
+
+Set `params.dropdown: false` on a menu item to render it as a normal link.
+Category pages without an explicit translation safely fall back to the target
+language's section page when the language switcher is used.
 
 ## FAQ page
 

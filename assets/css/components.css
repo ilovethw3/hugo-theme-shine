@@ -16,6 +16,7 @@
 .hero-carousel__dots{display:flex;align-items:center;gap:6px}
 .hero-carousel__dot{width:7px;height:7px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.58);cursor:pointer}
 .hero-carousel__dot.is-active{width:22px;border-radius:999px;background:#168fe4}
+.hero-carousel__arrow:focus-visible,.hero-carousel__dot:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 
 .section-home .site-header{position:absolute;top:0;right:0;left:0;border-bottom-color:rgba(255,255,255,.2);background:rgba(10,22,35,.16)}
 .section-home .site-header .brand-name,.section-home .site-header .nav-link,.section-home .site-header .icon-link{color:#fff}
@@ -36,9 +37,9 @@
 .hero-carousel__item.is-active .hero-banner__media img{animation:hero-kenburns 5s ease-out both}
 .hero-banner__overlay{z-index:1;background:linear-gradient(90deg,rgba(5,15,25,.58),rgba(5,15,25,.1) 60%,rgba(5,15,25,.34)),linear-gradient(180deg,rgba(5,15,25,.28),transparent 40%,rgba(5,15,25,.28))}
 .hero-banner__content{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;min-height:0;padding-top:78px;padding-bottom:100px;text-align:center}
-.hero-banner__copy{width:min(820px,100%)}
+.hero-banner__copy{width:min(980px,100%);margin-inline:auto;text-align:center}
 .hero-banner__copy .eyebrow{color:#8ed5ff}
-.hero-banner__copy h1{margin:14px 0 18px;color:#fff;font-size:clamp(2.8rem,6vw,5.8rem);line-height:1.02;letter-spacing:-.07em;text-shadow:0 4px 26px rgba(0,0,0,.22)}
+.hero-banner__copy h1{width:100%;max-width:900px;margin:14px auto 18px;color:#fff;font-size:clamp(2.8rem,6vw,5.8rem);line-height:1.02;letter-spacing:-.04em;text-align:center;white-space:normal;text-wrap:wrap;text-shadow:0 4px 26px rgba(0,0,0,.22)}
 .hero-banner__copy p{max-width:670px;margin:0 auto;color:rgba(255,255,255,.88);font-size:1.1rem;text-shadow:0 2px 14px rgba(0,0,0,.25)}
 .hero-banner__copy .button-row{justify-content:center}
 .hero-banner__copy .button--secondary{border-color:rgba(255,255,255,.72);color:#fff;background:rgba(255,255,255,.12);backdrop-filter:blur(8px)}

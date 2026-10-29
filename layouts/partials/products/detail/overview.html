@@ -44,7 +44,7 @@
         <h1>{{ $page.Title }}</h1>
         {{ with $page.Params.summary }}<div class="lead product-detail__summary-copy">{{ . | markdownify }}</div>{{ end }}
         <div class="product-detail__actions">
-          {{ if ne $page.Params.showQuoteButton false }}<a class="button button--primary" href="{{ "contact/" | relLangURL }}">{{ i18n "requestQuote" }}</a>{{ end }}
+          {{ if and site.Params.features.quoteForm (ne $page.Params.showQuoteButton false) }}<a class="button button--primary" href="{{ "contact/" | relLangURL }}">{{ i18n "requestQuote" }}</a>{{ end }}
         </div>
       </div>
     </div>

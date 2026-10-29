@@ -120,6 +120,19 @@
         if (event.key === 'Escape') close();
         if (event.key === 'ArrowLeft') showPrevious();
         if (event.key === 'ArrowRight') showNext();
+        if (event.key === 'Tab') {
+          const focusable = Array.from(lightbox.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')).filter((element) => !element.hasAttribute('disabled'));
+          if (!focusable.length) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        }
       });
       render(0);
     });
@@ -145,11 +158,7 @@
       carousel.querySelector('[data-hero-prev]')?.addEventListener('click', () => { show(current - 1); start(); });
       carousel.querySelector('[data-hero-next]')?.addEventListener('click', () => { show(current + 1); start(); });
       dots.forEach((dot) => dot.addEventListener('click', () => { show(Number(dot.dataset.heroDot)); start(); }));
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) window.clearInterval(timer);
-        else start();
-      });
-      if (!document.hidden) start();
+      start();
     });
     const searchInput = document.querySelector('#search-page-input');
     const searchResults = document.querySelector('#search-results');
@@ -158,11 +167,38 @@
         const render = () => {
           const query = searchInput.value.trim().toLowerCase();
           const matches = query ? pages.filter((page) => (page.title + ' ' + page.summary).toLowerCase().includes(query)) : pages.slice(0, 8);
-          searchResults.innerHTML = matches.length ? matches.map((page) => '<a class="search-result" href="' + page.url + '"><span class="eyebrow">' + page.sectionLabel + '</span><strong>' + page.title + '</strong><span>' + page.summary + '</span></a>').join('') : '<p class="empty-state">{{ i18n "noSearchResults" }}</p>';
+          searchResults.replaceChildren();
+          if (!matches.length) {
+            const empty = document.createElement('p');
+            empty.className = 'empty-state';
+            empty.textContent = '{{ i18n "noSearchResults" }}';
+            searchResults.append(empty);
+            return;
+          }
+          matches.forEach((page) => {
+            const result = document.createElement('a');
+            result.className = 'search-result';
+            result.href = page.url;
+            const section = document.createElement('span');
+            section.className = 'eyebrow';
+            section.textContent = page.sectionLabel || '';
+            const title = document.createElement('strong');
+            title.textContent = page.title || '';
+            const summary = document.createElement('span');
+            summary.textContent = page.summary || '';
+            result.append(section, title, summary);
+            searchResults.append(result);
+          });
         };
         searchInput.addEventListener('input', render);
         render();
-      }).catch(() => { searchResults.innerHTML = '<p class="empty-state">{{ i18n "searchUnavailable" }}</p>'; });
+      }).catch(() => {
+        searchResults.replaceChildren();
+        const unavailable = document.createElement('p');
+        unavailable.className = 'empty-state';
+        unavailable.textContent = '{{ i18n "searchUnavailable" }}';
+        searchResults.append(unavailable);
+      });
     }
   })();
 </script>

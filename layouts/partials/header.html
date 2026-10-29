@@ -6,10 +6,18 @@
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation"><span></span><span></span><span></span><span class="sr-only">{{ i18n "toggleMenu" }}</span></button>
     <nav id="site-navigation" class="site-nav" aria-label="{{ i18n "primaryNavigation" }}">
       {{ range site.Menus.main }}
-        {{ if or (eq .PageRef "products") (eq .PageRef "solutions") }}
+        {{ $dropdown := "" }}
+        {{ if isset .Params "dropdown" }}
+          {{ $dropdown = .Params.dropdown }}
+        {{ else if eq .PageRef "products" }}
+          {{ $dropdown = "products" }}
+        {{ else if eq .PageRef "solutions" }}
+          {{ $dropdown = "solutions" }}
+        {{ end }}
+        {{ if or (eq $dropdown "products") (eq $dropdown "solutions") }}
           <div class="nav-item nav-item--dropdown">
             <a class="nav-link{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} is-active{{ end }}" href="{{ .URL | relLangURL }}" aria-haspopup="true">{{ .Name }}</a>
-            {{ if eq .PageRef "products" }}{{ partial "product-category-menu.html" $ }}{{ else }}{{ partial "solution-category-menu.html" $ }}{{ end }}
+            {{ if eq $dropdown "products" }}{{ partial "product-category-menu.html" $ }}{{ else }}{{ partial "solution-category-menu.html" $ }}{{ end }}
           </div>
         {{ else }}
           <a class="nav-link{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} is-active{{ end }}" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
@@ -17,7 +25,7 @@
       {{ end }}
     </nav>
     <div class="header-actions">
-      {{ if site.Params.features.search }}<a class="icon-link" href="{{ "search/" | relLangURL }}" aria-label="{{ i18n "search" }}">⌕</a>{{ end }}
+      {{ if and site.Params.features.search (site.Home.OutputFormats.Get "JSON") }}<a class="icon-link" href="{{ "search/" | relLangURL }}" aria-label="{{ i18n "search" }}">⌕</a>{{ end }}
       {{ $languagePages := $.AllTranslations }}
       {{ if le (len $languagePages) 1 }}{{ $languagePages = site.Home.AllTranslations }}{{ end }}
       {{ if gt (len $languagePages) 1 }}
@@ -27,15 +35,13 @@
             {{ range $languagePages }}
               {{ $language := . }}
               {{ $href := .RelPermalink }}
-              {{ if and (eq $.Kind "term") (eq $.Section "product-categories") (ne .Language.Lang site.Language.Lang) }}
-                {{ range first 1 $.Pages }}
-                  {{ range .AllTranslations }}
-                    {{ if eq .Language.Lang $language.Language.Lang }}
-                      {{ with index .Params "product-categories" }}
-                        {{ with index . 0 }}{{ $href = printf "/%s/product-categories/%s/" $language.Language.Lang (. | urlize) | relURL }}{{ end }}
-                      {{ end }}
-                    {{ end }}
-                  {{ end }}
+              {{ if and (ne $.Language.Lang $language.Language.Lang) (or (eq $.Kind "term") (eq $.Kind "taxonomy")) }}
+                {{ if or (eq $.Section "product-categories") (eq $.Section "solution-categories") (eq $.Section "project-categories") (eq $.Section "news-categories") }}
+                  {{ $sectionPath := "products" }}
+                  {{ if eq $.Section "solution-categories" }}{{ $sectionPath = "solutions" }}{{ end }}
+                  {{ if eq $.Section "project-categories" }}{{ $sectionPath = "projects" }}{{ end }}
+                  {{ if eq $.Section "news-categories" }}{{ $sectionPath = "news" }}{{ end }}
+                  {{ $href = printf "%s%s/" $language.RelPermalink $sectionPath | relURL }}
                 {{ end }}
               {{ end }}
               <a class="{{ if eq .Language.Lang site.Language.Lang }}is-active{{ end }}" href="{{ $href }}"><span>{{ .Language.LanguageName }}</span><span class="language-switcher__code">{{ upper .Language.Lang }}</span></a>

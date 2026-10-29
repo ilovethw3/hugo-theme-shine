@@ -5,7 +5,7 @@ keywords: ["工业系统", "工程服务", "解决方案"]
 hero:
   slides:
     - eyebrow: "专注工程价值"
-      title: "让重要的工作持续向前。"
+      title: "为复杂现场，构建可靠系统。"
       description: "我们为处在复杂环境中的团队设计并交付可靠的工业解决方案。"
       image: "/images/hero.svg"
       imageAlt: "工业系统抽象插图"

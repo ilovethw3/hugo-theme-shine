@@ -5,7 +5,7 @@ keywords: ["industrial systems", "engineering", "solutions"]
 hero:
   slides:
     - eyebrow: "Engineering with intent"
-      title: "Systems that move important work forward."
+      title: "Reliable systems for complex work."
       description: "We design and deliver dependable industrial solutions for teams operating at the edge of possibility."
       image: "/images/hero.svg"
       imageAlt: "Abstract industrial system illustration"
