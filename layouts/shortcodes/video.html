@@ -1,0 +1,70 @@
+{{- $provider := lower (default "file" (.Get "provider")) -}}
+{{- $src := default (.Get 0) (.Get "src") -}}
+{{- $id := .Get "id" -}}
+{{- $title := default "Video" (.Get "title") -}}
+{{- $caption := .Get "caption" -}}
+{{- $aspect := lower (default "16:9" (.Get "aspect")) -}}
+{{- $aspectClass := "media-video__frame--16-9" -}}
+{{- if or (eq $aspect "4:3") (eq $aspect "4/3") }}{{ $aspectClass = "media-video__frame--4-3" }}{{ end -}}
+{{- if or (eq $aspect "1:1") (eq $aspect "1/1") }}{{ $aspectClass = "media-video__frame--1-1" }}{{ end -}}
+{{- if or (eq $aspect "9:16") (eq $aspect "9/16") }}{{ $aspectClass = "media-video__frame--9-16" }}{{ end -}}
+{{- if and (eq $provider "file") (not $src) }}{{ errorf "video shortcode requires src for provider=file" }}{{ end -}}
+{{- if and (ne $provider "file") (ne $provider "embed") (not $id) (not $src) }}{{ errorf "video shortcode requires id or src for provider=%s" $provider }}{{ end -}}
+{{- if and (eq $provider "embed") (not $src) }}{{ errorf "video shortcode requires src for provider=embed" }}{{ end -}}
+
+{{- $poster := .Get "poster" -}}
+{{- if $src -}}
+  {{- $isExternal := or (hasPrefix $src "http://") (hasPrefix $src "https://") (hasPrefix $src "//") (hasPrefix $src "/") -}}
+  {{- if not $isExternal -}}
+    {{- with .Page.Resources.GetMatch $src }}{{ $src = .RelPermalink }}{{ else }}{{ $src = $src | relURL }}{{ end -}}
+  {{- end -}}
+{{- end -}}
+{{- if $poster -}}
+  {{- $posterIsExternal := or (hasPrefix $poster "http://") (hasPrefix $poster "https://") (hasPrefix $poster "//") (hasPrefix $poster "/") -}}
+  {{- if not $posterIsExternal -}}
+    {{- with .Page.Resources.GetMatch $poster }}{{ $poster = .RelPermalink }}{{ else }}{{ $poster = $poster | relURL }}{{ end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $embed := "" -}}
+{{- if eq $provider "youtube" -}}
+  {{- if not $id -}}
+    {{- $id = replaceRE `^.*(?:v=|youtu\.be/|youtube(?:-nocookie)?\.com/(?:embed/|shorts/))([^&#?/]+).*$` "$1" $src -}}
+    {{- if or (not $id) (eq $id $src) }}{{ errorf "video shortcode could not extract a YouTube video ID from src=%s" $src }}{{ end -}}
+  {{- end -}}
+  {{- $embed = printf "https://www.youtube-nocookie.com/embed/%s?rel=0&modestbranding=1" $id -}}
+{{- else if eq $provider "bilibili" -}}
+  {{- $embed = printf "https://player.bilibili.com/player.html?bvid=%s&page=1&high_quality=1&danmaku=0" $id -}}
+{{- else if eq $provider "vimeo" -}}
+  {{- $embed = printf "https://player.vimeo.com/video/%s" $id -}}
+{{- else if eq $provider "embed" -}}
+  {{- $embed = $src -}}
+{{- else if ne $provider "file" -}}
+  {{- errorf "video shortcode provider must be file, youtube, bilibili, vimeo, or embed; got %s" $provider -}}
+{{- end -}}
+
+{{- $autoplay := eq (lower (default "false" (.Get "autoplay"))) "true" -}}
+{{- $muted := eq (lower (default "false" (.Get "muted"))) "true" -}}
+{{- $loop := eq (lower (default "false" (.Get "loop"))) "true" -}}
+{{- $controls := ne (lower (default "true" (.Get "controls"))) "false" -}}
+{{- $videoType := .Get "type" -}}
+{{- if and (eq $provider "file") (not $videoType) -}}
+  {{- $extension := lower (path.Ext $src) -}}
+  {{- if eq $extension ".mp4" }}{{ $videoType = "video/mp4" }}{{ end -}}
+  {{- if eq $extension ".webm" }}{{ $videoType = "video/webm" }}{{ end -}}
+  {{- if eq $extension ".ogg" }}{{ $videoType = "video/ogg" }}{{ end -}}
+{{- end -}}
+
+<figure class="media-video">
+  <div class="media-video__frame {{ $aspectClass }}">
+    {{- if eq $provider "file" }}
+      <video{{ if $controls }} controls{{ end }} preload="metadata" playsinline{{ if $autoplay }} autoplay{{ end }}{{ if $muted }} muted{{ end }}{{ if $loop }} loop{{ end }}{{ with $poster }} poster="{{ . | safeURL }}"{{ end }}>
+        <source src="{{ $src | safeURL }}"{{ with $videoType }} type="{{ . }}"{{ end }}>
+        Your browser does not support HTML5 video.
+      </video>
+    {{- else }}
+      <iframe src="{{ $embed | safeURL }}" title="{{ $title }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    {{- end }}
+  </div>
+  {{- with $caption }}<figcaption class="media-video__caption">{{ . }}</figcaption>{{ end -}}
+</figure>

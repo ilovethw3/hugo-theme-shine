@@ -1,0 +1,36 @@
+{{ $slides := .slides | default site.Home.Params.hero.slides }}
+{{ if not $slides }}{{ $slides = slice site.Home.Params.hero }}{{ end }}
+<section class="hero-section hero-section--fullscreen">
+  <div class="hero-carousel" data-hero-carousel>
+    {{ range $index, $slide := $slides }}
+      <article class="hero-carousel__item{{ if eq $index 0 }} is-active{{ end }}" data-hero-slide>
+        <div class="hero-banner__media">
+          <img src="{{ $slide.image | relURL }}" alt="{{ $slide.imageAlt }}" loading="{{ if eq $index 0 }}eager{{ else }}lazy{{ end }}">
+        </div>
+        <div class="hero-banner__overlay"></div>
+        <div class="container hero-banner__content">
+          <div class="hero-banner__copy">
+            {{ with $slide.eyebrow }}<span class="eyebrow">{{ . }}</span>{{ end }}
+            {{ with $slide.title }}<h1>{{ . }}</h1>{{ end }}
+            {{ with $slide.description }}<p>{{ . }}</p>{{ end }}
+            {{ if or $slide.primaryButton $slide.secondaryButton }}
+              <div class="button-row">
+                {{ with $slide.primaryButton }}<a class="button button--primary" href="{{ .url | relLangURL }}">{{ .label }} <span>↗</span></a>{{ end }}
+                {{ with $slide.secondaryButton }}<a class="button button--secondary" href="{{ .url | relLangURL }}">{{ .label }}</a>{{ end }}
+              </div>
+            {{ end }}
+          </div>
+        </div>
+      </article>
+    {{ end }}
+    {{ if gt (len $slides) 1 }}
+      <div class="container hero-carousel__controls">
+        <button type="button" class="hero-carousel__arrow" data-hero-prev aria-label="{{ i18n "previous" }}">←</button>
+        <div class="hero-carousel__dots">
+          {{ range $index, $slide := $slides }}<button type="button" class="hero-carousel__dot{{ if eq $index 0 }} is-active{{ end }}" data-hero-dot="{{ $index }}" aria-label="{{ i18n "viewImage" }} {{ add $index 1 }}"></button>{{ end }}
+        </div>
+        <button type="button" class="hero-carousel__arrow" data-hero-next aria-label="{{ i18n "next" }}">→</button>
+      </div>
+    {{ end }}
+  </div>
+</section>

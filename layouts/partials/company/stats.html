@@ -1,0 +1,10 @@
+{{ $page := .page }}
+{{ with $page.Params.stats }}
+<section class="stats-section company-stats">
+  <div class="container stats-grid">
+    {{ range . }}
+      <div class="stat-item"><strong>{{ .value }}</strong><span>{{ .label }}</span></div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

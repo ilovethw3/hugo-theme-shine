@@ -1,0 +1,18 @@
+{{ $page := .page }}
+{{ $newsPages := sort (where site.RegularPages "Section" "news") "Date" "desc" }}
+{{ $currentIndex := 0 }}
+{{ range $index, $item := $newsPages }}{{ if eq $item.RelPermalink $page.RelPermalink }}{{ $currentIndex = $index }}{{ end }}{{ end }}
+{{ $newer := false }}
+{{ $older := false }}
+{{ if gt $currentIndex 0 }}{{ $newer = index $newsPages (sub $currentIndex 1) }}{{ end }}
+{{ if lt (add $currentIndex 1) (len $newsPages) }}{{ $older = index $newsPages (add $currentIndex 1) }}{{ end }}
+{{ if or $newer $older }}
+<section class="section news-navigation-section">
+  <div class="container">
+    <nav class="news-navigation" aria-label="{{ i18n "articleNavigation" }}">
+      {{ if $newer }}<a class="news-navigation__item news-navigation__item--newer" href="{{ $newer.RelPermalink }}"><span>{{ i18n "previousArticle" }}</span><strong>{{ $newer.LinkTitle }}</strong></a>{{ end }}
+      {{ if $older }}<a class="news-navigation__item news-navigation__item--older" href="{{ $older.RelPermalink }}"><span>{{ i18n "nextArticle" }}</span><strong>{{ $older.LinkTitle }}</strong></a>{{ end }}
+    </nav>
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,11 @@
+{{ $page := .page }}
+{{ with $page.Params.outcomes }}
+<section class="section project-outcomes">
+  <div class="container">
+    <div class="section-heading"><div><span class="eyebrow">{{ $page.Params.outcomesEyebrow | default (i18n "projectOutcomes") }}</span><h2>{{ $page.Params.outcomesTitle | default (i18n "projectOutcomes") }}</h2></div></div>
+    <div class="project-outcomes__grid">
+      {{ range . }}<div class="project-outcome"><strong>{{ .value }}</strong><span>{{ .label }}</span>{{ with .description }}<p>{{ . }}</p>{{ end }}</div>{{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

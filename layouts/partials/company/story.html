@@ -1,0 +1,16 @@
+{{ $page := .page }}
+{{ with $page.Params.story }}
+<section class="section company-story">
+  <div class="container split-layout">
+    <div class="split-layout__media image-frame">
+      <img src="{{ .image | relURL }}" alt="{{ .imageAlt | default $page.Title }}" loading="lazy">
+      {{ with .label }}<div class="image-frame__label">{{ . }}</div>{{ end }}
+    </div>
+    <div class="split-layout__content">
+      <span class="eyebrow">{{ .eyebrow }}</span>
+      <h2>{{ .title }}</h2>
+      <div class="prose">{{ .description | markdownify }}</div>
+    </div>
+  </div>
+</section>
+{{ end }}

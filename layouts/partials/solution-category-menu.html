@@ -1,0 +1,13 @@
+{{ $solutionPages := where site.RegularPages "Section" "solutions" }}
+{{ $categories := slice }}
+{{ range $solutionPages }}
+  {{ range (index .Params "solution-categories") }}
+    {{ if not (in $categories .) }}{{ $categories = $categories | append . }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ if $categories }}
+  <div class="nav-dropdown" aria-label="{{ i18n "solutionCategories" }}">
+    <a class="nav-dropdown__link" href="{{ "solutions/" | relLangURL }}">{{ i18n "allSolutions" }}</a>
+    {{ range sort $categories }}<a href="{{ printf "solution-categories/%s/" (. | urlize) | relLangURL }}">{{ . }}</a>{{ end }}
+  </div>
+{{ end }}

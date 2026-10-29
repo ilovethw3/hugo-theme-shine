@@ -1,0 +1,19 @@
+{{ $page := .page }}
+<div class="contact-page__details">
+  <span class="eyebrow">{{ i18n "getInTouch" }}</span>
+  <h2>{{ i18n "contactDetailsTitle" }}</h2>
+  <div class="prose">{{ $page.Content }}</div>
+  <ul class="contact-list contact-list--large">
+    {{ with site.Params.contact.address }}
+      {{ $address := . }}
+      <li>{{ partial "contact/icon.html" (dict "value" site.Params.contact.icons.address) }}<div><strong>{{ i18n "address" }}</strong><br>{{ with site.Params.contact.mapUrl }}<a class="contact-address-link" href="{{ . }}" target="_blank" rel="noopener">{{ $address }}</a>{{ else }}{{ $address }}{{ end }}</div></li>
+    {{ end }}
+    {{ with site.Params.contact.phone }}<li>{{ partial "contact/icon.html" (dict "value" site.Params.contact.icons.phone) }}<div><strong>{{ i18n "phone" }}</strong><br><a href="tel:{{ . }}">{{ . }}</a></div></li>{{ end }}
+    {{ with site.Params.contact.email }}<li>{{ partial "contact/icon.html" (dict "value" site.Params.contact.icons.email) }}<div><strong>{{ i18n "email" }}</strong><br><a href="mailto:{{ . }}">{{ . }}</a></div></li>{{ end }}
+    {{ with site.Params.contact.hours }}<li>{{ partial "contact/icon.html" (dict "value" site.Params.contact.icons.hours) }}<div><strong>{{ i18n "businessHours" }}</strong><br>{{ . }}</div></li>{{ end }}
+  </ul>
+  <div class="contact-faq-link">
+    <p>{{ i18n "faqPrompt" }}</p>
+    <a class="text-link" href="{{ "faq/" | relLangURL }}">{{ i18n "viewFaq" }} <span>↗</span></a>
+  </div>
+</div>

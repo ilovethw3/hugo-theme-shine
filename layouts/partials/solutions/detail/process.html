@@ -1,0 +1,11 @@
+{{ $page := .page }}
+{{ with $page.Params.process }}
+<section class="section section--muted solution-process">
+  <div class="container">
+    <div class="section-heading"><div><span class="eyebrow">{{ $page.Params.processEyebrow | default (i18n "solutionProcess") }}</span><h2>{{ $page.Params.processTitle | default (i18n "solutionProcess") }}</h2></div></div>
+    <div class="solution-process__list">
+      {{ range $index, $step := . }}<article class="solution-process__step"><span class="solution-process__number">{{ printf "%02d" (add $index 1) }}</span><div><h3>{{ $step.title }}</h3><p>{{ $step.description }}</p></div></article>{{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

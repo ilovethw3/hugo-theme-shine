@@ -1,0 +1,19 @@
+{{ $page := .page }}
+{{ partial "page-hero.html" $page }}
+{{ $cover := $page.Params.cover }}
+{{ if or $cover $page.Params.overviewTitle $page.Params.summary }}
+  {{ $coverURL := "" }}
+  {{ with $cover }}
+    {{ $coverURL = . | relURL }}
+    {{ with $page.Resources.GetMatch . }}{{ $coverURL = .RelPermalink }}{{ end }}
+  {{ end }}
+  <section class="section solution-overview">
+    <div class="container solution-overview__layout{{ if not $cover }} solution-overview__layout--single{{ end }}">
+      {{ with $cover }}<div class="solution-overview__media"><img src="{{ $coverURL }}" alt="{{ $page.Params.coverAlt | default $page.Title }}" loading="lazy"></div>{{ end }}
+      <div class="solution-overview__content">
+        <div class="section-heading"><div><span class="eyebrow">{{ $page.Params.overviewEyebrow | default (i18n "solutionOverview") }}</span><h2>{{ $page.Params.overviewTitle | default $page.Title }}</h2></div></div>
+        {{ with $page.Params.summary }}<div class="prose solution-overview__summary">{{ . | markdownify }}</div>{{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}

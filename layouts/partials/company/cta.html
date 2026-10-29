@@ -1,0 +1,9 @@
+{{ $page := .page }}
+{{ with $page.Params.cta }}
+<section class="cta-section company-cta">
+  <div class="container cta-section__inner">
+    <div><span class="eyebrow">{{ .eyebrow }}</span><h2>{{ .title }}</h2><p>{{ .description }}</p></div>
+    {{ with .button }}<a class="button button--light" href="{{ .url | relLangURL }}">{{ .label }} <span>↗</span></a>{{ end }}
+  </div>
+</section>
+{{ end }}

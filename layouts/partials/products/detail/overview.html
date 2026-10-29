@@ -1,0 +1,52 @@
+{{ $page := .page }}
+{{ $images := $page.Params.images }}
+{{ if not $images }}{{ $images = slice (site.Params.brand.placeholderImage | default "/images/placeholder.svg") }}{{ end }}
+{{ $firstImageRef := index $images 0 }}
+{{ $firstImage := $firstImageRef | relURL }}
+{{ with $page.Resources.GetMatch $firstImageRef }}{{ $firstImage = .RelPermalink }}{{ end }}
+<section class="product-detail section">
+  <div class="container">
+    <div class="breadcrumbs"><a href="{{ "/" | relLangURL }}">{{ i18n "home" }}</a><span>/</span><a href="{{ "products/" | relLangURL }}">{{ i18n "products" }}</a><span>/</span><span>{{ $page.Title }}</span></div>
+    <div class="product-detail__layout">
+      <div class="product-gallery" data-product-gallery>
+        <div class="product-gallery__main">
+          <button class="product-gallery__open" type="button" data-gallery-open data-gallery-image="{{ $firstImage }}" aria-label="{{ i18n "zoomImage" }}">
+            <img id="product-main-image" data-gallery-main src="{{ $firstImage }}" alt="{{ $page.Title }}">
+          </button>
+          {{ if gt (len $images) 1 }}
+            <div class="product-gallery__controls" aria-label="{{ i18n "viewImage" }}">
+              <button class="product-gallery__arrow" type="button" data-gallery-prev aria-label="{{ i18n "previousImage" }}">‹</button>
+              <button class="product-gallery__arrow" type="button" data-gallery-next aria-label="{{ i18n "nextImage" }}">›</button>
+            </div>
+          {{ end }}
+        </div>
+        {{ if gt (len $images) 1 }}
+          <div class="product-gallery__thumbs">
+            {{ range $index, $imageRef := $images }}
+              {{ $image := $imageRef | relURL }}
+              {{ with $page.Resources.GetMatch $imageRef }}{{ $image = .RelPermalink }}{{ end }}
+              <button class="gallery-thumb{{ if eq $index 0 }} is-active{{ end }}" type="button" data-gallery-thumb data-gallery-index="{{ $index }}" data-gallery-image="{{ $image }}" aria-label="{{ i18n "viewImage" }} {{ add $index 1 }}" aria-current="{{ if eq $index 0 }}true{{ else }}false{{ end }}">
+                <img src="{{ $image }}" alt="" loading="lazy">
+              </button>
+            {{ end }}
+          </div>
+        {{ end }}
+        <div class="gallery-lightbox" data-gallery-lightbox hidden role="dialog" aria-modal="true" aria-label="{{ i18n "zoomImage" }}">
+          <button class="gallery-lightbox__close" type="button" data-gallery-close aria-label="{{ i18n "close" }}">×</button>
+          <button class="gallery-lightbox__arrow gallery-lightbox__arrow--prev" type="button" data-gallery-lightbox-prev aria-label="{{ i18n "previousImage" }}">‹</button>
+          <div class="gallery-lightbox__stage"><img class="gallery-lightbox__image" data-gallery-lightbox-image src="{{ $firstImage }}" alt="{{ $page.Title }}"></div>
+          <button class="gallery-lightbox__arrow gallery-lightbox__arrow--next" type="button" data-gallery-lightbox-next aria-label="{{ i18n "nextImage" }}">›</button>
+          <span class="gallery-lightbox__counter" data-gallery-lightbox-counter>1 / {{ len $images }}</span>
+        </div>
+      </div>
+      <div class="product-detail__summary">
+        {{ with (index $page.Params "product-categories") }}<div class="eyebrow">{{ delimit . " · " }}</div>{{ end }}
+        <h1>{{ $page.Title }}</h1>
+        {{ with $page.Params.summary }}<div class="lead product-detail__summary-copy">{{ . | markdownify }}</div>{{ end }}
+        <div class="product-detail__actions">
+          {{ if ne $page.Params.showQuoteButton false }}<a class="button button--primary" href="{{ "contact/" | relLangURL }}">{{ i18n "requestQuote" }}</a>{{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

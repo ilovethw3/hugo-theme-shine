@@ -1,0 +1,28 @@
+{{ $page := .page }}
+{{ partial "page-hero.html" $page }}
+{{ $cover := $page.Params.cover }}
+{{ $coverURL := "" }}
+{{ with $cover }}
+  {{ $coverURL = . | relURL }}
+  {{ with $page.Resources.GetMatch . }}{{ $coverURL = .RelPermalink }}{{ end }}
+{{ end }}
+<section class="section project-overview">
+  <div class="container project-overview__layout{{ if not $cover }} project-overview__layout--single{{ end }}">
+    {{ with $cover }}<div class="project-overview__media"><img src="{{ $coverURL }}" alt="{{ $page.Params.coverAlt | default $page.Title }}" loading="lazy"></div>{{ end }}
+    <div class="project-overview__content">
+      <div class="section-heading"><div><span class="eyebrow">{{ $page.Params.overviewEyebrow | default (i18n "projectOverview") }}</span><h2>{{ $page.Params.overviewTitle | default $page.Title }}</h2></div></div>
+      {{ with $page.Params.summary }}<div class="prose project-overview__summary">{{ . | markdownify }}</div>{{ end }}
+      {{ $details := slice
+        (dict "label" (i18n "projectClient") "value" $page.Params.client)
+        (dict "label" (i18n "projectIndustry") "value" $page.Params.industry)
+        (dict "label" (i18n "projectLocation") "value" $page.Params.location)
+        (dict "label" (i18n "projectYear") "value" $page.Params.year)
+      }}
+      {{ if or $page.Params.client $page.Params.industry $page.Params.location $page.Params.year }}
+        <dl class="project-meta">
+          {{ range $details }}{{ $detail := . }}{{ with $detail.value }}<div class="project-meta__item"><dt>{{ $detail.label }}</dt><dd>{{ . }}</dd></div>{{ end }}{{ end }}
+        </dl>
+      {{ end }}
+    </div>
+  </div>
+</section>

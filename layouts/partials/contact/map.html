@@ -1,0 +1,6 @@
+<section class="section contact-map">
+  <div class="container">
+    <div class="section-heading"><div><span class="eyebrow">{{ i18n "visitUs" }}</span><h2>{{ i18n "contactMapTitle" }}</h2></div></div>
+    {{ with site.Params.contact.mapEmbedUrl }}<div class="contact-map__frame"><iframe src="{{ . }}" title="{{ i18n "contactMapTitle" }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>{{ else }}{{ with site.Params.contact.mapUrl }}<a class="button button--secondary" href="{{ . }}" target="_blank" rel="noopener">{{ i18n "openMap" }} ↗</a>{{ else }}<div class="contact-map__notice" role="status">{{ i18n "mapNotConfigured" }}</div>{{ end }}{{ end }}
+  </div>
+</section>

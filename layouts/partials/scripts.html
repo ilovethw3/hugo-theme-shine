@@ -1,0 +1,129 @@
+<script>
+  (() => {
+    const menuButton = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('#site-navigation');
+    if (menuButton && navigation) {
+      menuButton.addEventListener('click', () => {
+        const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+        menuButton.setAttribute('aria-expanded', String(!isOpen));
+        navigation.classList.toggle('is-open', !isOpen);
+      });
+    }
+    document.querySelectorAll('[data-product-gallery]').forEach((gallery) => {
+      const main = gallery.querySelector('[data-gallery-main]');
+      const openButton = gallery.querySelector('[data-gallery-open]');
+      const thumbs = Array.from(gallery.querySelectorAll('[data-gallery-thumb]'));
+      const lightbox = gallery.querySelector('[data-gallery-lightbox]');
+      const lightboxImage = gallery.querySelector('[data-gallery-lightbox-image]');
+      const counter = gallery.querySelector('[data-gallery-lightbox-counter]');
+      const images = thumbs.length ? thumbs.map((thumb) => thumb.dataset.galleryImage) : [openButton?.dataset.galleryImage].filter(Boolean);
+      if (!main || !images.length) return;
+      let current = 0;
+      let touchStartX = 0;
+      let previousFocus = null;
+      const render = (index) => {
+        current = (index + images.length) % images.length;
+        main.src = images[current];
+        if (openButton) openButton.dataset.galleryImage = images[current];
+        thumbs.forEach((thumb, thumbIndex) => {
+          const active = thumbIndex === current;
+          thumb.classList.toggle('is-active', active);
+          thumb.setAttribute('aria-current', active ? 'true' : 'false');
+        });
+        if (lightboxImage) lightboxImage.src = images[current];
+        if (counter) counter.textContent = `${current + 1} / ${images.length}`;
+      };
+      const showPrevious = () => render(current - 1);
+      const showNext = () => render(current + 1);
+      const close = () => {
+        if (!lightbox) return;
+        lightbox.setAttribute('hidden', 'hidden');
+        lightbox.style.display = 'none';
+        lightbox.classList.remove('is-open');
+        document.body.classList.remove('gallery-lightbox-open');
+        if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus();
+      };
+      const open = () => {
+        if (!lightbox) return;
+        previousFocus = document.activeElement;
+        render(current);
+        lightbox.removeAttribute('hidden');
+        lightbox.style.display = 'grid';
+        lightbox.classList.add('is-open');
+        document.body.classList.add('gallery-lightbox-open');
+        lightbox.querySelector('[data-gallery-close]')?.focus();
+      };
+      thumbs.forEach((thumb) => thumb.addEventListener('click', () => render(Number(thumb.dataset.galleryIndex))));
+      openButton?.addEventListener('click', open);
+      gallery.querySelector('[data-gallery-prev]')?.addEventListener('click', showPrevious);
+      gallery.querySelector('[data-gallery-next]')?.addEventListener('click', showNext);
+      lightbox?.querySelector('[data-gallery-close]')?.addEventListener('click', close);
+      lightbox?.querySelector('[data-gallery-lightbox-prev]')?.addEventListener('click', showPrevious);
+      lightbox?.querySelector('[data-gallery-lightbox-next]')?.addEventListener('click', showNext);
+      lightbox?.addEventListener('click', (event) => {
+        if (event.target === lightbox) close();
+      });
+      const bindSwipe = (target) => {
+        if (!target) return;
+        target.addEventListener('touchstart', (event) => {
+          touchStartX = event.changedTouches[0].screenX;
+        }, { passive: true });
+        target.addEventListener('touchend', (event) => {
+          const distance = event.changedTouches[0].screenX - touchStartX;
+          if (Math.abs(distance) < 45) return;
+          if (distance < 0) showNext(); else showPrevious();
+        }, { passive: true });
+      };
+      bindSwipe(lightbox);
+      bindSwipe(gallery.querySelector('.product-gallery__main'));
+      document.addEventListener('keydown', (event) => {
+        if (!lightbox || lightbox.hidden) return;
+        if (event.key === 'Escape') close();
+        if (event.key === 'ArrowLeft') showPrevious();
+        if (event.key === 'ArrowRight') showNext();
+      });
+      render(0);
+    });
+
+    document.querySelectorAll('[data-hero-carousel]').forEach((carousel) => {
+      const slides = Array.from(carousel.querySelectorAll('[data-hero-slide]'));
+      const dots = Array.from(carousel.querySelectorAll('[data-hero-dot]'));
+      if (slides.length < 2) return;
+      let current = 0;
+      let timer;
+      const show = (index) => {
+        current = (index + slides.length) % slides.length;
+        slides.forEach((slide, slideIndex) => slide.classList.toggle('is-active', slideIndex === current));
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle('is-active', dotIndex === current);
+          dot.setAttribute('aria-current', dotIndex === current ? 'true' : 'false');
+        });
+      };
+      const start = () => {
+        window.clearInterval(timer);
+        timer = window.setInterval(() => show(current + 1), 5000);
+      };
+      carousel.querySelector('[data-hero-prev]')?.addEventListener('click', () => { show(current - 1); start(); });
+      carousel.querySelector('[data-hero-next]')?.addEventListener('click', () => { show(current + 1); start(); });
+      dots.forEach((dot) => dot.addEventListener('click', () => { show(Number(dot.dataset.heroDot)); start(); }));
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) window.clearInterval(timer);
+        else start();
+      });
+      if (!document.hidden) start();
+    });
+    const searchInput = document.querySelector('#search-page-input');
+    const searchResults = document.querySelector('#search-results');
+    if (searchInput && searchResults) {
+      fetch('{{ "index.json" | relLangURL }}').then((response) => response.json()).then((pages) => {
+        const render = () => {
+          const query = searchInput.value.trim().toLowerCase();
+          const matches = query ? pages.filter((page) => (page.title + ' ' + page.summary).toLowerCase().includes(query)) : pages.slice(0, 8);
+          searchResults.innerHTML = matches.length ? matches.map((page) => '<a class="search-result" href="' + page.url + '"><span class="eyebrow">' + page.sectionLabel + '</span><strong>' + page.title + '</strong><span>' + page.summary + '</span></a>').join('') : '<p class="empty-state">{{ i18n "noSearchResults" }}</p>';
+        };
+        searchInput.addEventListener('input', render);
+        render();
+      }).catch(() => { searchResults.innerHTML = '<p class="empty-state">{{ i18n "searchUnavailable" }}</p>'; });
+    }
+  })();
+</script>

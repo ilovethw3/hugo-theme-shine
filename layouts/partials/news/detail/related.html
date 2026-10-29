@@ -1,0 +1,24 @@
+{{ $page := .page }}
+{{ $related := slice }}
+{{ range $page.Params.relatedNews }}{{ with site.GetPage (printf "/news/%s" .) }}{{ $related = $related | append . }}{{ end }}{{ end }}
+{{ if not $related }}
+  {{ $categories := index $page.Params "news-categories" }}
+  {{ if not $categories }}{{ $categories = $page.Params.categories }}{{ end }}
+  {{ range sort (where site.RegularPages "Section" "news") "Date" "desc" }}
+    {{ if and (ne .RelPermalink $page.RelPermalink) (lt (len $related) 3) }}
+      {{ $itemCategories := index .Params "news-categories" }}
+      {{ if not $itemCategories }}{{ $itemCategories = .Params.categories }}{{ end }}
+      {{ $match := false }}
+      {{ range $itemCategories }}{{ if in $categories . }}{{ $match = true }}{{ end }}{{ end }}
+      {{ if $match }}{{ $related = $related | append . }}{{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ if $related }}
+<section class="section news-related">
+  <div class="container">
+    <div class="section-heading"><div><span class="eyebrow">{{ $page.Params.relatedEyebrow | default (i18n "exploreMore") }}</span><h2>{{ $page.Params.relatedTitle | default (i18n "relatedNews") }}</h2></div></div>
+    <div class="card-grid card-grid--three">{{ range $related }}{{ partial "news-card.html" . }}{{ end }}</div>
+  </div>
+</section>
+{{ end }}

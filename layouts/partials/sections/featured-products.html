@@ -1,0 +1,4 @@
+{{ $products := where site.RegularPages "Section" "products" }}
+{{ $featured := where $products "Params.featured" true }}
+{{ if $featured }}{{ $products = $featured }}{{ end }}
+<section class="section"><div class="container"><div class="section-heading"><div><span class="eyebrow">{{ .eyebrow | default site.Home.Params.products.eyebrow }}</span><h2>{{ .title | default site.Home.Params.products.title }}</h2></div>{{ with site.GetPage "section" "products" }}<a class="text-link" href="{{ .RelPermalink }}">{{ i18n "viewAll" }} <span>↗</span></a>{{ end }}</div><div class="card-grid card-grid--four">{{ range first (.limit | default 4) $products.ByWeight }}{{ partial "product-card.html" . }}{{ end }}</div></div></section>

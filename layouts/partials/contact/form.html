@@ -1,0 +1,19 @@
+{{ $action := site.Params.forms.contactAction }}
+{{ $configured := $action }}
+<form class="contact-form{{ if not $configured }} contact-form--unconfigured{{ end }}" action="{{ if $configured }}{{ $action }}{{ else }}#{{ end }}" method="post">
+  {{ if not $configured }}<div class="contact-form__notice" role="status">{{ i18n "formNotConfigured" }}</div>{{ end }}
+  <div class="contact-form__header"><span class="eyebrow">{{ i18n "contactForm" }}</span><p>{{ i18n "contactFormDescription" }}</p></div>
+  <input type="hidden" name="subject" value="{{ site.Params.forms.contactSubject | default (i18n "contactFormSubject") }}">
+  <div class="form-row">
+    <label>{{ i18n "name" }}<input name="name" type="text" autocomplete="name" required></label>
+    <label>{{ i18n "email" }}<input name="email" type="email" autocomplete="email" required></label>
+  </div>
+  <div class="form-row">
+    <label>{{ i18n "companyName" }}<input name="company" type="text" autocomplete="organization"></label>
+    <label>{{ i18n "phone" }}<input name="phone" type="tel" autocomplete="tel"></label>
+  </div>
+  <label>{{ i18n "interest" }}<select name="interest"><option value="">{{ i18n "selectInterest" }}</option><option value="product">{{ i18n "interestProduct" }}</option><option value="solution">{{ i18n "interestSolution" }}</option><option value="project">{{ i18n "interestProject" }}</option><option value="other">{{ i18n "interestOther" }}</option></select></label>
+  <label>{{ i18n "message" }}<textarea name="message" rows="7" required></textarea></label>
+  {{ if ne site.Params.forms.requireConsent false }}<label class="contact-form__consent"><input name="privacyConsent" type="checkbox" value="yes" required><span>{{ i18n "privacyConsentPrefix" }} <a href="{{ site.Params.legal.privacy | default "privacy/" | relLangURL }}">{{ i18n "privacy" }}</a>{{ i18n "privacyConsentSuffix" }}</span></label>{{ end }}
+  <button class="button button--primary" type="submit"{{ if not $configured }} disabled{{ end }}>{{ i18n "sendMessage" }} <span>↗</span></button>
+</form>

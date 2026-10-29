@@ -1,0 +1,13 @@
+{{ $productPages := where site.RegularPages "Section" "products" }}
+{{ $categories := slice }}
+{{ range $productPages }}
+  {{ range (index .Params "product-categories") }}
+    {{ if not (in $categories .) }}{{ $categories = $categories | append . }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ if $categories }}
+  <div class="nav-dropdown" aria-label="{{ i18n "productCategories" }}">
+    <a class="nav-dropdown__link" href="{{ "products/" | relLangURL }}">{{ i18n "allProducts" }}</a>
+    {{ range sort $categories }}<a href="{{ printf "product-categories/%s/" (. | urlize) | relLangURL }}">{{ . }}</a>{{ end }}
+  </div>
+{{ end }}

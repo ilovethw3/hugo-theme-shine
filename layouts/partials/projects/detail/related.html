@@ -1,0 +1,14 @@
+{{ $page := .page }}
+{{ $products := slice }}
+{{ range $page.Params.relatedProducts }}{{ with site.GetPage (printf "/products/%s" .) }}{{ $products = $products | append . }}{{ end }}{{ end }}
+{{ $solutions := slice }}
+{{ range $page.Params.relatedSolutions }}{{ with site.GetPage (printf "/solutions/%s" .) }}{{ $solutions = $solutions | append . }}{{ end }}{{ end }}
+{{ if or $products $solutions }}
+<section class="section project-related">
+  <div class="container">
+    <div class="section-heading"><div><span class="eyebrow">{{ $page.Params.relatedEyebrow | default (i18n "exploreMore") }}</span><h2>{{ $page.Params.relatedTitle | default (i18n "relatedSolutions") }}</h2></div></div>
+    {{ if $products }}<div class="project-related__group"><h3>{{ i18n "relatedProducts" }}</h3><div class="card-grid card-grid--three">{{ range $products }}{{ partial "product-card.html" . }}{{ end }}</div></div>{{ end }}
+    {{ if $solutions }}<div class="project-related__group"><h3>{{ i18n "relatedSolutions" }}</h3><div class="card-grid card-grid--three">{{ range $solutions }}{{ partial "content-card.html" . }}{{ end }}</div></div>{{ end }}
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,19 @@
+{{ $page := .page }}
+{{ with $page.Params.capabilities }}
+<section class="section section--muted company-capabilities">
+  <div class="container">
+    <div class="section-heading section-heading--center">
+      <div><span class="eyebrow">{{ .eyebrow }}</span><h2>{{ .title }}</h2></div>
+    </div>
+    <div class="company-capability-grid">
+      {{ range $index, $item := .items }}
+        <article class="company-capability">
+          <span class="company-capability__number">{{ printf "%02d" (add $index 1) }}</span>
+          <h3>{{ .title }}</h3>
+          <p>{{ .description }}</p>
+        </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

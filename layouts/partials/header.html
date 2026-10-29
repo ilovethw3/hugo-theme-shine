@@ -1,0 +1,49 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="{{ "/" | relLangURL }}" aria-label="{{ site.Title }}">
+      {{ with site.Params.brand.logo }}<img src="{{ . | relURL }}" alt="{{ site.Params.brand.name | default site.Title }}">{{ else }}<span class="brand-mark">{{ site.Params.brand.mark | default "S" }}</span><span class="brand-name">{{ site.Params.brand.name | default site.Title }}</span>{{ end }}
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation"><span></span><span></span><span></span><span class="sr-only">{{ i18n "toggleMenu" }}</span></button>
+    <nav id="site-navigation" class="site-nav" aria-label="{{ i18n "primaryNavigation" }}">
+      {{ range site.Menus.main }}
+        {{ if or (eq .PageRef "products") (eq .PageRef "solutions") }}
+          <div class="nav-item nav-item--dropdown">
+            <a class="nav-link{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} is-active{{ end }}" href="{{ .URL | relLangURL }}" aria-haspopup="true">{{ .Name }}</a>
+            {{ if eq .PageRef "products" }}{{ partial "product-category-menu.html" $ }}{{ else }}{{ partial "solution-category-menu.html" $ }}{{ end }}
+          </div>
+        {{ else }}
+          <a class="nav-link{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} is-active{{ end }}" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+        {{ end }}
+      {{ end }}
+    </nav>
+    <div class="header-actions">
+      {{ if site.Params.features.search }}<a class="icon-link" href="{{ "search/" | relLangURL }}" aria-label="{{ i18n "search" }}">⌕</a>{{ end }}
+      {{ $languagePages := $.AllTranslations }}
+      {{ if le (len $languagePages) 1 }}{{ $languagePages = site.Home.AllTranslations }}{{ end }}
+      {{ if gt (len $languagePages) 1 }}
+        <details class="language-switcher">
+          <summary>{{ site.Language.LanguageName }}</summary>
+          <div class="language-switcher__menu">
+            {{ range $languagePages }}
+              {{ $language := . }}
+              {{ $href := .RelPermalink }}
+              {{ if and (eq $.Kind "term") (eq $.Section "product-categories") (ne .Language.Lang site.Language.Lang) }}
+                {{ range first 1 $.Pages }}
+                  {{ range .AllTranslations }}
+                    {{ if eq .Language.Lang $language.Language.Lang }}
+                      {{ with index .Params "product-categories" }}
+                        {{ with index . 0 }}{{ $href = printf "/%s/product-categories/%s/" $language.Language.Lang (. | urlize) | relURL }}{{ end }}
+                      {{ end }}
+                    {{ end }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+              <a class="{{ if eq .Language.Lang site.Language.Lang }}is-active{{ end }}" href="{{ $href }}"><span>{{ .Language.LanguageName }}</span><span class="language-switcher__code">{{ upper .Language.Lang }}</span></a>
+            {{ end }}
+          </div>
+        </details>
+      {{ end }}
+      <a class="button button--small button--primary header-cta" href="{{ "contact/" | relLangURL }}">{{ i18n "contactUs" }}</a>
+    </div>
+  </div>
+</header>

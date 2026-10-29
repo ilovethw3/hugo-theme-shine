@@ -1,0 +1,1 @@
+<section class="stats-section"><div class="container stats-grid">{{ range (.items | default site.Home.Params.stats) }}<div class="stat-item"><strong>{{ .value }}</strong><span>{{ .label }}</span></div>{{ end }}</div></section>

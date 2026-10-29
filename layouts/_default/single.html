@@ -1,0 +1,9 @@
+{{ define "main" }}
+  {{ partial "page-hero.html" . }}
+  <article class="section article-section">
+    <div class="container container--narrow">
+      {{ with .Params.cover }}<img class="article-cover" src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy">{{ end }}
+      <div class="prose">{{ .Content }}</div>
+    </div>
+  </article>
+{{ end }}

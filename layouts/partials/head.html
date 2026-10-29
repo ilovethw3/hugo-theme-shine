@@ -1,0 +1,42 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{ $pageTitle := .Title }}
+{{ if and (eq .Kind "taxonomy") (eq .Section "product-categories") }}{{ $pageTitle = i18n "productCategories" }}{{ end }}
+{{ if and (eq .Kind "taxonomy") (eq .Section "news-categories") }}{{ $pageTitle = i18n "newsCategories" }}{{ end }}
+{{ $description := .Description }}
+{{ if not $description }}{{ $description = .Params.summary | markdownify | plainify }}{{ end }}
+{{ $description = $description | plainify | htmlUnescape | truncate 160 }}
+{{ $ogImage := site.Params.seo.ogImage }}
+{{ if and .IsPage (eq .Section "products") }}
+  {{ with .Params.images }}
+    {{ with index . 0 }}
+      {{ $ogImage = . | absURL }}
+      {{ with $.Resources.GetMatch . }}{{ $ogImage = .Permalink }}{{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ if and .IsPage (eq .Section "projects") }}
+  {{ with .Params.cover }}
+    {{ $ogImage = . | absURL }}
+    {{ with $.Resources.GetMatch . }}{{ $ogImage = .Permalink }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ if and .IsPage (eq .Section "news") }}
+  {{ with .Params.cover }}
+    {{ $ogImage = . | absURL }}
+    {{ with $.Resources.GetMatch . }}{{ $ogImage = .Permalink }}{{ end }}
+  {{ end }}
+{{ end }}
+<meta name="description" content="{{ $description }}">
+{{ with .Params.keywords | default site.Params.seo.keywords }}<meta name="keywords" content="{{ delimit . ", " }}">{{ end }}
+<link rel="canonical" href="{{ .Permalink }}">
+<title>{{ if not .IsHome }}{{ $pageTitle }} · {{ end }}{{ site.Title }}</title>
+{{ with site.Params.brand.favicon }}<link rel="icon" href="{{ . | relURL }}">{{ end }}
+{{ $css := resources.Get "css/main.css" | minify | fingerprint }}<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{ $components := resources.Get "css/components.css" | minify | fingerprint }}<link rel="stylesheet" href="{{ $components.RelPermalink }}" integrity="{{ $components.Data.Integrity }}">
+{{ with $ogImage }}<meta property="og:image" content="{{ . | absURL }}"><meta property="og:image:alt" content="{{ $pageTitle }}">{{ end }}
+<meta property="og:title" content="{{ $pageTitle }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+{{ if and .IsPage (eq .Section "news") }}<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ with .Params.author }}<meta property="article:author" content="{{ . }}">{{ end }}{{ end }}

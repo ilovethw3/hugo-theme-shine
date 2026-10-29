@@ -1,0 +1,9 @@
+{{ $page := .page }}
+{{ if site.Params.features.quoteForm }}
+<section class="quote-section project-cta">
+  <div class="container quote-section__inner">
+    <div><span class="eyebrow">{{ i18n "getInTouch" }}</span><h2>{{ site.Home.Params.quote.title | default (i18n "quoteTitle") }}</h2><p>{{ site.Home.Params.quote.description | default (i18n "quoteDescription") }}</p></div>
+    <a class="button button--light" href="{{ "contact/" | relLangURL }}">{{ i18n "contactUs" }} <span>↗</span></a>
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,9 @@
+{{ $page := .page }}
+{{ with $page.Params.highlights }}
+<section class="section section--muted solution-highlights">
+  <div class="container">
+    <div class="section-heading"><div><span class="eyebrow">{{ $page.Params.highlightsEyebrow | default (i18n "solutionHighlights") }}</span><h2>{{ $page.Params.highlightsTitle | default (i18n "whyThisSolution") }}</h2></div></div>
+    <div class="card-grid card-grid--three">{{ range . }}<article class="solution-highlight"><h3>{{ .title }}</h3><p>{{ .description }}</p></article>{{ end }}</div>
+  </div>
+</section>
+{{ end }}

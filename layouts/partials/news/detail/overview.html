@@ -1,0 +1,18 @@
+{{ $page := .page }}
+{{ partial "page-hero.html" $page }}
+{{ $cover := $page.Params.cover }}
+{{ $coverURL := "" }}
+{{ with $cover }}
+  {{ $coverURL = . | relURL }}
+  {{ with $page.Resources.GetMatch . }}{{ $coverURL = .RelPermalink }}{{ end }}
+{{ end }}
+<section class="section news-overview">
+  <div class="container">
+    {{ with $cover }}<img class="news-overview__cover" src="{{ $coverURL }}" alt="{{ $page.Params.coverAlt | default $page.Title }}" loading="eager">{{ end }}
+    <div class="news-article-meta">
+      {{ with $page.Date }}<time datetime="{{ .Format "2006-01-02" }}"><span>{{ i18n "publishedOn" }}</span>{{ .Format (site.Params.news.dateFormat | default "2006-01-02") }}</time>{{ end }}
+      {{ with $page.Params.author }}<span><span>{{ i18n "author" }}</span>{{ . }}</span>{{ end }}
+      <span><span>{{ i18n "readingTime" }}</span>{{ $page.ReadingTime }} {{ i18n "minutes" }}</span>
+    </div>
+  </div>
+</section>

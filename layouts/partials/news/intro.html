@@ -1,0 +1,8 @@
+{{ $page := .page }}
+{{ with $page.Content }}
+<section class="section section-news-intro">
+  <div class="container">
+    <div class="prose page-intro">{{ . }}</div>
+  </div>
+</section>
+{{ end }}

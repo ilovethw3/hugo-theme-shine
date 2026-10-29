@@ -231,4 +231,3 @@ translated page front matter at `content/faq/_index.md` and
 so the accordion works without JavaScript and remains keyboard accessible.
 The example site links to the FAQ from the footer and the Contact page, while
 keeping it out of the main navigation by default.
-

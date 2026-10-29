@@ -1,0 +1,17 @@
+{{ $page := .page }}
+{{ $categories := slice }}
+{{ range $page.Pages.ByWeight }}
+  {{ range (index .Params "product-categories") }}
+    {{ if not (in $categories .) }}{{ $categories = $categories | append . }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ if $categories }}
+<section class="section section-products-categories">
+  <div class="container">
+    <nav class="filter-tabs" aria-label="{{ i18n "productCategories" }}">
+      <a class="filter-tab is-active" href="{{ "products/" | relLangURL }}">{{ i18n "allProducts" }}</a>
+      {{ range sort $categories }}<a class="filter-tab" href="{{ printf "product-categories/%s/" (. | urlize) | relLangURL }}">{{ . }}</a>{{ end }}
+    </nav>
+  </div>
+</section>
+{{ end }}

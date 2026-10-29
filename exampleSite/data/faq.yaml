@@ -1,0 +1,7 @@
+sections:
+  - type: banner
+    enabled: true
+  - type: accordion
+    enabled: true
+  - type: cta
+    enabled: true
