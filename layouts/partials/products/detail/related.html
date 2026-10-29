@@ -1,0 +1,23 @@
+{{ $page := .page }}
+{{ $related := slice }}
+{{ with $page.Params.relatedProducts }}
+  {{ range . }}{{ with site.GetPage (printf "/products/%s" .) }}{{ $related = $related | append . }}{{ end }}{{ end }}
+{{ else }}
+  {{ $categories := index $page.Params "product-categories" }}
+  {{ range (where site.RegularPages "Section" "products").ByWeight }}
+    {{ if ne .RelPermalink $page.RelPermalink }}
+      {{ $match := false }}
+      {{ range (index .Params "product-categories") }}{{ if in $categories . }}{{ $match = true }}{{ end }}{{ end }}
+      {{ if and $match (not (in $related .)) }}{{ $related = $related | append . }}{{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ $related = first 3 $related }}
+{{ if $related }}
+<section class="section related-products">
+  <div class="container">
+    <div class="section-heading"><div><span class="eyebrow">{{ $page.Params.relatedEyebrow | default (i18n "exploreMore") }}</span><h2>{{ $page.Params.relatedTitle | default (i18n "relatedProducts") }}</h2></div></div>
+    <div class="card-grid card-grid--three">{{ range $related }}{{ partial "product-card.html" . }}{{ end }}</div>
+  </div>
+</section>
+{{ end }}

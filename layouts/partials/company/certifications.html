@@ -1,0 +1,18 @@
+{{ $page := .page }}
+{{ with $page.Params.certifications }}
+<section class="section section--muted company-certifications">
+  <div class="container">
+    <div class="section-heading section-heading--center">
+      <div><span class="eyebrow">{{ .eyebrow }}</span><h2>{{ .title }}</h2></div>
+    </div>
+    <div class="company-certification-grid">
+      {{ range .items }}
+        <article class="company-certification">
+          <span class="company-certification__mark">{{ .mark | default "✓" }}</span>
+          <div><h3>{{ .title }}</h3><p>{{ .description }}</p></div>
+        </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

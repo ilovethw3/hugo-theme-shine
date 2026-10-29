@@ -1,0 +1,13 @@
+<article class="product-card">
+  <a class="product-card__media" href="{{ .RelPermalink }}">
+    {{ $page := . }}
+    {{ $image := site.Params.brand.placeholderImage | default "/images/placeholder.svg" }}
+    {{ with $page.Params.images }}
+      {{ $imageRef := index . 0 }}
+      {{ $image = $imageRef | relURL }}
+      {{ with $page.Resources.GetMatch $imageRef }}{{ $image = .RelPermalink }}{{ end }}
+    {{ end }}
+    <img src="{{ $image | relURL }}" alt="{{ .Title }}" loading="lazy">
+  </a>
+  <div class="product-card__body">{{ with (index .Params "product-categories") }}<span class="eyebrow">{{ index . 0 }}</span>{{ end }}<h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>{{ $summary := .Params.summary | default (.Summary | plainify) }}<div class="product-card__summary">{{ $summary | markdownify }}</div><a class="text-link" href="{{ .RelPermalink }}">{{ i18n "viewProduct" }} <span>↗</span></a></div>
+</article>

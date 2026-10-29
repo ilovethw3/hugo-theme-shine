@@ -1,0 +1,5 @@
+# Site-specific overrides for the Asterra Systems example site.
+# All other interface translations fall back to the theme defaults.
+contactDetailsTitle: "Talk to Asterra Systems"
+contactMapTitle: "Visit Asterra Systems"
+contactFormSubject: "Asterra Systems website inquiry"

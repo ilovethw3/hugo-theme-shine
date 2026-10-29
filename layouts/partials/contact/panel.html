@@ -1,0 +1,10 @@
+{{ $page := .page }}
+{{ $config := .config }}
+{{ if or (ne $config.showDetails false) (ne $config.showForm false) }}
+<section class="section contact-page">
+  <div class="container contact-page__layout">
+    {{ if ne $config.showDetails false }}{{ partial "contact/details.html" (dict "page" $page "config" $config) }}{{ end }}
+    {{ if ne $config.showForm false }}{{ partial "contact/form.html" (dict "page" $page "config" $config) }}{{ end }}
+  </div>
+</section>
+{{ end }}

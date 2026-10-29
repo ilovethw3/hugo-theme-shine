@@ -1,0 +1,10 @@
+{{ define "main" }}
+  <section class="page-hero">
+    <div class="container page-hero__content">
+      <div class="breadcrumbs"><a href="{{ "/" | relLangURL }}">{{ i18n "home" }}</a><span>/</span><a href="{{ "news/" | relLangURL }}">{{ i18n "news" }}</a><span>/</span><span>{{ i18n "newsCategories" }}</span></div>
+      <span class="eyebrow">{{ i18n "news" }}</span>
+      <h1>{{ i18n "newsCategories" }}</h1>
+    </div>
+  </section>
+  <section class="section"><div class="container"><div class="tag-list">{{ range .Data.Terms.Alphabetical }}<a class="tag" href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }} <span>{{ .Count }}</span></a>{{ end }}</div></div></section>
+{{ end }}

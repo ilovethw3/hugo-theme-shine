@@ -1,0 +1,14 @@
+{{ $banner := .Params.banner }}
+{{ $overlay := $banner.overlay | default 0.45 }}
+<section class="page-hero{{ with $banner.background }} page-hero--image{{ end }}">
+  {{ with $banner.background }}
+    <div class="page-hero__media"><img src="{{ . | relURL }}" alt="{{ $banner.backgroundAlt | default $.Title }}"></div>
+    <div class="page-hero__overlay" style="--page-hero-overlay: {{ $overlay }}"></div>
+  {{ end }}
+  <div class="container page-hero__content">
+    <div class="breadcrumbs"><a href="{{ "/" | relLangURL }}">{{ i18n "home" }}</a>{{ if or (eq .Section "projects") (eq .Section "project-categories") }}<span>/</span><a href="{{ "projects/" | relLangURL }}">{{ i18n "projects" }}</a>{{ else if or (eq .Section "news") (eq .Section "news-categories") }}<span>/</span><a href="{{ "news/" | relLangURL }}">{{ i18n "news" }}</a>{{ else if eq .Section "product-categories" }}<span>/</span><a href="{{ "products/" | relLangURL }}">{{ i18n "products" }}</a>{{ else if eq .Section "solution-categories" }}<span>/</span><a href="{{ "solutions/" | relLangURL }}">{{ i18n "solutions" }}</a>{{ end }}<span>/</span><span>{{ .Title }}</span></div>
+    <span class="eyebrow">{{ .Params.eyebrow | default (i18n .Section) }}</span>
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.description | default .Params.summary }}<p>{{ . | plainify }}</p>{{ end }}
+  </div>
+</section>

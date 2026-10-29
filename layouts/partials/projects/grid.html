@@ -1,0 +1,10 @@
+{{ $page := .page }}
+{{ $paginator := $page.Paginate $page.Pages.ByWeight }}
+<section class="section section-projects-grid">
+  <div class="container">
+    <div class="card-grid card-grid--three">
+      {{ range $paginator.Pages }}{{ partial "project-card.html" . }}{{ else }}<p class="empty-state">{{ i18n "noContent" }}</p>{{ end }}
+    </div>
+    {{ partial "pagination.html" $page }}
+  </div>
+</section>

@@ -1,0 +1,25 @@
+{{ $page := .page }}
+{{ $items := $page.Params.faq }}
+{{ with $items }}
+  <section class="section faq-section">
+    <div class="container container--narrow">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">{{ i18n "faq" }}</span>
+          <h2>{{ i18n "faqTitle" }}</h2>
+        </div>
+      </div>
+      <div class="faq-list">
+        {{ range $index, $item := . }}
+          <details class="faq-item"{{ if eq $index 0 }} open{{ end }}>
+            <summary>
+              <span>{{ $item.question }}</span>
+              <span class="faq-item__icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="prose faq-item__answer">{{ $item.answer | markdownify }}</div>
+          </details>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}

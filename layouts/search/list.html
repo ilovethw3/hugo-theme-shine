@@ -1,0 +1,16 @@
+{{ define "main" }}
+  {{ if site.Params.features.search }}
+    {{ partial "page-hero.html" . }}
+    <section class="section search-page">
+      <div class="container container--narrow">
+        <label class="search-page__label" for="search-page-input">{{ i18n "search" }}</label>
+        <input id="search-page-input" class="search-page__input" type="search" placeholder="{{ i18n "searchPlaceholder" }}" autocomplete="off">
+        <div id="search-results" class="search-results" aria-live="polite"></div>
+      </div>
+    </section>
+  {{ else }}
+    <section class="section">
+      <div class="container container--narrow"><p class="empty-state">{{ i18n "searchDisabled" }}</p></div>
+    </section>
+  {{ end }}
+{{ end }}

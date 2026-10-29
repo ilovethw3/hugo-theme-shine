@@ -1,0 +1,16 @@
+{{ $page := .page }}
+{{ with $page.Params.gallery }}
+<section class="section project-gallery-section">
+  <div class="container">
+    <div class="section-heading"><div><span class="eyebrow">{{ $page.Params.galleryEyebrow | default (i18n "projectGallery") }}</span><h2>{{ $page.Params.galleryTitle | default (i18n "projectGallery") }}</h2></div></div>
+    <div class="project-gallery">
+      {{ range . }}
+        {{ $imageRef := .image }}
+        {{ $imageURL := $imageRef | relURL }}
+        {{ with $page.Resources.GetMatch $imageRef }}{{ $imageURL = .RelPermalink }}{{ end }}
+        <figure class="project-gallery__item"><img src="{{ $imageURL }}" alt="{{ .alt | default $page.Title }}" loading="lazy">{{ with .caption }}<figcaption>{{ . }}</figcaption>{{ end }}</figure>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

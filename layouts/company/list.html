@@ -1,0 +1,20 @@
+{{ define "main" }}
+  {{ $sections := hugo.Data.company.sections }}
+  {{ if not $sections }}
+    {{ $sections = slice
+      (dict "type" "hero" "enabled" true)
+      (dict "type" "story" "enabled" true)
+      (dict "type" "stats" "enabled" true)
+      (dict "type" "capabilities" "enabled" true)
+      (dict "type" "timeline" "enabled" true)
+      (dict "type" "certifications" "enabled" true)
+      (dict "type" "team" "enabled" true "limit" 4)
+      (dict "type" "cta" "enabled" true)
+    }}
+  {{ end }}
+  {{ range $sections }}
+    {{ if ne .enabled false }}
+      {{ partial (printf "company/%s.html" .type) (dict "page" $ "config" .) }}
+    {{ end }}
+  {{ end }}
+{{ end }}

@@ -1,0 +1,11 @@
+{{ $page := .page }}
+{{ with $page.Params.highlights }}
+<section class="section section--muted product-highlights">
+  <div class="container">
+    <div class="section-heading"><div><span class="eyebrow">{{ $page.Params.highlightsEyebrow | default (i18n "productHighlights") }}</span><h2>{{ $page.Params.highlightsTitle | default (i18n "whyThisProduct") }}</h2></div></div>
+    <div class="card-grid card-grid--three">
+      {{ range . }}<article class="product-highlight"><h3>{{ .title }}</h3><p>{{ .description }}</p></article>{{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

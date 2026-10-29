@@ -1,0 +1,172 @@
+baseURL: http://localhost:1313/
+languageCode: en-us
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: true
+title: Asterra Systems
+theme: shine
+enableRobotsTXT: true
+paginate: 9
+
+taxonomies:
+  category: categories
+  tag: tags
+  productcategory: product-categories
+  solutioncategory: solution-categories
+  projectcategory: project-categories
+  newscategory: news-categories
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+params:
+  seo:
+    description: "Asterra Systems helps industrial teams build reliable, efficient infrastructure for a changing world."
+    keywords: ["industrial systems", "engineering", "solutions"]
+  brand:
+    name: "Asterra Systems"
+    mark: "A"
+    placeholderImage: "/images/placeholder.svg"
+  news:
+    dateFormat: "2006-01-02"
+  features:
+    search: true
+    newsletter: false
+    quoteForm: true
+  footer:
+    showBrand: true
+    showSocial: true
+    showLinks: true
+    showContact: true
+    showNewsletter: false
+    showLegal: true
+  contact:
+    address: "18 Meridian Park, Singapore"
+    phone: "+65 6123 4567"
+    email: "hello@asterra.example"
+    hours: "Monday–Friday, 09:00–18:00 SGT"
+    mapUrl: "https://maps.app.goo.gl/AH3o7qob6pBPn9797"
+    mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d58218.111095682245!2d8.6503695!3d50.1042985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1szh-CN!2sde!4v1793265723894!5m2!1szh-CN!2sde"
+    icons:
+      address: "location"
+      phone: "phone"
+      email: "mail"
+      hours: "clock"
+  social:
+    - name: LinkedIn
+      url: "https://www.linkedin.com/"
+      icon: "linkedin"
+    - name: YouTube
+      url: "https://www.youtube.com/"
+      icon: "youtube"
+    - name: Facebook
+      url: "https://www.facebook.com/"
+      icon: "facebook"
+    - name: Instagram
+      url: "https://www.instagram.com/"
+      icon: "instagram"
+    - name: X
+      url: "https://x.com/"
+      icon: "x"
+    # - name: WeChat
+    #   url: "https://www.wechat.com/"
+    #   icon: "wechat"
+    - name: WhatsApp
+      url: "https://www.whatsapp.com/"
+      icon: "whatsapp"
+  forms:
+    provider: "formspree"
+    contactAction: "https://formspree.io/f/mzdoayvd"
+    contactSubject: "Asterra Systems website inquiry"
+    requireConsent: false
+    newsletterAction: ""
+  legal:
+    privacy: "/privacy/"
+languages:
+  en:
+    languageName: English
+    languageCode: en-us
+    weight: 1
+    menu:
+      main:
+        - name: Home
+          pageRef: /
+          weight: 1
+        - name: Company
+          pageRef: company
+          weight: 10
+        - name: Products
+          pageRef: products
+          weight: 20
+        - name: Solutions
+          pageRef: solutions
+          weight: 30
+        - name: Projects
+          pageRef: projects
+          weight: 40
+        - name: News
+          pageRef: news
+          weight: 50
+      footer:
+        - name: Company
+          pageRef: company
+          weight: 10
+        - name: Products
+          pageRef: products
+          weight: 20
+        - name: Solutions
+          pageRef: solutions
+          weight: 30
+        - name: FAQ
+          pageRef: faq
+          weight: 35
+        - name: Contact
+          pageRef: contact
+          weight: 40
+  zh-cn:
+    languageName: 简体中文
+    languageCode: zh-CN
+    weight: 2
+    menu:
+      main:
+        - name: 首页
+          pageRef: /
+          weight: 1
+        - name: 公司
+          pageRef: company
+          weight: 10
+        - name: 产品
+          pageRef: products
+          weight: 20
+        - name: 解决方案
+          pageRef: solutions
+          weight: 30
+        - name: 项目案例
+          pageRef: projects
+          weight: 40
+        - name: 新闻
+          pageRef: news
+          weight: 50
+      footer:
+        - name: 公司
+          pageRef: company
+          weight: 10
+        - name: 产品
+          pageRef: products
+          weight: 20
+        - name: 解决方案
+          pageRef: solutions
+          weight: 30
+        - name: 常见问题
+          pageRef: faq
+          weight: 35
+        - name: 联系我们
+          pageRef: contact
+          weight: 40

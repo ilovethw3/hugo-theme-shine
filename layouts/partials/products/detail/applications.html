@@ -1,0 +1,11 @@
+{{ $page := .page }}
+{{ with $page.Params.applications }}
+<section class="section section--muted product-applications">
+  <div class="container">
+    <div class="section-heading"><div><span class="eyebrow">{{ $page.Params.applicationsEyebrow | default (i18n "applications") }}</span><h2>{{ $page.Params.applicationsTitle | default (i18n "whereItWorks") }}</h2></div></div>
+    <div class="card-grid card-grid--three">
+      {{ range . }}<article class="product-application"><h3>{{ .title }}</h3><p>{{ .description }}</p></article>{{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

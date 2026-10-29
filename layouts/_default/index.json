@@ -1,0 +1,8 @@
+[
+  {{- range $index, $page := site.RegularPages -}}
+    {{- if $index }},{{ end -}}
+    {{- $summary := $page.Params.summary | markdownify | plainify -}}
+    {{- if not $summary }}{{ $summary = $page.Summary | plainify }}{{ end -}}
+    {"title": {{ $page.Title | jsonify }}, "url": {{ $page.RelPermalink | jsonify }}, "summary": {{ $summary | jsonify }}, "section": {{ $page.Section | jsonify }}, "sectionLabel": {{ i18n $page.Section | jsonify }}}
+  {{- end -}}
+]

@@ -1,0 +1,15 @@
+{{ define "main" }}
+  {{ $sections := hugo.Data.contact.sections }}
+  {{ if not $sections }}
+    {{ $sections = slice
+      (dict "type" "banner" "enabled" true)
+      (dict "type" "panel" "enabled" true "showDetails" true "showForm" true)
+      (dict "type" "cta" "enabled" false)
+    }}
+  {{ end }}
+  {{ range $sections }}
+    {{ if ne .enabled false }}
+      {{ partial (printf "contact/%s.html" .type) (dict "page" $ "config" .) }}
+    {{ end }}
+  {{ end }}
+{{ end }}

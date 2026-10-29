@@ -1,0 +1,8 @@
+{{ if and site.Params.features.quoteForm (ne .page.Params.showQuoteButton false) }}
+<section class="cta-section solution-cta">
+  <div class="container cta-section__inner">
+    <div><span class="eyebrow">{{ .page.Params.ctaEyebrow | default (i18n "getInTouch") }}</span><h2>{{ .page.Params.ctaTitle | default (i18n "quoteTitle") }}</h2><p>{{ .page.Params.ctaDescription | default (i18n "quoteDescription") }}</p></div>
+    <a class="button button--light" href="{{ "contact/" | relLangURL }}">{{ .page.Params.ctaButtonLabel | default (i18n "requestQuote") }} <span>↗</span></a>
+  </div>
+</section>
+{{ end }}

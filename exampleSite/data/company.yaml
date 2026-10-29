@@ -1,0 +1,18 @@
+sections:
+  - type: hero
+    enabled: true
+  - type: story
+    enabled: true
+  - type: stats
+    enabled: true
+  - type: capabilities
+    enabled: true
+  - type: timeline
+    enabled: true
+  - type: certifications
+    enabled: true
+  - type: team
+    enabled: true
+    limit: 4
+  - type: cta
+    enabled: true

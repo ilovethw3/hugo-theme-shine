@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Control Panel C4 bundle image</title>
+  <desc id="desc">A simple blue control panel illustration used to demonstrate a local page bundle image.</desc>
+  <rect width="1200" height="800" rx="42" fill="#e9dfc8"/>
+  <circle cx="980" cy="110" r="240" fill="#e1b66c" opacity=".85"/>
+  <rect x="150" y="145" width="900" height="490" rx="34" fill="#13243a"/>
+  <rect x="205" y="205" width="790" height="330" rx="20" fill="#f5f7f8"/>
+  <path d="M285 400h150l55-120 90 205 95-250 80 165h170" fill="none" stroke="#0f6b78" stroke-width="26"/>
+  <rect x="525" y="650" width="150" height="42" rx="21" fill="#0f6b78"/>
+</svg>

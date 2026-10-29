@@ -1,0 +1,19 @@
+{{ $page := .page }}
+{{ $categories := slice }}
+{{ range $page.Pages.ByDate.Reverse }}
+  {{ $newsCategories := index .Params "news-categories" }}
+  {{ if not $newsCategories }}{{ $newsCategories = .Params.categories }}{{ end }}
+  {{ range $newsCategories }}
+    {{ if not (in $categories .) }}{{ $categories = $categories | append . }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ if $categories }}
+<section class="section section-news-categories">
+  <div class="container">
+    <nav class="filter-tabs" aria-label="{{ i18n "newsCategories" }}">
+      <a class="filter-tab is-active" href="{{ "news/" | relLangURL }}">{{ i18n "allNews" }}</a>
+      {{ range sort $categories }}<a class="filter-tab" href="{{ printf "news-categories/%s/" (. | urlize) | relLangURL }}">{{ . }}</a>{{ end }}
+    </nav>
+  </div>
+</section>
+{{ end }}

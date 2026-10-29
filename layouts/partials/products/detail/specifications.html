@@ -1,0 +1,16 @@
+{{ $page := .page }}
+{{ with $page.Params.specifications }}
+<section class="section product-specifications">
+  <div class="container product-specifications__layout">
+    <div class="section-heading"><div><span class="eyebrow">{{ $page.Params.specificationsEyebrow | default (i18n "specifications") }}</span><h2>{{ $page.Params.specificationsTitle | default (i18n "productDetails") }}</h2></div></div>
+    {{ $previousGroup := "" }}
+    <dl class="spec-table">
+      {{ range . }}
+        {{ if and .group (ne .group $previousGroup) }}<div class="spec-group-title">{{ .group }}</div>{{ end }}
+        <div class="spec-row"><dt>{{ .name }}</dt><dd>{{ .value }}{{ with .unit }}<span class="spec-row__unit">{{ . }}</span>{{ end }}{{ with .range }}<small class="spec-row__range">{{ . }}</small>{{ end }}{{ with .note }}<small class="spec-row__note">{{ . }}</small>{{ end }}</dd></div>
+        {{ $previousGroup = .group }}
+      {{ end }}
+    </dl>
+  </div>
+</section>
+{{ end }}

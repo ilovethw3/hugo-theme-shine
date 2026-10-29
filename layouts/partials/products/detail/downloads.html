@@ -1,0 +1,21 @@
+{{ $page := .page }}
+{{ $downloads := $page.Params.downloads }}
+{{ if and (not $downloads) $page.Params.download }}{{ $downloads = slice (dict "url" $page.Params.download "label" (i18n "download")) }}{{ end }}
+{{ with $downloads }}
+<section class="section product-documents">
+  <div class="container">
+    <div class="section-heading"><div><span class="eyebrow">{{ $page.Params.downloadsEyebrow | default (i18n "technicalDocuments") }}</span><h2>{{ $page.Params.downloadsTitle | default (i18n "downloads") }}</h2></div></div>
+    <div class="product-documents-grid">
+      {{ range . }}
+        {{ $downloadURL := .url | relURL }}
+        {{ with $page.Resources.GetMatch .url }}{{ $downloadURL = .RelPermalink }}{{ end }}
+        <a class="product-document" href="{{ $downloadURL }}" download>
+          <span class="product-document__type">{{ .type | default "PDF" }}</span>
+          <span class="product-document__body"><strong>{{ .label | default (i18n "download") }}</strong>{{ with .description }}<span>{{ . }}</span>{{ end }}</span>
+          <span class="product-document__arrow" aria-hidden="true">↗</span>
+        </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,19 @@
+{{ define "main" }}
+  {{ $sections := hugo.Data.solutions.detailSections }}
+  {{ if not $sections }}
+    {{ $sections = slice
+      (dict "type" "overview" "enabled" true)
+      (dict "type" "content" "enabled" true)
+      (dict "type" "highlights" "enabled" true)
+      (dict "type" "applications" "enabled" true)
+      (dict "type" "process" "enabled" true)
+      (dict "type" "related" "enabled" true)
+      (dict "type" "cta" "enabled" true)
+    }}
+  {{ end }}
+  {{ range $sections }}
+    {{ if ne .enabled false }}
+      {{ partial (printf "solutions/detail/%s.html" .type) (dict "page" $ "config" .) }}
+    {{ end }}
+  {{ end }}
+{{ end }}

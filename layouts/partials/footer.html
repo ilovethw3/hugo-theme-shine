@@ -1,0 +1,83 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      {{ if ne site.Params.footer.showBrand false }}
+        <div class="footer-brand">
+          <a class="brand brand--footer" href="{{ "/" | relLangURL }}">
+            {{ with site.Params.brand.logo }}
+              <img src="{{ . | relURL }}" alt="{{ site.Params.brand.name | default site.Title }}">
+            {{ else }}
+              <span class="brand-mark">{{ site.Params.brand.mark | default "S" }}</span>
+              <span class="brand-name">{{ site.Params.brand.name | default site.Title }}</span>
+            {{ end }}
+          </a>
+          <p>{{ site.Home.Description | default site.Params.seo.description | plainify }}</p>
+          {{ if ne site.Params.footer.showSocial false }}
+            <div class="social-links">
+              {{ range site.Params.social }}
+                <a href="{{ .url }}" target="_blank" rel="noopener" aria-label="{{ .name }}">
+                  <span class="social-link__icon">{{ partial "social-icon.html" (dict "name" .name "icon" .icon) }}</span>
+                  {{ if ne .showName false }}<span>{{ .name }}</span>{{ end }}
+                </a>
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
+      {{ end }}
+
+      {{ if ne site.Params.footer.showLinks false }}
+        {{ with site.Menus.footer }}
+          <div>
+            <h3>{{ i18n "quickLinks" }}</h3>
+            <ul class="footer-links">
+              {{ range . }}<li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>{{ end }}
+            </ul>
+          </div>
+        {{ end }}
+      {{ end }}
+
+      {{ if ne site.Params.footer.showContact false }}
+        <div>
+          <h3>{{ i18n "contact" }}</h3>
+          <ul class="contact-list">
+            {{ with site.Params.contact.address }}
+              {{ $address := . }}
+              <li>{{ partial "contact/icon.html" (dict "value" site.Params.contact.icons.address) }}<span>{{ with site.Params.contact.mapUrl }}<a class="contact-address-link" href="{{ . }}" target="_blank" rel="noopener">{{ $address }}</a>{{ else }}{{ $address }}{{ end }}</span></li>
+            {{ end }}
+            {{ with site.Params.contact.phone }}
+              <li>{{ partial "contact/icon.html" (dict "value" site.Params.contact.icons.phone) }}<a href="tel:{{ . }}">{{ . }}</a></li>
+            {{ end }}
+            {{ with site.Params.contact.email }}
+              <li>{{ partial "contact/icon.html" (dict "value" site.Params.contact.icons.email) }}<a href="mailto:{{ . }}">{{ . }}</a></li>
+            {{ end }}
+            {{ with site.Params.contact.hours }}
+              <li>{{ partial "contact/icon.html" (dict "value" site.Params.contact.icons.hours) }}<span>{{ . }}</span></li>
+            {{ end }}
+          </ul>
+        </div>
+      {{ end }}
+
+      {{ if and (ne site.Params.footer.showNewsletter false) site.Params.features.newsletter site.Params.forms.newsletterAction }}
+        <div>
+          <h3>{{ i18n "newsletter" }}</h3>
+          <p>{{ i18n "newsletterDescription" }}</p>
+          <form class="newsletter-form" action="{{ site.Params.forms.newsletterAction }}" method="post">
+            <input type="email" name="email" placeholder="{{ i18n "email" }}" required>
+            <button class="button button--primary" type="submit">{{ i18n "subscribe" }}</button>
+          </form>
+        </div>
+      {{ end }}
+    </div>
+
+    {{ if ne site.Params.footer.showLegal false }}
+      <div class="footer-bottom">
+        <span>© {{ now.Year }} {{ site.Params.brand.name | default site.Title }}. {{ i18n "allRightsReserved" }}</span>
+        <span class="footer-legal-links">
+          {{ with site.Params.legal.privacy }}<a href="{{ . | relLangURL }}">{{ i18n "privacy" }}</a>{{ end }}
+          {{ with site.Params.legal.terms }}<a href="{{ . | relLangURL }}">{{ i18n "terms" }}</a>{{ end }}
+          {{ with site.Params.legal.cookies }}<a href="{{ . | relLangURL }}">{{ i18n "cookies" }}</a>{{ end }}
+        </span>
+      </div>
+    {{ end }}
+  </div>
+</footer>

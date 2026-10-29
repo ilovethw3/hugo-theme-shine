@@ -1,0 +1,11 @@
+sections:
+  - type: banner
+    enabled: true
+  - type: panel
+    enabled: true
+    showDetails: true
+    showForm: true
+  - type: map
+    enabled: true
+  - type: cta
+    enabled: false

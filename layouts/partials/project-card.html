@@ -1,0 +1,18 @@
+{{ $categories := index .Params "project-categories" }}
+{{ if not $categories }}{{ $categories = .Params.categories }}{{ end }}
+<article class="content-card project-card{{ if .Params.featured }} project-card--featured{{ end }}">
+  {{ $page := . }}
+  {{ with .Params.cover }}
+    {{ $cover := . | relURL }}
+    {{ with $page.Resources.GetMatch . }}{{ $cover = .RelPermalink }}{{ end }}
+    <a class="content-card__media" href="{{ $page.RelPermalink }}"><img src="{{ $cover }}" alt="{{ $page.Params.coverAlt | default $page.Title }}" loading="lazy"></a>
+  {{ end }}
+  <div class="content-card__body">
+    <span class="eyebrow">{{ with $categories }}{{ index . 0 }}{{ else }}{{ i18n "projects" }}{{ end }}</span>
+    <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
+    {{ with .Params.industry }}<span class="project-card__meta">{{ . }}</span>{{ end }}
+    {{ $summary := .Params.summary | default (.Summary | plainify) }}
+    <div class="content-card__summary">{{ $summary | markdownify }}</div>
+    <a class="text-link" href="{{ .RelPermalink }}">{{ i18n "viewProject" }} <span>↗</span></a>
+  </div>
+</article>

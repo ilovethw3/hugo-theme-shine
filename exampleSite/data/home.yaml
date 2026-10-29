@@ -1,0 +1,23 @@
+sections:
+  - type: hero
+    enabled: true
+  - type: intro
+    enabled: true
+  - type: stats
+    enabled: true
+  - type: solutions
+    enabled: true
+    limit: 3
+  - type: advantages
+    enabled: true
+  - type: team
+    enabled: true
+    limit: 4
+  - type: featured-products
+    enabled: true
+    limit: 4
+  - type: latest-news
+    enabled: true
+    limit: 3
+  - type: cta
+    enabled: true

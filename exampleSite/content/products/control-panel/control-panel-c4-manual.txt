@@ -1,0 +1,4 @@
+Control Panel C4 - Example Product Guide
+
+This local file demonstrates Hugo Page Bundle downloads in the Shine theme.
+Replace this file with the real product manual, datasheet or installation guide.

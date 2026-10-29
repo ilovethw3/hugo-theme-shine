@@ -1,0 +1,18 @@
+{{ $page := .page }}
+{{ with $page.Params.timeline }}
+<section class="section company-timeline">
+  <div class="container company-timeline__layout">
+    <div class="section-heading">
+      <div><span class="eyebrow">{{ .eyebrow }}</span><h2>{{ .title }}</h2></div>
+    </div>
+    <div class="company-timeline__list">
+      {{ range .items }}
+        <article class="company-timeline__item">
+          <div class="company-timeline__year">{{ .year }}</div>
+          <div class="company-timeline__content"><h3>{{ .title }}</h3><p>{{ .description }}</p></div>
+        </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

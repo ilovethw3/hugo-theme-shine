@@ -1,0 +1,10 @@
+{{ define "main" }}
+  {{ partial "page-hero.html" . }}
+  <section class="section">
+    <div class="container">
+      <div class="tag-list">
+        {{ range .Data.Terms.Alphabetical }}<a class="tag" href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }} <span>{{ .Count }}</span></a>{{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}

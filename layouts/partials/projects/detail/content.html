@@ -1,0 +1,9 @@
+{{ $page := .page }}
+{{ with $page.Content }}
+<section class="section project-content">
+  <div class="container container--narrow">
+    {{ if or $page.Params.contentEyebrow $page.Params.contentTitle }}<div class="section-heading"><div>{{ with $page.Params.contentEyebrow }}<span class="eyebrow">{{ . }}</span>{{ end }}{{ with $page.Params.contentTitle }}<h2>{{ . }}</h2>{{ end }}</div></div>{{ end }}
+    <div class="prose">{{ . }}</div>
+  </div>
+</section>
+{{ end }}

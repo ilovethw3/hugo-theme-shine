@@ -1,0 +1,23 @@
+sections:
+  - type: banner
+    enabled: true
+  - type: intro
+    enabled: true
+  - type: categories
+    enabled: true
+  - type: grid
+    enabled: true
+  - type: cta
+    enabled: true
+
+detailSections:
+  - type: overview
+    enabled: true
+  - type: content
+    enabled: true
+  - type: navigation
+    enabled: true
+  - type: related
+    enabled: true
+  - type: cta
+    enabled: true
