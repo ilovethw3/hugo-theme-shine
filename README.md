@@ -189,13 +189,18 @@ form-ID endpoint, and set it in the site configuration:
       forms:
         provider: "formspree"
         contactAction: "https://formspree.io/f/your-form-id"
+        ajax: true
         contactSubject: "Website inquiry"
         requireConsent: true
 
 The form uses standard named fields, so Formspree can receive the name, email,
 company, phone, interest, message and privacy-consent values. Keep
 `contactAction` empty during development if the form should remain visibly
-disabled until an endpoint is configured. Contact address, phone, email, hours
+disabled until an endpoint is configured. With `ajax: true` (the default), the
+theme submits the form as JSON-compatible AJAX data and displays the success or
+error message on the current page instead of redirecting to Formspree's Thank
+You page. Set `ajax: false` only if you need native HTML form submission.
+Contact address, phone, email, hours
 and an optional map link are configured under `params.contact`.
 
 The Contact page is modular and its order is configured in data/contact.yaml.

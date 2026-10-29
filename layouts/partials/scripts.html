@@ -9,6 +9,45 @@
         navigation.classList.toggle('is-open', !isOpen);
       });
     }
+    document.querySelectorAll('[data-contact-form]').forEach((form) => {
+      if (form.dataset.contactAjax !== 'true' || form.dataset.configured === 'false') return;
+      const status = form.querySelector('[data-contact-status]');
+      const submitButton = form.querySelector('button[type="submit"]');
+      if (!status || !submitButton || !form.action || form.action.endsWith('#')) return;
+      const messages = {
+        sending: {{ i18n "formSending" | jsonify | safeJS }},
+        success: {{ i18n "formSuccess" | jsonify | safeJS }},
+        error: {{ i18n "formError" | jsonify | safeJS }}
+      };
+      const setStatus = (message, state) => {
+        status.textContent = message;
+        status.dataset.state = state;
+        status.hidden = false;
+      };
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        submitButton.disabled = true;
+        form.setAttribute('aria-busy', 'true');
+        setStatus(messages.sending, 'sending');
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' }
+          });
+          if (!response.ok) throw new Error('Form submission failed');
+          form.reset();
+          setStatus(messages.success, 'success');
+          status.focus();
+        } catch (error) {
+          setStatus(messages.error, 'error');
+          status.focus();
+        } finally {
+          submitButton.disabled = false;
+          form.removeAttribute('aria-busy');
+        }
+      });
+    });
     document.querySelectorAll('[data-product-gallery]').forEach((gallery) => {
       const main = gallery.querySelector('[data-gallery-main]');
       const openButton = gallery.querySelector('[data-gallery-open]');

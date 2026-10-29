@@ -268,6 +268,10 @@
 .contact-form{display:grid;gap:18px;padding:35px;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft)}
 .contact-form__header p{margin:7px 0 0;color:var(--muted);font-size:.9rem}
 .contact-form__notice{padding:12px 14px;border:1px solid rgba(216,168,92,.55);border-radius:10px;color:#78551f;background:#fff8e9;font-size:.86rem}
+.contact-form__status{padding:12px 14px;border:1px solid var(--line);border-radius:10px;color:var(--muted);background:#fff;font-size:.86rem}
+.contact-form__status[data-state="sending"]{border-color:rgba(15,107,120,.25);color:var(--brand);background:#f4fbfb}
+.contact-form__status[data-state="success"]{border-color:rgba(42,137,94,.3);color:#17613d;background:#f1fbf5}
+.contact-form__status[data-state="error"]{border-color:rgba(181,72,64,.3);color:#8b3029;background:#fff5f3}
 .contact-form label{display:grid;gap:7px;font-size:.86rem;font-weight:750}
 .contact-form input,.contact-form select,.contact-form textarea{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:9px;background:#fff;outline:0;resize:vertical}
 .contact-form select{appearance:none}

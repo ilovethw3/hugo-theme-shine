@@ -3,3 +3,6 @@
 contactDetailsTitle: "联系 Asterra Systems"
 contactMapTitle: "访问 Asterra Systems"
 contactFormSubject: "Asterra Systems 网站咨询"
+formSending: "正在发送您的留言……"
+formSuccess: "留言已发送成功，我们会尽快与您联系。"
+formError: "留言发送失败，请稍后重试，或通过电子邮件联系我们。"

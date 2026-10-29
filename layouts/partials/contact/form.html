@@ -1,8 +1,9 @@
 {{ $action := site.Params.forms.contactAction }}
 {{ $configured := $action }}
-<form class="contact-form{{ if not $configured }} contact-form--unconfigured{{ end }}" action="{{ if $configured }}{{ $action }}{{ else }}#{{ end }}" method="post">
+<form class="contact-form{{ if not $configured }} contact-form--unconfigured{{ end }}" action="{{ if $configured }}{{ $action }}{{ else }}#{{ end }}" method="post" data-contact-form data-contact-ajax="{{ if ne site.Params.forms.ajax false }}true{{ else }}false{{ end }}">
   {{ if not $configured }}<div class="contact-form__notice" role="status">{{ i18n "formNotConfigured" }}</div>{{ end }}
   <div class="contact-form__header"><span class="eyebrow">{{ i18n "contactForm" }}</span><p>{{ i18n "contactFormDescription" }}</p></div>
+  <div class="contact-form__status" data-contact-status role="status" aria-live="polite" tabindex="-1" hidden></div>
   <input type="hidden" name="subject" value="{{ site.Params.forms.contactSubject | default (i18n "contactFormSubject") }}">
   <div class="form-row">
     <label>{{ i18n "name" }}<input name="name" type="text" autocomplete="name" required></label>
