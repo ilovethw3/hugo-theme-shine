@@ -1,11 +1,15 @@
 {{ $slides := .slides | default site.Home.Params.hero.slides }}
 {{ if not $slides }}{{ $slides = slice site.Home.Params.hero }}{{ end }}
+{{ $home := site.Home }}
 <section class="hero-section hero-section--fullscreen">
   <div class="hero-carousel" data-hero-carousel>
     {{ range $index, $slide := $slides }}
+      {{ $imageRef := $slide.image }}
+      {{ $imageURL := $imageRef | relURL }}
+      {{ with $home.Resources.GetMatch $imageRef }}{{ $imageURL = .RelPermalink }}{{ end }}
       <article class="hero-carousel__item{{ if eq $index 0 }} is-active{{ end }}" data-hero-slide>
         <div class="hero-banner__media">
-          <img src="{{ $slide.image | relURL }}" alt="{{ $slide.imageAlt }}" loading="{{ if eq $index 0 }}eager{{ else }}lazy{{ end }}">
+          <img src="{{ $imageURL }}" alt="{{ $slide.imageAlt }}" loading="{{ if eq $index 0 }}eager{{ else }}lazy{{ end }}">
         </div>
         <div class="hero-banner__overlay"></div>
         <div class="container hero-banner__content">

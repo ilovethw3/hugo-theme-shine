@@ -1,6 +1,6 @@
 ---
-title: "Sofia Kim"
-role: "Design Director"
-summary: "Makes complex information easier to see, use and share."
+title: "Elena Russo"
+role: "Head of Engineering"
+summary: "Oversees system design, project engineering, and commissioning for NexVolt's most complex multi-megawatt installations worldwide."
 photo: "/images/team-sofia.svg"
 ---

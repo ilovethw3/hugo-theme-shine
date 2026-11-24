@@ -1,86 +1,108 @@
 ---
-title: "Control Panel C4"
+title: "NV-BESS 500"
 weight: 10
 featured: true
-summary: "A clear command layer for teams coordinating complex operations."
-description: "Control Panel C4 gives operations teams a clear, configurable command layer for monitoring status, coordinating work and making fast decisions."
-product-categories: ["Control"]
-tags: ["operations", "interface"]
+summary: "A modular 500 kWh battery energy storage cabinet engineered for demanding commercial and industrial environments."
+description: "The NV-BESS 500 is NexVolt's flagship battery energy storage system, delivering 500 kWh of usable capacity in a single floor-standing cabinet with integrated BMS, thermal management, and fire suppression."
+product-categories: ["Battery Systems"]
+tags: ["BESS", "C&I storage", "lithium iron phosphate"]
 images:
-  - "bundle-detail.svg"
-  - "/images/product-detail.svg"
+  - "/images/product-bess.jpg"
 relatedProducts:
   - field-node
   - flow-meter
 specifications:
-  - group: "Core configuration"
-    name: "Display"
-    value: "24-inch high-brightness display"
-    unit: "inch"
-    note: "High-brightness panel for control-room environments."
-  - group: "Core configuration"
-    name: "Interface"
-    value: "Ethernet / USB-C / HDMI"
-  - group: "Installation"
-    name: "Mounting"
-    value: "Desk / wall / arm"
-    note: "Select the mounting kit when placing the order."
+  - group: "Energy"
+    name: "Usable Capacity"
+    value: "500 kWh"
+    note: "LFP chemistry, cycle-life optimised"
+  - group: "Energy"
+    name: "Round-Trip Efficiency"
+    value: "≥ 94%"
+  - group: "Power"
+    name: "Continuous Discharge Power"
+    value: "250 kW"
+  - group: "Power"
+    name: "Peak Discharge Power"
+    value: "375 kW"
+    range: "30-minute rating"
+  - group: "Electrical"
+    name: "AC Voltage"
+    value: "400 V / 480 V"
+    note: "Three-phase, 50/60 Hz"
+  - group: "Physical"
+    name: "Cabinet Dimensions"
+    value: "2200 × 1000 × 800 mm"
+    unit: "H×W×D"
+  - group: "Physical"
+    name: "IP Rating"
+    value: "IP55"
+  - group: "Service"
+    name: "Design Life"
+    value: "15 years / 6000 cycles"
+    note: "At 80% depth of discharge"
   - group: "Service"
     name: "Warranty"
-    value: "24 months"
-    range: "Standard coverage"
+    value: "10 years"
+    range: "Capacity retention ≥ 80%"
 downloads:
-  - label: "Control Panel C4 product guide"
+  - label: "NV-BESS 500 Datasheet"
     url: "control-panel-c4-manual.txt"
-    type: "TXT"
-    description: "Example local Page Bundle download."
+    type: "PDF"
+    description: "Full technical specifications and installation dimensions."
 certifications:
-  - name: "Industrial interface readiness"
-    standard: "Asterra verified"
-    description: "Validated for integration with the Asterra product family."
-  - name: "Operational visibility"
-    standard: "Control-room profile"
-    description: "Configured for clear status display and shift handover."
+  - name: "IEC 62619"
+    standard: "Safety for secondary lithium cells and batteries"
+    description: "Full system certified to IEC 62619 for stationary energy storage applications."
+  - name: "UL 9540"
+    standard: "Energy storage systems and equipment"
+    description: "UL 9540 listed for the North American market."
+  - name: "UN 38.3"
+    standard: "Transportation testing"
+    description: "Cells certified for safe international shipping."
 contentEyebrow: "Product story"
-contentTitle: "Make the next decision visible"
-highlightsEyebrow: "Designed for operators"
-highlightsTitle: "Why teams choose C4"
-applicationsEyebrow: "Typical environments"
-applicationsTitle: "Where Control Panel C4 works"
-specificationsEyebrow: "Control Panel C4"
+contentTitle: "500 kWh in a single cabinet — without compromise"
+highlightsEyebrow: "Engineered for industry"
+highlightsTitle: "Why operators choose NV-BESS 500"
+applicationsEyebrow: "Where it works"
+applicationsTitle: "Proven in demanding environments"
+specificationsEyebrow: "NV-BESS 500"
 specificationsTitle: "Technical specifications"
 downloadsEyebrow: "Technical documents"
 downloadsTitle: "Resources for this product"
-certificationsEyebrow: "Verified capabilities"
-certificationsTitle: "Readiness and certification"
-relatedEyebrow: "Continue exploring"
-relatedTitle: "Products that work with C4"
+certificationsEyebrow: "Certifications"
+certificationsTitle: "Safety and compliance"
+relatedEyebrow: "Complete the system"
+relatedTitle: "Products that work with NV-BESS 500"
 highlights:
-  - title: "Shared operational view"
-    description: "Keep the most important signals visible to every shift and stakeholder."
-  - title: "Fast escalation"
-    description: "Make status, ownership and the next decision easy to see."
-  - title: "Flexible integration"
-    description: "Connect the panel to the systems and workflows your team already uses."
+  - title: "Lithium iron phosphate chemistry"
+    description: "LFP cells deliver industry-leading thermal stability, long cycle life, and no thermal runaway risk — the right choice for occupied industrial buildings."
+  - title: "Integrated thermal management"
+    description: "Active liquid cooling keeps cells within optimal operating temperature year-round, protecting both performance and longevity."
+  - title: "Modular, scalable architecture"
+    description: "String-level architecture allows partial replacement and easy capacity expansion without replacing the full cabinet."
 applications:
-  - title: "Control rooms"
-    description: "Coordinate complex operations from one clear command layer."
-  - title: "Production floors"
-    description: "Give teams a shared view of live work, exceptions and handover."
+  - title: "Manufacturing plants"
+    description: "Peak shaving, demand charge reduction, and backup power for production-critical loads."
+  - title: "Commercial buildings"
+    description: "Energy cost optimisation, power quality improvement, and emergency power for HVAC and lighting."
+  - title: "Logistics and cold chain"
+    description: "24/7 reliability for refrigerated warehouses, distribution hubs, and charging depots."
 showQuoteButton: true
 ---
 
-## Make the next decision visible
+## A storage system built for the long run
 
-Control Panel C4 gives operators a shared view of the information that matters.
-Its layout is designed for quick scanning, clear escalation and dependable
-handover between shifts.
+The NV-BESS 500 uses lithium iron phosphate (LFP) cell chemistry — the proven choice for stationary industrial applications. Unlike NMC chemistries, LFP delivers exceptional cycle life, superior thermal stability, and inherently safe electrochemical behaviour, making it suitable for installation inside occupied facilities without fire-risk concerns.
 
-The interface can be configured around your existing workflows and connected to
-the rest of the Asterra product family.
+Each cabinet integrates the battery modules, battery management system, thermal management, DC/AC power conditioning, and fire suppression into a single, pre-tested assembly. This reduces on-site integration time significantly and ensures every system leaves our Munich factory fully validated.
 
-## Video demonstrations
+## Designed around real operating conditions
 
-{{< video src="https://image.141029.xyz/video/yhcb-operation-01.mp4" poster="/images/product-detail.svg" title="YHCB operation video" caption="Operation video served from Cloudflare R2." >}}
+Industrial environments are demanding. The NV-BESS 500 is IP55-rated against dust and water ingress, operates reliably from -20°C to +55°C, and withstands the vibration and electrical noise common in factory settings.
 
-{{< video provider="youtube" src="https://www.youtube.com/watch?v=AbttFjyfxx8" title="Product video on YouTube" caption="Product video hosted on YouTube." >}}
+The active liquid cooling system maintains cells within a ±2°C temperature window across ambient conditions, extending calendar life and protecting the full 10-year capacity warranty.
+
+## Flexible integration
+
+The NV-BESS 500 communicates over Modbus TCP, CAN bus, and IEC 61850, making it compatible with the most common PLC, SCADA, and energy management platforms in use today. Pair it with the NV-EMS Cloud platform for full dispatch optimisation, or connect to your existing building management system through our open API.

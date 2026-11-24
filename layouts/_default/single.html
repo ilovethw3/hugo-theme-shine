@@ -2,7 +2,11 @@
   {{ partial "page-hero.html" . }}
   <article class="section article-section">
     <div class="container container--narrow">
-      {{ with .Params.cover }}<img class="article-cover" src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy">{{ end }}
+      {{ with .Params.cover }}
+        {{ $cover := . | relURL }}
+        {{ with $.Resources.GetMatch . }}{{ $cover = .RelPermalink }}{{ end }}
+        <img class="article-cover" src="{{ $cover }}" alt="{{ $.Params.coverAlt | default $.Title }}" loading="lazy">
+      {{ end }}
       <div class="prose">{{ .Content }}</div>
     </div>
   </article>

@@ -4,7 +4,7 @@ licenselink = "https://opensource.org/licenses/MIT"
 description = "A configurable, multilingual Hugo theme for company websites."
 homepage = "https://example.com/"
 tags = ["company", "business", "corporate", "products", "multilingual"]
-features = ["responsive", "products", "solutions", "search", "i18n", "contact-form"]
+features = ["responsive", "products", "solutions", "promotions", "search", "i18n", "contact-form", "analytics"]
 min_version = "0.120.0"
 
 [author]

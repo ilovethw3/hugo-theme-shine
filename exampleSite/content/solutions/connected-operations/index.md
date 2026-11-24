@@ -1,80 +1,60 @@
 ---
-title: "Connected operations"
-weight: 10
-summary: "Bring people, process and technology into one operating rhythm."
-solution-categories: ["Operations", "Visibility"]
-cover: "/images/solution-operations.svg"
+title: "Solar + Storage Integration"
+weight: 20
+summary: "Combine photovoltaic generation with battery storage to maximise self-consumption, eliminate curtailment, and create a resilient on-site energy system."
+solution-categories: ["Renewable Integration", "Energy Cost Reduction"]
+cover: "/images/solution-solar.jpg"
 overviewEyebrow: "Solution overview"
-overviewTitle: "One operating rhythm across the organization"
+overviewTitle: "Make every kilowatt-hour of solar work harder"
 contentEyebrow: "The approach"
-contentTitle: "Connect the work behind every decision"
+contentTitle: "Closing the gap between generation and consumption"
 highlights:
-  - title: "Shared operational context"
-    description: "Give teams a common view of status, ownership and the next action."
-  - title: "Faster handover"
-    description: "Make shift changes and escalation paths easier to understand."
-  - title: "Practical adoption"
-    description: "Connect existing workflows without forcing teams into a new operating model overnight."
+  - title: "Zero-curtailment solar"
+    description: "Store surplus generation that would otherwise be exported at low feed-in rates or curtailed by inverter clipping, and use it when your tariff is highest."
+  - title: "Extended self-consumption window"
+    description: "Extend the hours during which your facility runs on solar — from the daylight window to evening and overnight — dramatically increasing the financial return of your PV asset."
+  - title: "Single-system simplicity"
+    description: "The NV-Hybrid 100K inverter manages PV, battery, and grid as a single integrated system, eliminating the inefficiency and complexity of separate solar and storage inverters."
 applications:
-  - title: "Distributed operations"
-    description: "Coordinate teams working across sites, shifts and systems."
-  - title: "Control rooms"
-    description: "Bring live signals and decisions into one operating view."
+  - title: "Commercial rooftop solar"
+    description: "Offices, retail, and hospitality sites with existing or planned rooftop PV installations."
+  - title: "Industrial solar carports"
+    description: "Large covered parking structures generating solar power above EV charging or factory operations."
+  - title: "Ground-mounted solar farms"
+    description: "Utility-scale and commercial ground-mount installations seeking to add storage for self-consumption or grid services."
 process:
-  - title: "Map the operating rhythm"
-    description: "Identify the decisions, handovers and signals that matter most."
-  - title: "Connect the signals"
-    description: "Bring existing tools and data into a shared operational layer."
-  - title: "Improve continuously"
-    description: "Use real operating feedback to refine the system over time."
+  - title: "Solar and load analysis"
+    description: "We model your solar generation against your load profile to identify the optimal battery size for maximum self-consumption and minimum payback period."
+  - title: "Hybrid system design"
+    description: "Our engineers design the full PV + storage system using the NV-Hybrid 100K, ensuring the PV array, battery, and protection systems are properly coordinated."
+  - title: "Coordinated installation"
+    description: "We work with your solar installer or manage the full EPC process, ensuring the storage system is commissioned as an integrated part of the PV installation."
+  - title: "Performance monitoring"
+    description: "NV-EMS Cloud tracks PV generation, battery state, and self-consumption ratio in real time, and reports monthly on the financial and environmental performance of your system."
 relatedProducts:
-  - control-panel
   - field-node
+  - control-panel
+  - flow-meter
 relatedProjects:
-  - harbor-network
-ctaEyebrow: "Ready to connect the work?"
-ctaTitle: "Build a clearer operating rhythm"
-ctaDescription: "Tell us where teams, tools and decisions need to work better together."
+  - plant-visibility
+ctaEyebrow: "Adding storage to an existing PV system?"
+ctaTitle: "Get a solar + storage assessment"
+ctaDescription: "Share your solar generation data and load profile. We'll model the optimal battery size and project the improvement in self-consumption and payback."
 ---
 
-## The challenge
+## Why storage transforms the economics of solar
 
-When operations grow across locations, teams often lose the shared context that
-makes good decisions possible. A shift sees one status, a control room sees
-another, and the system of record may not show the conditions that people are
-dealing with on the ground.
+A commercial solar system without storage exports a large proportion of its generation at unfavourable feed-in tariff rates — often 3–5× lower than the retail rate of electricity it displaces. The economics of solar improve dramatically when that surplus generation is stored and consumed on-site.
 
-The result is familiar: handovers depend on individual memory, exceptions are
-escalated through chat and phone calls, and managers spend time reconciling
-different versions of the same event.
+Adding a NexVolt battery system to an existing or new solar installation typically lifts self-consumption from 30–40% to 70–90%, depending on the load profile and battery size. For a 500 kWp solar system generating 600,000 kWh/year, that shift can represent an additional €30,000–€60,000 in annual savings compared to export.
 
-## How the solution works
+## Retrofit or new-build
 
-Connected operations creates a practical operating layer between people,
-processes and technology. It does not require every team to replace its
-existing tools. Instead, it brings the important signals and decisions into a
-shared context.
+NexVolt solar + storage solutions work for both retrofit and new-build scenarios:
 
-The operating layer makes four things visible:
+- **Retrofit:** The NV-Hybrid 100K AC-couples to your existing solar inverter, adding storage without replacing the PV system.
+- **New-build:** For new solar installations, the NV-Hybrid 100K manages PV and storage in a single DC-coupled architecture, achieving the highest system efficiency.
 
-- **Current state:** What is happening now and where attention is needed.
-- **Ownership:** Who is responsible for the next decision or action.
-- **History:** What changed, when it changed and what has already been tried.
-- **Escalation:** Which conditions require a coordinated response.
+## Environmental credentials
 
-## A typical operating cycle
-
-1. **Observe:** Collect the signals that describe the current situation.
-2. **Align:** Give the right teams the same operational picture.
-3. **Decide:** Make ownership and the next action explicit.
-4. **Learn:** Capture the result and improve the operating rhythm.
-
-## Expected outcomes
-
-Teams spend less time searching for context and more time resolving the issue
-in front of them. Shift handovers become more consistent, escalation becomes
-easier to track, and leaders can see whether a process is improving without
-waiting for a retrospective report.
-
-The solution is designed to start with one workflow or site and expand as the
-operating model proves its value.
+A well-sized solar + storage system can supply 70–90% of a facility's energy needs from renewable sources. NV-EMS Cloud tracks and reports the carbon intensity of every kilowatt-hour consumed, providing the data needed for scope 2 emissions reporting and green building certification.

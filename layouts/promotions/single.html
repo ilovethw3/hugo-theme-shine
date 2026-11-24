@@ -1,0 +1,46 @@
+{{ define "main" }}
+  {{ $poster := .Params.poster | default site.Params.brand.placeholderImage | default "/images/placeholder.svg" }}
+  {{ $posterURL := $poster | relURL }}
+  {{ with .Resources.GetMatch $poster }}{{ $posterURL = .RelPermalink }}{{ end }}
+  <section class="promotion-hero">
+    <div class="container promotion-hero__layout">
+      <div class="promotion-hero__poster"><img src="{{ $posterURL }}" alt="{{ .Params.posterAlt | default .Title }}"></div>
+      <div class="promotion-hero__copy">
+        {{ with .Params.badge }}<span class="promotion-hero__badge">{{ . }}</span>{{ end }}
+        <h1>{{ .Params.headline | default .Title }}</h1>
+        {{ with .Params.subheadline }}<p>{{ . }}</p>{{ end }}
+        <div class="button-row"><a class="button button--primary" href="#promotion-form">{{ .Params.ctaLabel | default (i18n "requestQuote") }} <span>↗</span></a></div>
+        <div class="promotion-hero__meta">
+          {{ with .Params.product }}<span>{{ i18n "promotionProduct" }} <strong>{{ . }}</strong></span>{{ end }}
+          {{ with .Params.validUntil }}<span>{{ i18n "promotionValidUntil" }} <strong>{{ . }}</strong></span>{{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ with .Params.benefits }}
+    <section class="promotion-section">
+      <div class="container">
+        <div class="promotion-section__heading"><span class="eyebrow">{{ i18n "promotionBenefits" }}</span><h2>{{ $.Params.benefitsTitle | default (i18n "promotionBenefitsTitle") }}</h2></div>
+        <div class="promotion-benefit-grid">
+          {{ range . }}<article class="promotion-benefit"><h3>{{ .title }}</h3><p>{{ .text }}</p></article>{{ end }}
+        </div>
+      </div>
+    </section>
+  {{ end }}
+  {{ if .Content }}<section class="promotion-section promotion-section--muted"><div class="container promotion-content"><div class="prose">{{ .Content }}</div></div></section>{{ end }}
+  {{ with .Params.offer }}
+    <section class="promotion-section">
+      <div class="container promotion-offer">
+        <div class="promotion-offer__copy"><span class="eyebrow">{{ i18n "promotionOffer" }}</span><h2>{{ .title }}</h2>{{ with .text }}<p>{{ . }}</p>{{ end }}</div>
+        {{ with .items }}<ul class="promotion-offer__items">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+      </div>
+    </section>
+  {{ end }}
+  {{ if ne .Params.showForm false }}
+    <section class="promotion-section promotion-section--muted" id="promotion-form">
+      <div class="container promotion-form">
+        {{ partial "contact/form.html" (dict "page" . "config" (dict "title" ($.Params.formTitle | default (i18n "promotionFormTitle")) "description" ($.Params.formDescription | default (i18n "promotionFormDescription")) "subject" ($.Params.formSubject | default (i18n "promotionFormSubject")) "source" "promotion" "product" $.Params.product)) }}
+      </div>
+    </section>
+  {{ end }}
+{{ end }}

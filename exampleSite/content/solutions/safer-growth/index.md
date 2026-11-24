@@ -1,77 +1,61 @@
 ---
-title: "Safer growth"
+title: "Microgrid & Backup Power"
 weight: 30
-summary: "Scale with the guardrails that keep performance dependable."
-solution-categories: ["Growth", "Operations"]
-cover: "/images/solution-growth.svg"
+summary: "Design a resilient on-site energy system that keeps critical operations running during grid outages — without the cost, noise, or emissions of diesel backup."
+solution-categories: ["Resilience", "Off-Grid"]
+cover: "/images/solution-microgrid.jpg"
 overviewEyebrow: "Solution overview"
-overviewTitle: "Scale with confidence and control"
+overviewTitle: "Keep critical operations running when the grid cannot"
 contentEyebrow: "The approach"
-contentTitle: "Create a repeatable path from pilot to scale"
+contentTitle: "From grid-dependent to grid-resilient"
 highlights:
-  - title: "Guardrails for growth"
-    description: "Build quality, safety and ownership into the path to scale."
-  - title: "Repeatable delivery"
-    description: "Turn successful pilots into operating patterns teams can reuse."
-  - title: "Confidence at each stage"
-    description: "Make progress, risk and readiness visible as the organization grows."
+  - title: "Millisecond transfer to island mode"
+    description: "The NV-Hybrid 100K detects a grid fault and transfers to island mode in under 20 ms — far faster than any diesel generator and imperceptible to most loads."
+  - title: "Silent, zero-emission backup"
+    description: "Battery backup produces no emissions, no noise, and requires no fuel logistics — making it suitable for use inside buildings and in noise-sensitive environments."
+  - title: "Defined backup duration"
+    description: "We size the battery to provide a defined runtime for your critical loads — from 30 minutes of ride-through to 72 hours of full-facility backup, depending on requirements."
 applications:
-  - title: "New operating models"
-    description: "Support teams moving from experimentation to repeatable delivery."
-  - title: "Multi-site rollouts"
-    description: "Create a consistent foundation while leaving room for local needs."
+  - title: "Data centres and server rooms"
+    description: "Replace or augment UPS systems with a longer-duration battery backup that also provides demand management during normal grid operation."
+  - title: "Healthcare facilities"
+    description: "Provide immediate, seamless power continuity for life-safety systems, operating theatres, and critical care equipment."
+  - title: "Remote and off-grid sites"
+    description: "Design a full microgrid combining solar, battery, and optional diesel backup for sites where grid connection is unavailable or prohibitively expensive."
 process:
-  - title: "Start with the critical path"
-    description: "Focus the first release on the decisions and outcomes that matter most."
-  - title: "Prove and refine"
-    description: "Use real-world feedback to improve the operating model."
-  - title: "Scale deliberately"
-    description: "Expand with clear ownership, standards and measurable readiness."
+  - title: "Critical load analysis"
+    description: "We identify which loads must be sustained during an outage, their power draw, and the required backup duration to design the right battery capacity."
+  - title: "Microgrid architecture design"
+    description: "Our engineers design the system topology — single-site island, multi-building microgrid, or full off-grid — and size each component accordingly."
+  - title: "Protection and transfer system design"
+    description: "We design the automatic transfer switching, protection relay scheme, and fault coordination to ensure reliable, safe island operation."
+  - title: "Commissioning and testing"
+    description: "Full island mode commissioning includes planned grid outage testing, transfer time validation, and load response verification before handover."
 relatedProducts:
   - control-panel
+  - field-node
   - safety-gateway
-relatedProjects:
-  - plant-visibility
-ctaEyebrow: "Planning the next stage?"
-ctaTitle: "Turn momentum into dependable growth"
-ctaDescription: "Let us help you build the guardrails for a confident rollout."
+ctaEyebrow: "Concerned about grid reliability?"
+ctaTitle: "Get a resilience assessment"
+ctaDescription: "Tell us which loads you need to protect, for how long, and in what environment. We'll design a backup power solution around your requirements."
 ---
 
-## The challenge
+## The limitations of diesel backup
 
-Growth creates pressure in two directions. Teams need to move quickly enough to
-capture an opportunity, but the systems that made an early pilot successful may
-not be ready for more sites, more users or more operational risk.
+Diesel generators have been the default backup power solution for decades — but they come with significant operational challenges. Start-up time of 10–30 seconds leaves a gap that many sensitive loads cannot tolerate. Fuel must be stored, managed, and rotated. Maintenance requirements are intensive. And increasingly, emissions regulations are restricting or prohibiting diesel backup in urban environments.
 
-Without a clear path from experiment to scale, organizations often see the same
-problems repeat: local workarounds become permanent, ownership becomes unclear,
-and quality checks arrive after a release rather than before it.
+Battery backup eliminates all of these limitations. The NV-Hybrid 100K can transition to island mode in under 20 ms — fast enough to maintain power quality for even the most sensitive computing or medical equipment. No fuel, no exhaust, no noise.
 
-## How the solution works
+## Designing for the right backup duration
 
-Safer growth turns a successful pilot into a repeatable operating pattern. The
-solution combines a small first release with explicit standards for ownership,
-quality, security and readiness.
+The right battery backup duration depends on the nature and likelihood of grid outages in your area, the criticality of your operations, and your budget:
 
-Each stage answers a different question:
+| Scenario | Typical backup duration | NexVolt solution |
+|---|---|---|
+| Short outage ride-through | 30 – 120 minutes | 1 × NV-BESS 500 |
+| Extended business continuity | 4 – 8 hours | 2 – 4 × NV-BESS 500 |
+| Full site resilience | 24 – 72 hours | Custom microgrid with solar |
 
-- **Pilot:** Does the solution solve a real operational problem?
-- **Prove:** Can the team run it reliably under real conditions?
-- **Prepare:** Are the people, process and support model ready to expand?
-- **Scale:** Can other sites adopt the pattern without rebuilding it from scratch?
+## Combining backup with daily optimisation
 
-## What gets built into the path
-
-The approach makes critical decisions visible early. Teams define the measures
-that show whether the rollout is ready, document the exceptions that need local
-judgment and create a feedback loop between the people running the system and
-the people improving it.
-
-## Expected outcomes
-
-Leaders get a clearer view of progress and risk. Delivery teams have a practical
-way to reuse what worked, while local teams retain enough flexibility to handle
-the conditions of their site.
-
-The result is growth with fewer surprises: a rollout that is faster to repeat,
-safer to operate and easier to improve after launch.
+Unlike a traditional UPS, a NexVolt backup system is not idle during normal grid operation. NV-EMS Cloud continuously uses the battery for demand management, time-of-use arbitrage, and solar self-consumption — generating daily savings that significantly improve the financial case for the backup investment.

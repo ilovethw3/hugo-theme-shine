@@ -1,0 +1,19 @@
+{{ define "main" }}
+  {{ $raw := .RawContent }}
+  {{ if .Params.showForm }}
+    {{ $form := partial "contact/form.html" (dict "page" . "config" (dict
+      "title" ($.Params.formTitle | default (i18n "promotionFormTitle"))
+      "description" ($.Params.formDescription | default (i18n "promotionFormDescription"))
+      "subject" ($.Params.formSubject | default (i18n "promotionFormSubject"))
+      "source" "promotion"
+      "product" $.Params.product
+    )) }}
+    {{ $marker := "<!-- shine:promotion-form -->" }}
+    {{ if in $raw $marker }}
+      {{ $raw = replace $raw $marker $form }}
+    {{ else }}
+      {{ $raw = printf "%s<section class=\"promotion-custom__form\" id=\"promotion-form\">%s</section>" $raw $form }}
+    {{ end }}
+  {{ end }}
+  <div class="promotion-custom" data-promotion-custom>{{ $raw | safeHTML }}</div>
+{{ end }}

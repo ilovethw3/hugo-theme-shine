@@ -1,74 +1,50 @@
 ---
-title: "Why edge data matters"
-date: 2026-08-07
-summary: "When every connection matters, the edge is part of the operating model."
-cover: "/images/news-edge.svg"
-coverAlt: "Why edge data matters"
-news-categories: ["Technology"]
-author: "Asterra Systems"
-contentEyebrow: "Technology note"
-contentTitle: "Put useful context closer to the decision"
+title: "The Economics of C&I Battery Storage in 2024"
+date: 2024-01-18
+featured: false
+summary: "Battery costs have fallen 89% since 2013. Here is what that means for the payback period of a commercial energy storage project today — and what will drive further improvement."
+cover: "/images/news-insight.jpg"
+coverAlt: "Energy analyst reviewing electricity cost and storage economics data"
+news-categories: ["Industry Insights"]
+author: "NexVolt Systems"
+contentEyebrow: "Market analysis"
+contentTitle: "Why 2024 is the year C&I storage makes economic sense for most businesses"
 relatedNews:
   - designing-for-handover
   - field-notes-safety
 ---
 
-Edge architectures can help teams respond faster while keeping the system
-resilient when connectivity changes. The value is not simply that data travels a
-shorter distance. The real value is that the system can keep useful context near
-the people and machines that need to make a decision.
+The commercial and industrial energy storage market has reached a turning point. Battery pack costs — the dominant variable in storage system economics — have fallen from USD 1,200/kWh in 2013 to USD 139/kWh in 2023, an 89% reduction in a decade. At the same time, electricity retail prices have risen significantly in most developed markets, and demand charge structures have become more punitive as utilities manage increasingly volatile grid conditions.
 
-## More than moving data closer
+The combination of lower storage costs and higher electricity costs has compressed the payback period for well-designed C&I storage projects to the point where the economics are compelling for a broad range of commercial and industrial electricity customers.
 
-Sending every raw signal to a central platform can create delay, bandwidth
-pressure and a large amount of information that no one has time to interpret.
-An effective edge design asks what must be decided locally, what should be
-shared centrally and what can wait until the connection is available again.
+## The numbers in 2024
 
-## Three design choices that matter
+A typical 500 kWh C&I storage installation in a European or Australian market now looks like this:
 
-### Keep time-critical decisions local
+| Parameter | Value |
+|---|---|
+| System cost (installed) | €280,000 – €340,000 |
+| Annual demand charge saving | €60,000 – €120,000 |
+| Annual TOU arbitrage saving | €15,000 – €35,000 |
+| Annual demand response revenue | €5,000 – €20,000 |
+| Total annual value | €80,000 – €175,000 |
+| Simple payback period | 2.0 – 4.3 years |
+| System design life | 15 years |
+| 10-year NPV (at 8% discount rate) | €210,000 – €480,000 |
 
-Safety limits, equipment protection and immediate exception handling should not
-depend on a round trip to a distant service. The local layer should be able to
-recognize the condition, apply the agreed response and record what happened.
+These numbers are sensitive to the tariff structure, the load profile, and the installation cost — but they represent the range we see across NexVolt's project portfolio today.
 
-### Send context, not noise
+## What drives the value
 
-Central teams usually need a meaningful event rather than every raw measurement.
-That event should include the signal, the time, the asset, the local response and
-the confidence of the reading. Context makes the central view useful without
-turning it into another stream of noise.
+**Demand charges are the primary driver.** In markets where demand charges are based on the highest 15-or 30-minute demand reading each month, a single storage system can eliminate 30–60% of this cost entirely. For a facility spending €150,000/year on demand charges, that is €45,000–€90,000 in annual savings from one value stream alone.
 
-### Design for disconnected conditions
+**Time-of-use arbitrage is real but secondary.** The spread between off-peak and peak tariff rates in most European markets (€0.08–€0.12/kWh) supports meaningful arbitrage, but it is usually not sufficient to justify a storage investment on its own. It becomes compelling when stacked with demand charge reduction.
 
-Connectivity will change in real operations. Systems should make it clear when
-data is current, delayed or locally cached, and they should define how local
-actions are reconciled when the connection returns.
+**Demand response is an emerging value stream.** Grid operators in Germany, the UK, Australia, and increasingly the US are paying commercial battery operators to provide frequency response and emergency load shedding services. Revenues of €10,000–€30,000/year are achievable for a 500 kWh system in markets with well-developed demand response programmes.
 
-| Question | Local edge responsibility | Central platform responsibility |
-| --- | --- | --- |
-| What needs an immediate response? | Detect and act within the local workflow | Review patterns and exceptions |
-| What should be shared? | Package the event with context | Compare events across sites |
-| What happens offline? | Continue safe operation and queue records | Reconcile and show data freshness |
+## What to watch in 2025
 
-## Start with decisions
+Battery costs are expected to continue declining, reaching an estimated USD 90–110/kWh at pack level by the end of 2025. This will further reduce system costs and improve payback periods, particularly for smaller installations below 250 kWh that are currently at the margin of economic viability.
 
-Before choosing hardware or a data pipeline, list the decisions the team needs
-to make and the time available for each one. This often reveals that a small,
-well-defined local capability will create more value than moving an entire
-dashboard to the edge.
-
-Useful questions include:
-
-- Which decisions cannot wait for a network response?
-- What is the smallest amount of context needed to trust an alert?
-- How will operators know whether a reading is current?
-- How will local actions be reviewed after connectivity returns?
-
-## Closing thought
-
-Edge architecture is most useful when it respects the operating environment. It
-does not replace a shared platform; it gives the shared platform better signals,
-while allowing local teams to keep working when the wider network is under
-pressure.
+For businesses considering storage, the question is no longer "does this make financial sense?" — for most sites with significant demand charges, it clearly does. The question is how to identify the right system size, secure the right tariff structure, and choose a supplier who will still be around to support the system in year 10.

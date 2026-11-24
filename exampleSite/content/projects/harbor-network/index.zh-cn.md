@@ -1,67 +1,55 @@
 ---
-title: "港口网络现代化"
+title: "巴伐利亚精密部件 — 峰值需量管控"
 weight: 10
 featured: true
-summary: "为分布式物流网络建设分阶段的监测与控制系统。"
-cover: "/images/project-harbor.svg"
-coverAlt: "港口网络运营"
-project-categories: ["基础设施", "物流运营"]
-client: "港口运营集团"
-industry: "物流与港口运营"
-location: "新加坡 · 14 个地点"
-year: "2025"
+summary: "1 MWh 电池储能装置，为慕尼黑一家汽车零部件一级供应商将峰值需量费降低 38%。"
+cover: "/images/solution-ci.jpg"
+coverAlt: "巴伐利亚精密部件制造设施内的电池储能系统"
+project-categories: ["制造业", "峰值需量"]
+client: "Bavarian Precision Components GmbH"
+industry: "汽车零部件制造"
+location: "德国慕尼黑"
+year: "2024"
 overviewEyebrow: "项目概览"
-overviewTitle: "让 14 个地点共享同一张运营全景图"
+overviewTitle: "1 MWh 储能，需量费下降 38%"
 contentEyebrow: "项目故事"
-contentTitle: "从分散信号走向协同决策"
-outcomesEyebrow: "项目成果"
-outcomesTitle: "建立更稳定的运营节奏"
+contentTitle: "从不可预测的峰值到可控的成本"
+outcomesEyebrow: "量化成果"
+outcomesTitle: "12 个月运行结果"
 outcomes:
-  - value: "14"
-    label: "已连接地点"
-    description: "为整个港口网络建立统一的运营方式。"
-  - value: "3"
-    label: "交付阶段"
-    description: "分阶段实施，让本地团队继续掌握现场工作。"
-  - value: "1"
-    label: "统一视图"
-    description: "统一呈现状态、交接和异常升级信息。"
+  - value: "38%"
+    label: "峰值需量费下降幅度"
+    description: "仅需量费管控一项年节省 €142,000。"
+  - value: "1 MWh"
+    label: "安装储能容量"
+    description: "2 台 NV-BESS 500 储能柜，含集成热管理系统。"
+  - value: "4.8 年"
+    label: "预计投资回收期"
+    description: "综合需量节省、分时套利和需量响应收益计算。"
 relatedProducts:
   - control-panel
-  - field-node
+  - flow-meter
 relatedSolutions:
-  - connected-operations
-relatedEyebrow: "继续了解"
-relatedTitle: "支撑项目落地的系统"
-ctaEyebrow: "正在规划协同运营？"
-ctaTitle: "让下一个运营决策更加清晰"
-ctaDescription: "告诉我们哪些分布式团队、运行信号和决策环节需要更好地协同。"
+  - asset-visibility
+relatedEyebrow: "项目背后的技术"
+relatedTitle: "使用的产品与解决方案"
+ctaEyebrow: "面临类似挑战？"
+ctaTitle: "获取需量管控评估"
+ctaDescription: "发送您的电费账单和分时电表数据，我们将为您的站点测算节省潜力。"
 ---
 
-## 面临的挑战
+## 挑战
 
-港口的 14 个地点使用着不同的仪表盘、汇报节奏和交接方式。本地团队
-能够继续完成日常工作，但中央运营团队无法稳定掌握影响每个决定的现场
-条件。
+巴伐利亚精密部件（BPC）在慕尼黑运营一座 CNC 加工厂，为三家欧洲主要汽车 OEM 生产结构件。工厂每天两班制生产，每周五天，加工周期峰值用电需量达 850 kW。
 
-项目需要提升整体可视化能力，同时不能一次性替换所有本地工具。
+BPC 的电价包含基于每月最高 15 分钟需量读数收取的需量费。由于生产排班每周变动，需量高峰难以预测和管控——导致需量费每月在 €28,000 至 €41,000 之间波动，占总电费账单的 44%。
 
-## 实施方式
+## 解决方案
 
-项目分三个阶段推进：
+NexVolt 设计了采用两台 NV-BESS 500 储能柜的 1 MWh 电池储能系统，由 NV-EMS Cloud 管理。系统安装在紧邻主配电柜的现有电气室内，无需对生产设施进行结构改造。
 
-1. 梳理最重要的运行信号、决策节点和交接环节。
-2. 将现有现场数据接入统一的运营层。
-3. 建立统一控制视图，并根据各地点反馈持续调整。
+NV-EMS Cloud 分析了 BPC 的历史分时电表数据，识别典型需量曲线和峰值发生规律。投运第一周内，AI 调度算法即掌握了生产班次规律，并开始提前为电池充电，以备机加工峰值时段使用。
 
-| 工作流 | 交付能力 |
-| --- | --- |
-| 现场可视化 | 汇总分布式地点的运行状态 |
-| 控制层 | 清晰呈现责任、升级路径和下一步行动 |
-| 班次交接 | 为每个班次提供一致的信息 |
+## 投运 12 个月成果
 
-## 项目成果
-
-港口运营集团获得了统一的运营全景图，同时本地团队仍然可以保留适合
-自己地点的工具和工作方式。异常升级更容易理解，中央团队也能直接比较
-不同地点的运行状态，不再需要等待人工汇总报告。
+系统持续将 BPC 月度需量峰值维持在 530 kW 以下——较投运前平均 850 kW 下降 38%。年需量费节省 €142,000，另加分时套利和需量响应收益 €34,000。

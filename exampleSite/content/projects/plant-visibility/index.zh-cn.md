@@ -1,65 +1,57 @@
 ---
-title: "工厂可视化计划"
+title: "西田 Knox — 光储融合"
 weight: 20
-summary: "为更安全、更可预测的生产建立统一数据层。"
-cover: "/images/project-plant.svg"
-coverAlt: "工厂可视化计划"
-project-categories: ["制造业", "安全生产"]
-client: "北辰制造集团"
-industry: "工业制造"
-location: "柔佛 · 3 条生产线"
-year: "2024"
+featured: false
+summary: "500 kWh 电池与 820 kWp 屋顶光伏配套，为墨尔本大型购物中心降低 42% 的电网用电成本。"
+cover: "/images/solution-solar.jpg"
+coverAlt: "西田 Knox 购物中心屋顶光伏与电池储能系统"
+project-categories: ["商业地产", "光储融合"]
+client: "Westfield Knox"
+industry: "零售与商业地产"
+location: "澳大利亚墨尔本"
+year: "2023"
 overviewEyebrow: "项目概览"
-overviewTitle: "更清晰地看见影响生产的关键条件"
+overviewTitle: "820 kWp 光伏 + 500 kWh 储能：电网成本下降 42%"
 contentEyebrow: "项目故事"
-contentTitle: "让分散的仪表盘形成统一生产视图"
-outcomesEyebrow: "项目成果"
-outcomesTitle: "支持安全工作的运营可视化"
+contentTitle: "充分利用大屋顶和复杂负载的价值"
+outcomesEyebrow: "量化成果"
+outcomesTitle: "首年运行结果"
 outcomes:
-  - value: "3"
-    label: "生产线"
-    description: "在首期实施范围内建立一致的运行视图。"
-  - value: "24/7"
-    label: "运营上下文"
-    description: "跨班次和交接持续保留关键运行信息。"
-  - value: "1"
-    label: "统一数据层"
-    description: "为质量、安全和维护团队建立共同基础。"
+  - value: "42%"
+    label: "电网用电成本降幅"
+    description: "光伏自用电提升、削峰和分时套利的综合效果。"
+  - value: "84%"
+    label: "光伏自用电比例"
+    description: "较新增储能前的 31% 大幅提升。"
+  - value: "680 吨"
+    label: "年度碳减排"
+    description: "相当于减少 148 辆乘用车的年排放量。"
 relatedProducts:
+  - field-node
+  - control-panel
   - flow-meter
-  - safety-gateway
 relatedSolutions:
-  - asset-visibility
-relatedEyebrow: "继续了解"
-relatedTitle: "相关产品与解决方案"
-ctaEyebrow: "需要更清晰的生产全貌？"
-ctaTitle: "建立更安全、更可预测的运营方式"
-ctaDescription: "告诉我们生产团队需要连接哪些信号、流程和决策。"
+  - connected-operations
+relatedEyebrow: "项目背后的技术"
+relatedTitle: "使用的产品与解决方案"
+ctaEyebrow: "拥有配备光伏的商业地产？"
+ctaTitle: "新增储能，最大化投资回报"
+ctaDescription: "告诉我们您的光伏系统和负荷特征，我们将测算自用电比例和回收期的改善效果。"
 ---
 
-## 面临的挑战
+## 挑战
 
-生产、质量和维护团队各自只掌握部分运行数据。仪表盘可以显示异常，
-但不一定能说明问题是偶发、重复出现，还是已经有人在现场处理。
+西田 Knox 是位于墨尔本东郊的 128,000 m² 区域性购物中心，年用电量 18 GWh。购物中心于 2021 年完成 820 kWp 屋顶光伏安装，但在没有储能的情况下，光伏发电量中仅有 31% 在现场消纳——其余以维多利亚州 AUD 0.05/kWh 的低廉上网电价卖出，而在夜间零售高峰时段却以 AUD 0.35/kWh 的峰值电价向电网购电。
 
-团队需要的是可以支持行动的共同上下文，而不是更多孤立的屏幕。
+## 解决方案
 
-## 实施方式
+NexVolt 设计了采用 NV-BESS 500 的 500 kWh 电池系统，通过 NV-Hybrid 100K 交流耦合接口与现有 SMA 光伏逆变器集成。
 
-项目围绕每个班次中主管和技术人员需要做出的决定，连接测量信号、设备
-状态和运营记录。
+NV-EMS Cloud 配置了三个同步调度目标：
+1. **光伏自用电最大化：** 吸收日间多余光伏发电量
+2. **分时套利：** 夜间低谷电价时段向电网充电
+3. **削峰：** 傍晚零售高峰时段（16:00–21:00）放电
 
-| 关注方向 | 交付能力 |
-| --- | --- |
-| 运行测量 | 为关键流程提供一致的测量数据 |
-| 安全生产 | 清晰呈现状态和异常信息 |
-| 班次交接 | 为下一班次保留统一的运行上下文 |
+## 12 个月运行结果
 
-首期项目覆盖 3 条生产线。数据模型和工作方式从一开始就考虑后续扩展，
-新增生产线时不需要重新建设整套系统。
-
-## 项目成果
-
-团队现在可以基于同一张运营视图讨论生产状态。主管能够更早看到异常，
-维护人员获得更完整的现场上下文，班次交接也从分散的表格和仪表盘截图，
-转变为围绕实时信号展开的清晰沟通。
+光伏自用电比例从 31% 提升至 84%，电池吸收中午多余发电量并在傍晚高峰时段释放。综合自用电提升、削峰和夜间分时充电，电网用电成本下降 42%——年节省 AUD 126 万，系统造价 AUD 180 万，投资回收期不足 5 年。

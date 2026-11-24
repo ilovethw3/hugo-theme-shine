@@ -76,6 +76,7 @@
           {{ with site.Params.legal.privacy }}<a href="{{ . | relLangURL }}">{{ i18n "privacy" }}</a>{{ end }}
           {{ with site.Params.legal.terms }}<a href="{{ . | relLangURL }}">{{ i18n "terms" }}</a>{{ end }}
           {{ with site.Params.legal.cookies }}<a href="{{ . | relLangURL }}">{{ i18n "cookies" }}</a>{{ end }}
+          {{ with site.Params.analytics }}{{ if and .enabled (ne .consentRequired false) }}<button class="footer-cookie-settings" type="button" data-cookie-settings>{{ i18n "cookieSettings" }}</button>{{ end }}{{ end }}
         </span>
       </div>
     {{ end }}

@@ -1,76 +1,47 @@
 ---
-title: "Field notes: safety as a design input"
-date: 2026-06-22
-summary: "Safety becomes stronger when it shapes the brief from the first conversation."
-cover: "/images/news-safety.svg"
-coverAlt: "Safety as a design input"
-news-categories: ["People"]
-author: "Asterra Systems"
-contentEyebrow: "Field note"
-contentTitle: "Treat safety as part of the brief"
+title: "NV-BESS 500 Achieves UL 9540 Certification for North American Market"
+date: 2024-03-22
+featured: false
+summary: "NexVolt's flagship storage cabinet has completed UL 9540 system-level certification, opening the door to commercial and industrial installations across the United States and Canada."
+cover: "/images/news-safety.jpg"
+coverAlt: "NexVolt engineer conducting safety inspection of NV-BESS 500 battery system"
+news-categories: ["Certifications"]
+author: "NexVolt Systems"
+contentEyebrow: "Certification news"
+contentTitle: "UL 9540 certification: What it means and why it matters"
 relatedNews:
   - designing-for-handover
   - why-edge-data-matters
 ---
 
-Good safety outcomes rarely come from a final checklist. They emerge when
-constraints, behavior and maintenance are considered together. Safety becomes
-stronger when it shapes the brief before the first interface, workflow or device
-is designed.
+NexVolt Systems has received UL 9540 system-level certification for the NV-BESS 500 battery energy storage system, completing a comprehensive 18-month testing programme conducted by UL Solutions at their Northbrook, Illinois facility.
 
-## Safety is a design constraint
+## What is UL 9540?
 
-A late safety review often asks whether a finished system is safe enough. A
-stronger process asks a different question earlier: what conditions could make
-the intended work unsafe, and how should the system help people respond?
+UL 9540 is the American national standard for energy storage systems and equipment. Unlike component-level certifications, UL 9540 evaluates the complete energy storage system — including the battery, inverter, protection systems, and thermal management — as an integrated unit operating under realistic field conditions.
 
-This change moves safety from a final approval step into the decisions that shape
-the operating model.
+Achieving UL 9540 certification is increasingly required by:
+- **Authorities Having Jurisdiction (AHJs)** as a condition of building permit approval for indoor battery installations
+- **Insurance underwriters** as a prerequisite for covering commercial battery installations
+- **Corporate procurement policies** at large US and Canadian enterprises
 
-## Start with work as it happens
+## The testing process
 
-Written procedures describe the preferred path. Field work also includes weather,
-time pressure, equipment variation, interruptions and handovers. Observing those
-conditions helps a design team understand where people improvise and where a
-small amount of better context could prevent an avoidable mistake.
+The UL 9540 certification programme for the NV-BESS 500 included:
 
-## Three questions for the first workshop
+| Test category | Tests performed |
+|---|---|
+| Electrical safety | Dielectric strength, insulation resistance, ground continuity |
+| Thermal management | Performance across -20°C to +55°C ambient range |
+| Overcharge / over-discharge | Protection response and recovery |
+| Short circuit | DC and AC fault response |
+| Fire safety | UL 9540A thermal runaway propagation test |
+| Environmental | Humidity, altitude, vibration |
 
-### What can change the risk?
+The UL 9540A thermal runaway propagation test — the most challenging element of the certification — confirmed that a single-cell thermal runaway event within the NV-BESS 500 does not propagate to adjacent cells or modules, satisfying the NFPA 855 requirements for indoor installations.
 
-List the conditions that change how a task should be performed: equipment state,
-environment, staffing, access or an unresolved exception.
+## Impact on North American market access
 
-### What should the operator see first?
+With UL 9540 certification in place, NexVolt is now able to fulfil commercial orders for the US and Canadian markets. The company has appointed regional distributors in California, Texas, and Ontario, and is accepting project enquiries for installations scheduled from Q3 2024.
 
-Prioritize the information that changes the next action. A warning that does not
-help someone decide what to do is only part of a solution.
-
-### How will the system support recovery?
-
-Good design assumes that people will occasionally miss a signal or make a wrong
-assumption. Make it easy to pause, escalate, review the decision and learn from
-the event without hiding the original context.
-
-| Design moment | Safety question | Useful output |
-| --- | --- | --- |
-| Briefing | What conditions can change the risk? | A visible operating context |
-| Execution | What should change the next action? | Clear status and exception cues |
-| Review | What did we learn from the event? | An actionable feedback loop |
-
-## From checklist to feedback loop
-
-A checklist is valuable when it is connected to a learning process. After an
-event, compare the expected workflow with what actually happened. Were the right
-signals available? Was the escalation path clear? Did the system preserve enough
-context for the next person?
-
-The answers should improve the workflow, the information design and the training
-together. No single team owns safety in isolation.
-
-## Closing thought
-
-Safety is not a layer added after the useful work has been designed. It is one of
-the conditions that defines useful work in the first place. When that idea shapes
-the brief from the beginning, the result is easier to operate, easier to maintain
-and more trustworthy under pressure.
+"The North American C&I storage market is growing rapidly, and UL 9540 is the entry ticket," said Marcus Weber, CEO of NexVolt Systems. "We invested the time to do this properly, and we're confident the NV-BESS 500 will perform to the same standard in Phoenix or Toronto as it does in Munich or Melbourne."

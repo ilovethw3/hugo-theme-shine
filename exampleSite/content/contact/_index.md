@@ -1,5 +1,5 @@
 ---
 title: "Contact"
-eyebrow: "Start a conversation"
-description: "Tell us a little about what you are trying to make clearer, safer or more dependable."
+eyebrow: "Let's talk storage"
+description: "Tell us about your site's energy needs — peak demand, daily consumption, and project location — and our solutions team will get back to you within two business days."
 ---

@@ -1,77 +1,37 @@
 ---
-title: "Designing systems people can hand over"
-date: 2026-09-18
+title: "NexVolt Launches NV-BESS 500 at Intersolar Europe 2024"
+date: 2024-06-14
 featured: true
-summary: "A dependable system is one that remains understandable when the context changes."
-cover: "/images/news-handover.svg"
-coverAlt: "Designing systems for handover"
-news-categories: ["Practice"]
-author: "Asterra Systems"
-contentEyebrow: "Field note"
-contentTitle: "Designing for clarity when context changes"
+summary: "NexVolt unveiled its flagship 500 kWh battery energy storage cabinet at Europe's largest solar and storage trade show, drawing significant interest from C&I integrators."
+cover: "/images/news-launch.jpg"
+coverAlt: "NexVolt booth at Intersolar Europe 2024 showing NV-BESS 500 cabinet"
+news-categories: ["Product News"]
+author: "NexVolt Systems"
+contentEyebrow: "Product launch"
+contentTitle: "NV-BESS 500: Five years of engineering, one cabinet"
 relatedNews:
-  - why-edge-data-matters
   - field-notes-safety
+  - why-edge-data-matters
 ---
 
-The best operational systems make the next decision easier for the next person.
-That means designing for clarity, not just capability. A handover is not simply
-the moment one person leaves and another arrives; it is a short period when
-context can disappear, assumptions can be missed and small gaps can become
-operational risk.
+NexVolt Systems today unveiled the NV-BESS 500 at Intersolar Europe in Munich — the culmination of five years of engineering development focused on the specific demands of commercial and industrial battery storage applications.
 
-## Why handover deserves design attention
+## What makes the NV-BESS 500 different
 
-Teams often try to fix handover with a checklist at the end of a shift. The
-checklist can help, but it cannot repair a system that hides the current state,
-stores decisions in too many places or assumes that the next person already
-knows the background.
+The NV-BESS 500 was designed around three insights from NexVolt's twelve years of field experience with industrial customers:
 
-A better approach is to treat the first five minutes of the next shift as a
-design test. Can someone understand what changed, what is still uncertain and
-what decision is expected from them?
+**1. LFP chemistry is the right choice for indoor C&I applications.** Despite offering lower energy density than NMC, lithium iron phosphate delivers the thermal stability, cycle life, and intrinsic safety that indoor industrial installations require. The NV-BESS 500 uses premium LFP cells with a rated cycle life of 6,000 cycles at 80% depth of discharge — equivalent to over 15 years of daily cycling.
 
-## Three practical principles
+**2. Active thermal management is not optional.** Passive cooling is adequate for some environments, but active liquid cooling delivers superior temperature uniformity across the cell stack, extending calendar life and protecting the capacity warranty in hot climates. The NV-BESS 500 uses a closed-loop liquid cooling circuit with an integrated heat exchanger, keeping all cells within ±2°C regardless of ambient temperature.
 
-### 1. Make the current state visible
+**3. The installation experience matters.** The NV-BESS 500 ships as a fully factory-assembled and tested unit. Electrical connections are made at a single DC busbar and a single AC interface. The entire commissioning process takes less than four hours for a qualified engineer. This reduces the installation cost and risk that has historically made C&I storage economically marginal for smaller sites.
 
-Show the few signals that explain the situation now: active exceptions, work in
-progress, ownership and the next review point. Visibility does not mean putting
-every metric on one screen. It means making the important context easy to find.
+## Market response
 
-### 2. Record the next decision, not every detail
+The NV-BESS 500 attracted strong interest at Intersolar, with over 200 qualified enquiries received during the three-day exhibition. NexVolt's order book for H2 2024 is now fully committed, and the company has opened order intake for Q1 2025 deliveries.
 
-Operational notes become useful when they explain what should happen next and
-why. Keep supporting detail available, but make the handover view answer three
-questions first: what happened, what has been decided and what remains open?
+"We've been waiting for a product that combines the safety of LFP, the performance of active cooling, and the simplicity of a single-connection installation," said one project developer attending the show. "This is the cabinet we'll be specifying."
 
-### 3. Design for the first five minutes
+## Availability
 
-Test the workflow with someone who was not present for the previous shift. If
-they can identify the current status, the responsible person and the next action
-without a separate explanation, the design is doing its job.
-
-| Handover question | Useful signal | Design response |
-| --- | --- | --- |
-| What changed? | Recent exceptions and status changes | Put changes near the current state |
-| Who owns it? | Named owner and escalation path | Make responsibility visible |
-| What happens next? | Next action and review time | Keep the decision close to the signal |
-
-## A simple review practice
-
-Before releasing a new dashboard or workflow, run a short handover rehearsal:
-
-- Ask one person to explain the current situation in two minutes.
-- Ask another person to take over using only the designed view.
-- Record the questions that require a separate message or verbal explanation.
-- Turn repeated questions into clearer labels, status or workflow steps.
-
-The goal is not to remove every conversation. Good systems leave room for
-judgement. They make sure that conversations begin with the same facts.
-
-## Closing thought
-
-When a system is designed for handover, clarity becomes part of its reliability.
-The result is not just a better shift change. It is a system that remains useful
-when people rotate, conditions change and the original context is no longer in
-the room.
+The NV-BESS 500 is available for order now, with lead times of 12–16 weeks ex-Munich. NexVolt's sales team can be reached through the contact form on this website for sizing consultations and indicative pricing.

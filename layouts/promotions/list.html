@@ -1,0 +1,33 @@
+{{ define "main" }}
+  {{ $pages := where .Site.RegularPages "Section" "promotions" }}
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumbs"><a href="{{ "/" | relLangURL }}">{{ i18n "home" }}</a><span>/</span><span>{{ .Title }}</span></div>
+      <span class="eyebrow">{{ i18n "promotions" }}</span>
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p>{{ . }}</p>{{ end }}
+    </div>
+  </section>
+  <section class="promotion-list">
+    <div class="container">
+      {{ if $pages }}
+        <div class="promotion-list__grid">
+          {{ range $pages }}
+            {{ $poster := .Params.poster | default site.Params.brand.placeholderImage | default "/images/placeholder.svg" }}
+            {{ $posterURL := $poster | relURL }}
+            {{ with .Resources.GetMatch $poster }}{{ $posterURL = .RelPermalink }}{{ end }}
+            <article class="promotion-card">
+              <a class="promotion-card__media" href="{{ .RelPermalink }}"><img src="{{ $posterURL }}" alt="{{ .Params.posterAlt | default .Title }}" loading="lazy"></a>
+              <div class="promotion-card__body">
+                {{ with .Params.badge }}<span class="eyebrow">{{ . }}</span>{{ end }}
+                <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+                {{ with .Params.summary }}<p>{{ . | markdownify }}</p>{{ end }}
+                <a class="text-link" href="{{ .RelPermalink }}">{{ i18n "viewPromotion" }} <span>↗</span></a>
+              </div>
+            </article>
+          {{ end }}
+        </div>
+      {{ else }}<p class="empty-state">{{ i18n "noPromotions" }}</p>{{ end }}
+    </div>
+  </section>
+{{ end }}

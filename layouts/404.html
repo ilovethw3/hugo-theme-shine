@@ -1,0 +1,10 @@
+{{ define "main" }}
+  <section class="page-hero error-page">
+    <div class="container">
+      <span class="eyebrow">{{ i18n "pageNotFound" }}</span>
+      <h1>{{ i18n "pageNotFoundTitle" }}</h1>
+      <p>{{ i18n "pageNotFoundDescription" }}</p>
+      <div class="button-row"><a class="button button--primary" href="{{ "/" | relLangURL }}">{{ i18n "backToHome" }} <span>↗</span></a></div>
+    </div>
+  </section>
+{{ end }}

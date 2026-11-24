@@ -1,0 +1,131 @@
+{{- $analytics := site.Params.analytics | default dict -}}
+{{- $google := $analytics.google | default dict -}}
+{{- $tagManager := $analytics.tagManager | default dict -}}
+{{- $meta := $analytics.meta | default dict -}}
+{{- $enabled := $analytics.enabled | default false -}}
+{{- $hasProvider := or $google.measurementID $tagManager.containerID $meta.pixelID -}}
+{{- if and $enabled $hasProvider -}}
+  {{- $consentRequired := true -}}
+  {{- if isset $analytics "consentRequired" }}{{ $consentRequired = $analytics.consentRequired }}{{ end -}}
+  {{- $preserveCampaignParams := true -}}
+  {{- if isset $analytics "preserveCampaignParams" }}{{ $preserveCampaignParams = $analytics.preserveCampaignParams }}{{ end -}}
+  {{- $config := dict
+    "consentRequired" $consentRequired
+    "googleMeasurementID" ($google.measurementID | default "")
+    "tagManagerContainerID" ($tagManager.containerID | default "")
+    "metaPixelID" ($meta.pixelID | default "")
+    "preserveCampaignParams" $preserveCampaignParams
+  -}}
+  <script type="application/json" id="shine-analytics-config">{{ $config | jsonify | safeJS }}</script>
+  {{ with $analytics.customBodyEnd }}{{ . | safeHTML }}{{ end }}
+  {{ if $consentRequired }}
+    <aside class="cookie-consent" data-cookie-consent hidden>
+      <div class="cookie-consent__copy">
+        <strong>{{ i18n "cookieConsentTitle" }}</strong>
+        <p>{{ i18n "cookieConsentDescription" }}</p>
+      </div>
+      <div class="cookie-consent__actions">
+        <button class="button button--small button--primary" type="button" data-cookie-accept>{{ i18n "acceptCookies" }}</button>
+        <button class="button button--small button--secondary" type="button" data-cookie-reject>{{ i18n "rejectCookies" }}</button>
+        {{ with site.Params.legal.privacy }}<a href="{{ . | relLangURL }}">{{ i18n "privacy" }}</a>{{ end }}
+      </div>
+    </aside>
+  {{ end }}
+  <script>
+    (() => {
+      const configNode = document.getElementById('shine-analytics-config');
+      if (!configNode) return;
+      const config = JSON.parse(configNode.textContent || '{}');
+      const consentKey = 'shine-analytics-consent';
+      const banner = document.querySelector('[data-cookie-consent]');
+      const appendScript = (src) => {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = src;
+        document.head.appendChild(script);
+      };
+      const loadProviders = () => {
+        if (window.__shineAnalyticsLoaded) return;
+        window.__shineAnalyticsLoaded = true;
+        if (config.googleMeasurementID) {
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+          window.gtag('js', new Date());
+          window.gtag('config', config.googleMeasurementID);
+          appendScript('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(config.googleMeasurementID));
+        }
+        if (config.tagManagerContainerID) {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          appendScript('https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent(config.tagManagerContainerID));
+        }
+        if (config.metaPixelID) {
+          window.fbq = window.fbq || function () {
+            window.fbq.callMethod ? window.fbq.callMethod.apply(window.fbq, arguments) : window.fbq.queue.push(arguments);
+          };
+          window.fbq.push = window.fbq;
+          window.fbq.loaded = true;
+          window.fbq.version = '2.0';
+          window.fbq.queue = window.fbq.queue || [];
+          window.fbq('init', config.metaPixelID);
+          window.fbq('track', 'PageView');
+          appendScript('https://connect.facebook.net/en_US/fbevents.js');
+        }
+        const contentID = document.body.dataset.analyticsContent;
+        if (contentID) window.shineTrack('ViewContent', { content_ids: [contentID], content_type: 'product' });
+      };
+      const setCampaignParams = () => {
+        if (!config.preserveCampaignParams) return;
+        const params = new URLSearchParams(window.location.search);
+        const campaign = {};
+        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid'].forEach((key) => {
+          if (params.has(key)) campaign[key] = params.get(key);
+        });
+        try {
+          if (Object.keys(campaign).length) sessionStorage.setItem('shine-campaign', JSON.stringify(campaign));
+        } catch (error) { return; }
+        let stored = '';
+        try { stored = sessionStorage.getItem('shine-campaign'); } catch (error) { return; }
+        if (!stored) return;
+        document.querySelectorAll('[data-contact-form]').forEach((form) => {
+          let values = {};
+          try { values = JSON.parse(stored); } catch (error) { return; }
+          Object.entries(values).forEach(([key, value]) => {
+            if (form.elements[key]) form.elements[key].value = value;
+            else {
+              const input = document.createElement('input');
+              input.type = 'hidden'; input.name = key; input.value = value; form.appendChild(input);
+            }
+          });
+        });
+      };
+      window.shineTrack = (eventName, parameters = {}) => {
+        if (!window.__shineAnalyticsLoaded) return;
+        if (config.consentRequired && localStorage.getItem(consentKey) !== 'accepted') return;
+        if (config.googleMeasurementID && window.gtag) {
+          const googleEvents = { ViewContent: 'view_item', Lead: 'generate_lead', Contact: 'contact' };
+          window.gtag('event', googleEvents[eventName] || eventName.toLowerCase(), parameters);
+        }
+        if (config.metaPixelID && window.fbq) window.fbq('track', eventName, parameters);
+        window.dispatchEvent(new CustomEvent('shine:analytics', { detail: { eventName, parameters } }));
+      };
+      const consent = localStorage.getItem(consentKey);
+      if (config.consentRequired) {
+        if (consent === 'accepted') loadProviders();
+        else if (banner) banner.hidden = false;
+        banner?.querySelector('[data-cookie-accept]')?.addEventListener('click', () => {
+          localStorage.setItem(consentKey, 'accepted'); banner.hidden = true; loadProviders();
+        });
+        banner?.querySelector('[data-cookie-reject]')?.addEventListener('click', () => {
+          localStorage.setItem(consentKey, 'rejected'); banner.hidden = true;
+        });
+        document.querySelectorAll('[data-cookie-settings]').forEach((button) => {
+          button.addEventListener('click', () => {
+            if (banner) { banner.hidden = false; banner.querySelector('[data-cookie-accept]')?.focus(); }
+          });
+        });
+      } else loadProviders();
+      setCampaignParams();
+    })();
+  </script>
+{{- end -}}
