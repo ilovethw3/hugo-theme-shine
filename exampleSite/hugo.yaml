@@ -33,6 +33,7 @@ params:
   brand:
     name: "NexVolt Systems"
     mark: "N"
+    favicon: "/images/favicon.svg"
     placeholderImage: "/images/placeholder.svg"
   analytics:
     enabled: false
@@ -62,8 +63,8 @@ params:
     phone: "+49 89 2000 4567"
     email: "info@nexvolt.example"
     hours: "Monday–Friday, 09:00–18:00 CET"
-    mapUrl: "https://maps.app.goo.gl/AH3o7qob6pBPn9797"
-    mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d58218.111095682245!2d8.6503695!3d50.1042985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1szh-CN!2sde!4v1793265723894!5m2!1szh-CN!2sde"
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Lindwurmstra%C3%9Fe+88%2C+80337+Munich%2C+Germany"
+    mapEmbedUrl: "https://maps.google.com/maps?q=Lindwurmstra%C3%9Fe+88,+80337+Munich,+Germany&t=&z=15&ie=UTF8&iwloc=&output=embed"
     icons:
       address: "location"
       phone: "phone"
@@ -93,7 +94,8 @@ params:
       icon: "whatsapp"
   forms:
     provider: "formspree"
-    contactAction: "https://formspree.io/f/xxx"
+    # Replace with your real Formspree endpoint before publishing, e.g. "https://formspree.io/f/your-id"
+    contactAction: ""
     ajax: true
     contactSubject: "NexVolt Systems website enquiry"
     requireConsent: false

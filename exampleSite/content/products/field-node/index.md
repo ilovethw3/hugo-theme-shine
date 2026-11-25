@@ -54,9 +54,9 @@ specifications:
     range: "Extendable to 10 years"
 downloads:
   - label: "NV-Hybrid 100K Datasheet"
-    url: "control-panel-c4-manual.txt"
+    url: "nv-hybrid-100k-datasheet.pdf"
     type: "PDF"
-    description: "Full electrical specifications, wiring diagrams, and dimensions."
+    description: "Full electrical specifications, grid certifications, and dimensions."
 certifications:
   - name: "IEC 62109-1 / 62109-2"
     standard: "Safety of power converters for use in photovoltaic power systems"

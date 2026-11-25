@@ -30,13 +30,13 @@
           {{ range $languagePagesMobile }}
             {{ $language := . }}
             {{ $href := .RelPermalink }}
-            {{ if and (ne $.Language.Lang $language.Language.Lang) (or (eq $.Kind "term") (eq $.Kind "taxonomy")) }}
+            {{ if and (ne $.Language.Lang $language.Language.Lang) (eq $.Kind "term") }}
               {{ if or (eq $.Section "product-categories") (eq $.Section "solution-categories") (eq $.Section "project-categories") (eq $.Section "news-categories") }}
                 {{ $sectionPath := "products" }}
                 {{ if eq $.Section "solution-categories" }}{{ $sectionPath = "solutions" }}{{ end }}
                 {{ if eq $.Section "project-categories" }}{{ $sectionPath = "projects" }}{{ end }}
                 {{ if eq $.Section "news-categories" }}{{ $sectionPath = "news" }}{{ end }}
-                {{ $href = printf "%s%s/" $language.RelPermalink $sectionPath | relURL }}
+                {{ $href = printf "%s%s/" $language.Site.Home.RelPermalink $sectionPath | relURL }}
               {{ end }}
             {{ end }}
             <a class="nav-language-switcher__item{{ if eq .Language.Lang site.Language.Lang }} is-active{{ end }}" href="{{ $href }}" lang="{{ .Language.Lang }}">{{ .Language.LanguageName }}<span class="nav-language-switcher__code">{{ upper .Language.Lang }}</span></a>
@@ -55,13 +55,13 @@
             {{ range $languagePages }}
               {{ $language := . }}
               {{ $href := .RelPermalink }}
-              {{ if and (ne $.Language.Lang $language.Language.Lang) (or (eq $.Kind "term") (eq $.Kind "taxonomy")) }}
+              {{ if and (ne $.Language.Lang $language.Language.Lang) (eq $.Kind "term") }}
                 {{ if or (eq $.Section "product-categories") (eq $.Section "solution-categories") (eq $.Section "project-categories") (eq $.Section "news-categories") }}
                   {{ $sectionPath := "products" }}
                   {{ if eq $.Section "solution-categories" }}{{ $sectionPath = "solutions" }}{{ end }}
                   {{ if eq $.Section "project-categories" }}{{ $sectionPath = "projects" }}{{ end }}
                   {{ if eq $.Section "news-categories" }}{{ $sectionPath = "news" }}{{ end }}
-                  {{ $href = printf "%s%s/" $language.RelPermalink $sectionPath | relURL }}
+                  {{ $href = printf "%s%s/" $language.Site.Home.RelPermalink $sectionPath | relURL }}
                 {{ end }}
               {{ end }}
               <a class="{{ if eq .Language.Lang site.Language.Lang }}is-active{{ end }}" href="{{ $href }}"><span>{{ .Language.LanguageName }}</span><span class="language-switcher__code">{{ upper .Language.Lang }}</span></a>

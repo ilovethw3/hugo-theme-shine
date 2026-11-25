@@ -1,11 +1,16 @@
 ---
 title: "隐私政策"
-description: "Asterra Systems 如何收集、使用、披露和保护个人数据。"
+eyebrow: "信任与合规"
+description: "NexVolt Systems 如何收集、使用、披露和保护个人数据。"
+banner:
+  background: "/images/banner-privacy.jpg"
+  backgroundAlt: "NexVolt Systems 数据保护与隐私合规"
+  overlay: 0.62
 ---
 
-**最后更新日期：2026年10月29日**
+**最后更新日期：2026年11月25日**
 
-本隐私政策说明 Asterra Systems（以下简称“我们”或“Asterra Systems”）在您访问本网站、联系我们或使用本网站提供的相关服务时，如何收集、使用、披露和保护您的个人数据。
+本隐私政策说明 NexVolt Systems（以下简称“我们”或“NexVolt Systems”）在您访问本网站、联系我们或使用本网站提供的相关服务时，如何收集、使用、披露和保护您的个人数据。
 
 本政策是示例站点使用的模板。正式上线前，请将公司名称、法定实体名称、注册地址、隐私联系人和服务提供商信息替换为真实资料，并根据实际业务和适用法律进行审核。
 
@@ -13,9 +18,9 @@ description: "Asterra Systems 如何收集、使用、披露和保护个人数�
 
 本网站个人数据的控制方为：
 
-**Asterra Systems**  
-18 Meridian Park, Singapore  
-邮箱：[hello@asterra.example](mailto:hello@asterra.example)
+**NexVolt Systems**  
+Lindwurmstraße 88, 80337 Munich, Germany  
+邮箱：[info@nexvolt.example](mailto:info@nexvolt.example)
 
 如果您对本隐私政策或个人数据处理有任何疑问，或希望行使相关权利，请通过上述邮箱联系我们。
 
@@ -74,15 +79,13 @@ description: "Asterra Systems 如何收集、使用、披露和保护个人数�
 
 ### Formspree
 
-联系我们表单配置为向 Formspree 提交信息。Formspree 会处理表单提交内容，并可能在美国或其开展业务的其他国家传输或存储个人数据。Formspree 的隐私处理方式请参阅其[隐私政策](https://formspree.io/legal/privacy-policy/)。
+在正式站点启用后，联系我们表单可配置为向 Formspree 提交信息。Formspree 会处理表单提交内容，并可能在美国或其开展业务的其他国家传输或存储个人数据。Formspree 的隐私处理方式请参阅其[隐私政策](https://formspree.io/legal/privacy-policy/)。
 
 正式使用表单前，建议确认 Formspree 当前有效的服务条款、隐私政策和安全信息。Formspree 的服务文件说明，其可能为提供服务、维护安全和防止滥用而处理表单数据及技术信息。
 
 ### Google Maps
 
-联系我们页面可能显示嵌入式 Google Maps 地图。当地图被加载或使用时，Google 可能接收您的 IP 地址以及发起请求的浏览器或设备信息。Google 对相关信息的处理受其[隐私政策](https://policies.google.com/privacy/embedded)约束。
-
-如果网站面向要求第三方非必要内容事先取得同意的司法辖区提供服务，应在取得适当同意前阻止地图加载。
+联系我们页面提供可选的嵌入式 Google Maps 地图，并仅在您主动点击“加载地图”按钮后才向 Google 发起加载请求。加载后，Google 可能接收您的 IP 地址以及发起请求的浏览器或设备信息。Google 对相关信息的处理受其[隐私政策](https://policies.google.com/privacy/embedded)约束。
 
 ### 外部链接
 
@@ -114,7 +117,7 @@ description: "Asterra Systems 如何收集、使用、披露和保护个人数�
 - 在适用的情况下请求数据可携带；以及
 - 向相关数据保护监管机构提出投诉。
 
-如需行使权利，请发送邮件至 [hello@asterra.example](mailto:hello@asterra.example)。我们可能需要核实您的身份后处理请求，并将在适用法律规定的期限内回复。
+如需行使权利，请发送邮件至 [info@nexvolt.example](mailto:info@nexvolt.example)。我们可能需要核实您的身份后处理请求，并将在适用法律规定的期限内回复。
 
 ## 十、儿童信息
 
@@ -128,6 +131,6 @@ description: "Asterra Systems 如何收集、使用、披露和保护个人数�
 
 如有隐私问题、权利请求或投诉，请联系：
 
-**Asterra Systems**  
-18 Meridian Park, Singapore  
-[hello@asterra.example](mailto:hello@asterra.example)
+**NexVolt Systems**  
+Lindwurmstraße 88, 80337 Munich, Germany  
+[info@nexvolt.example](mailto:info@nexvolt.example)

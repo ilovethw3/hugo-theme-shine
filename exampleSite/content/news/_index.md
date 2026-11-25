@@ -1,5 +1,9 @@
 ---
 title: "News & insights"
 eyebrow: "From the field"
-description: "Notes on engineering, operations and the work of making systems useful."
+description: "Product releases, safety certification milestones, and practical analysis on commercial battery energy storage."
+banner:
+  background: "/images/banner-news.jpg"
+  backgroundAlt: "NexVolt Systems product launch and energy storage industry news"
+  overlay: 0.55
 ---

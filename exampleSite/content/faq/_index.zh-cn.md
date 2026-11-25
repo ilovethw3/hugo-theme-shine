@@ -2,6 +2,10 @@
 title: "常见问题"
 eyebrow: "您可能想知道"
 description: "关于 NexVolt 产品、项目和储能系统的清晰解答。"
+banner:
+  background: "/images/banner-faq.jpg"
+  backgroundAlt: "NexVolt Systems 储能系统常见问题"
+  overlay: 0.58
 faq:
   - question: "NexVolt 使用什么电池化学体系？"
     answer: "NexVolt 所有储能产品均采用磷酸铁锂（LFP）电芯，来源于 Grade-A 认证厂商。与三元锂（NMC）相比，LFP 具有更优异的热稳定性、更长的循环寿命（≥ 6,000 次）以及更安全的运行特性，是工商业储能应用的首选电池技术。"

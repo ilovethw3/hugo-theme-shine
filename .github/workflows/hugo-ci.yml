@@ -1,0 +1,117 @@
+name: Hugo Build & Site Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Hugo Extended
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.159.1"
+          extended: true
+
+      - name: Build exampleSite and fail on i18n warnings
+        run: |
+          THEME_NAME="$(basename "$PWD")"
+          OUTPUT="$(hugo --source exampleSite --themesDir ../.. --theme "$THEME_NAME" --destination public --cleanDestinationDir --minify --printI18nWarnings 2>&1)"
+          echo "$OUTPUT"
+          if echo "$OUTPUT" | grep -qi "i18n|"; then
+            echo "::error::Missing i18n translation keys detected."
+            exit 1
+          fi
+
+      - name: Verify bilingual parity and local links
+        run: |
+          python3 - <<'PY'
+          import sys
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import unquote, urlparse
+
+          class LinkExtractor(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.links = []
+
+              def handle_starttag(self, tag, attrs):
+                  for name, value in attrs:
+                      if name in ("href", "src") and value:
+                          self.links.append(value)
+
+          content_root = Path("exampleSite/content")
+          public_root = Path("exampleSite/public")
+          errors = []
+
+          # 1. Check EN / ZH-CN markdown parity
+          en_files = sorted(
+              p.relative_to(content_root)
+              for p in content_root.rglob("*.md")
+              if not p.name.endswith(".zh-cn.md")
+          )
+          for rel in en_files:
+              zh = content_root / rel.with_name(rel.stem + ".zh-cn.md")
+              if not zh.exists():
+                  errors.append(f"Missing Chinese translation for {rel}")
+
+          # 2. Check core bilingual routes exist
+          core_routes = [
+              "en/index.html",
+              "zh-cn/index.html",
+              "en/company/index.html",
+              "zh-cn/company/index.html",
+              "en/products/index.html",
+              "zh-cn/products/index.html",
+              "en/solutions/index.html",
+              "zh-cn/solutions/index.html",
+              "en/projects/index.html",
+              "zh-cn/projects/index.html",
+              "en/news/index.html",
+              "zh-cn/news/index.html",
+              "en/faq/index.html",
+              "zh-cn/faq/index.html",
+              "en/contact/index.html",
+              "zh-cn/contact/index.html",
+              "en/privacy/index.html",
+              "zh-cn/privacy/index.html",
+          ]
+          for route in core_routes:
+              if not (public_root / route).exists():
+                  errors.append(f"Missing built page: {route}")
+
+          # 3. Check local href/src targets in built HTML using real HTML parser
+          for html_file in public_root.rglob("*.html"):
+              parser = LinkExtractor()
+              parser.feed(html_file.read_text(encoding="utf-8", errors="ignore"))
+              for raw in parser.links:
+                  if raw.startswith(("http://", "https://", "mailto:", "tel:", "#", "javascript:", "data:", "//")):
+                      continue
+                  parsed = urlparse(raw)
+                  path = unquote(parsed.path)
+                  if not path:
+                      continue
+                  if path.startswith("/"):
+                      candidate = public_root / path.lstrip("/")
+                  else:
+                      candidate = (html_file.parent / path).resolve()
+                  exists = candidate.exists() or (candidate / "index.html").exists()
+                  if not exists:
+                      rel_html = html_file.relative_to(public_root)
+                      errors.append(f"Broken local link in {rel_html}: {raw}")
+
+          if errors:
+              print("Verification failed with the following issues:")
+              for err in errors[:50]:
+                  print(" -", err)
+              sys.exit(1)
+
+          print("All bilingual parity, core route, and local link checks passed.")
+          PY

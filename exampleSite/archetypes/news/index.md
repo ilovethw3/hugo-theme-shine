@@ -6,7 +6,7 @@ summary: "A short description for cards and SEO."
 cover: "/images/news-placeholder.svg"
 coverAlt: "Article cover"
 news-categories: ["Practice"]
-author: "Asterra Systems"
+author: "NexVolt Systems"
 contentEyebrow: "Field note"
 contentTitle: "A useful idea from the field"
 relatedNews: []

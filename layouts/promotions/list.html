@@ -1,13 +1,6 @@
 {{ define "main" }}
   {{ $pages := where .Site.RegularPages "Section" "promotions" }}
-  <section class="page-hero">
-    <div class="container">
-      <div class="breadcrumbs"><a href="{{ "/" | relLangURL }}">{{ i18n "home" }}</a><span>/</span><span>{{ .Title }}</span></div>
-      <span class="eyebrow">{{ i18n "promotions" }}</span>
-      <h1>{{ .Title }}</h1>
-      {{ with .Description }}<p>{{ . }}</p>{{ end }}
-    </div>
-  </section>
+  {{ partial "page-hero.html" . }}
   <section class="promotion-list">
     <div class="container">
       {{ if $pages }}

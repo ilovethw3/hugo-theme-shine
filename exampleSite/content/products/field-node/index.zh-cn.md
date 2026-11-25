@@ -54,9 +54,9 @@ specifications:
     range: "可延长至 10 年"
 downloads:
   - label: "NV-Hybrid 100K 产品数据表"
-    url: "control-panel-c4-manual.txt"
+    url: "nv-hybrid-100k-datasheet.pdf"
     type: "PDF"
-    description: "完整电气规格、接线图与尺寸。"
+    description: "完整电气规格、并网认证与尺寸参数。"
 certifications:
   - name: "IEC 62109-1 / 62109-2"
     standard: "光伏发电系统用电力转换设备安全标准"

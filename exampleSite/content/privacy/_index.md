@@ -1,11 +1,16 @@
 ---
 title: "Privacy Policy"
-description: "How Asterra Systems collects, uses, shares and protects personal data."
+eyebrow: "Trust & compliance"
+description: "How NexVolt Systems collects, uses, shares and protects personal data."
+banner:
+  background: "/images/banner-privacy.jpg"
+  backgroundAlt: "NexVolt Systems data protection and privacy compliance"
+  overlay: 0.62
 ---
 
-**Last updated: 29 October 2026**
+**Last updated: 25 November 2026**
 
-This Privacy Policy explains how Asterra Systems (“Asterra Systems”, “we”, “us” or “our”) collects, uses, discloses and protects personal data when you visit this website, contact us, or use any service provided through this website.
+This Privacy Policy explains how NexVolt Systems (“NexVolt Systems”, “we”, “us” or “our”) collects, uses, discloses and protects personal data when you visit this website, contact us, or use any service provided through this website.
 
 This policy is written for the example site. Before publishing a production website, replace the company name, legal entity, address, privacy contact and service-provider details with the organisation’s actual information.
 
@@ -13,9 +18,9 @@ This policy is written for the example site. Before publishing a production webs
 
 The data controller for this website is:
 
-**Asterra Systems**  
-18 Meridian Park, Singapore  
-Email: [hello@asterra.example](mailto:hello@asterra.example)
+**NexVolt Systems**  
+Lindwurmstraße 88, 80337 Munich, Germany  
+Email: [info@nexvolt.example](mailto:info@nexvolt.example)
 
 For questions about this Privacy Policy or requests relating to personal data, please contact us using the email address above.
 
@@ -74,15 +79,13 @@ We may use carefully selected service providers to operate this website and hand
 
 ### Formspree
 
-The contact form is configured to submit information to Formspree. Formspree processes form submissions and may transmit or store personal data in the United States or other countries where it operates. Formspree’s own privacy practices are described in its [Privacy Policy](https://formspree.io/legal/privacy-policy/).
+When enabled in production, the contact form can be configured to submit information to Formspree. Formspree processes form submissions and may transmit or store personal data in the United States or other countries where it operates. Formspree’s own privacy practices are described in its [Privacy Policy](https://formspree.io/legal/privacy-policy/).
 
 We recommend that you review Formspree’s current terms, privacy policy and security information before using the form in production. Formspree’s service documentation states that form data and technical information may be processed for service operation, security and abuse prevention.
 
 ### Google Maps
 
-The Contact page may display an embedded Google Maps map. When the map is loaded or used, Google may receive technical information such as your IP address and information about the browser or device making the request. Google’s processing is governed by [Google’s Privacy Policy](https://policies.google.com/privacy/embedded).
-
-If the website is made available to users in jurisdictions requiring prior consent for non-essential third-party content, the map should be blocked until the appropriate consent is obtained.
+The Contact page provides an optional embedded Google Maps view that loads only after you explicitly click to load the map. Once loaded, Google may receive technical information such as your IP address and information about the browser or device making the request. Google’s processing is governed by [Google’s Privacy Policy](https://policies.google.com/privacy/embedded).
 
 ### External links
 
@@ -114,7 +117,7 @@ Depending on where you live and which law applies, you may have the right to:
 - request portability of information where applicable; and
 - lodge a complaint with the relevant data-protection authority.
 
-To exercise a right, contact us at [hello@asterra.example](mailto:hello@asterra.example). We may need to verify your identity before completing a request. We will respond within the period required by applicable law.
+To exercise a right, contact us at [info@nexvolt.example](mailto:info@nexvolt.example). We may need to verify your identity before completing a request. We will respond within the period required by applicable law.
 
 ## 10. Children
 
@@ -128,6 +131,6 @@ We may update this Privacy Policy from time to time to reflect changes to the we
 
 For privacy questions, requests or complaints, contact:
 
-**Asterra Systems**  
-18 Meridian Park, Singapore  
-[hello@asterra.example](mailto:hello@asterra.example)
+**NexVolt Systems**  
+Lindwurmstraße 88, 80337 Munich, Germany  
+[info@nexvolt.example](mailto:info@nexvolt.example)

@@ -1,8 +1,8 @@
-# Site-specific overrides for the Asterra Systems example site.
+# Site-specific overrides for the NexVolt Systems example site.
 # All other interface translations fall back to the theme defaults.
-contactDetailsTitle: "Talk to Asterra Systems"
-contactMapTitle: "Visit Asterra Systems"
-contactFormSubject: "Asterra Systems website inquiry"
+contactDetailsTitle: "Talk to NexVolt Systems"
+contactMapTitle: "Visit NexVolt Systems"
+contactFormSubject: "NexVolt Systems website inquiry"
 formSending: "Sending your message..."
 formSuccess: "Your message has been sent successfully. We will get back to you soon."
 formError: "We could not send your message. Please try again or contact us by email."

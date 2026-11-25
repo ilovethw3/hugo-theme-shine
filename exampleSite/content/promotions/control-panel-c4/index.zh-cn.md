@@ -1,32 +1,32 @@
 ---
-title: "Control Panel C4"
-summary: "面向复杂运营场景的单品咨询页面。"
-description: "了解 Control Panel C4 的配置方式，并获取项目咨询。"
-headline: "为复杂运营现场提供更清晰的控制层。"
-subheadline: "获取 Control Panel C4 产品资料、配置建议和针对项目的应用说明。"
-poster: "/images/product-control-panel.svg"
-posterAlt: "Control Panel C4 产品示意图"
-badge: "项目咨询"
-product: "control-panel-c4"
+title: "NV-BESS 500 专项方案"
+summary: "面向工商业用户的 500 kWh 储能系统专项评估与咨询页面。"
+description: "了解 NV-BESS 500 工商业储能柜并获取定制化投资回报测算。"
+headline: "借助 NV-BESS 500，将需量电费最高降低 40%。"
+subheadline: "获取 NV-BESS 500 技术简报、站点配容建议以及由慕尼黑工程团队提供的定制化投资回报测算。"
+poster: "/images/product-bess.jpg"
+posterAlt: "NV-BESS 500 工商业电池储能柜"
+badge: "项目专项咨询"
+product: "nv-bess-500"
 validUntil: "2026 年 12 月 31 日"
-ctaLabel: "获取资料"
+ctaLabel: "获取配容方案"
 benefits:
-  - title: "看清现场状态"
-    text: "将团队需要的关键信号汇集到清晰的控制层中。"
-  - title: "适配现场条件"
-    text: "根据显示、接口和安装方式选择适合当前场景的配置。"
-  - title: "明确下一步行动"
-    text: "通过产品资料和项目沟通，快速判断后续工程方案。"
+  - title: "500 kWh 高度预集成"
+    text: "出厂即集成磷酸铁锂电池模组、主动液冷、BMS 与消防联动，缩短现场施工周期。"
+  - title: "最快 1 天完成现场调试"
+    text: "标准化并网接口设计，最大程度降低工厂停电与土建改造成本。"
+  - title: "10 年性能质保保障"
+    text: "承诺质保期末容量保持率 ≥ 80%，并由 NV-EMS Cloud 提供全天候远程监测。"
 offer:
   title: "您将获得"
-  text: "提交表单后，我们会根据您的应用场景发送相关产品资料。"
+  text: "提交您的用电概况后，解决方案工程师将在两个工作日内回复。"
   items:
-    - "Control Panel C4 产品资料"
-    - "配置与安装建议"
-    - "针对项目的后续沟通"
-formTitle: "获取产品资料"
-formDescription: "简单介绍您的应用场景，我们会发送相关信息。"
-formSubject: "Control Panel C4 活动咨询"
+    - "NV-BESS 500 完整工程规格书与安装尺寸图"
+    - "削峰填谷与需量电费节省测算报告"
+    - "并网与消防安全合规清单（IEC 62619 / UL 9540）"
+formTitle: "获取 NV-BESS 500 配容资料"
+formDescription: "告诉我们您的峰值负荷、所在地区及用能目标，我们将为您准备针对性建议。"
+formSubject: "NV-BESS 500 活动咨询"
 landing: true
 noindex: true
 excludeFromSearch: true
@@ -35,10 +35,8 @@ sitemap:
 showForm: true
 ---
 
-## 为当前决策提供清晰依据
+## 为工商业回报周期与长期安全运行而生
 
-Control Panel C4 面向需要持续了解现场状态、协调团队行动并保持稳定运营的
-复杂场景。
+NV-BESS 500 专为制造工厂、物流冷链园区和大型商业综合体打造，帮助企业有效压低需量电费、提升屋顶光伏自发自用率，并在电网波动时守护关键负载。
 
-您可以通过本页面提交应用需求、咨询配置方式，或预约与 Asterra Systems
-团队进行产品沟通。
+您可以通过本页面提交场地用电概况、咨询多柜并联扩容（最高 10 MWh）方案，或预约与 NexVolt Systems 工程团队进行技术交流。

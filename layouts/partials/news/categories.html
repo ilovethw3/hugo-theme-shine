@@ -1,18 +1,22 @@
 {{ $page := .page }}
-{{ $categories := slice }}
+{{ $terms := slice }}
+{{ $seen := slice }}
 {{ range $page.Pages.ByDate.Reverse }}
-  {{ $newsCategories := index .Params "news-categories" }}
-  {{ if not $newsCategories }}{{ $newsCategories = .Params.categories }}{{ end }}
-  {{ range $newsCategories }}
-    {{ if not (in $categories .) }}{{ $categories = $categories | append . }}{{ end }}
+  {{ $pageTerms := .GetTerms "news-categories" }}
+  {{ if not $pageTerms }}{{ $pageTerms = .GetTerms "categories" }}{{ end }}
+  {{ range $pageTerms }}
+    {{ if not (in $seen .RelPermalink) }}
+      {{ $seen = $seen | append .RelPermalink }}
+      {{ $terms = $terms | append . }}
+    {{ end }}
   {{ end }}
 {{ end }}
-{{ if $categories }}
+{{ if $terms }}
 <section class="section section-news-categories">
   <div class="container">
     <nav class="filter-tabs" aria-label="{{ i18n "newsCategories" }}">
       <a class="filter-tab is-active" href="{{ "news/" | relLangURL }}">{{ i18n "allNews" }}</a>
-      {{ range sort $categories }}<a class="filter-tab" href="{{ printf "news-categories/%s/" (. | urlize) | relLangURL }}">{{ . }}</a>{{ end }}
+      {{ range sort $terms "LinkTitle" }}<a class="filter-tab" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
     </nav>
   </div>
 </section>

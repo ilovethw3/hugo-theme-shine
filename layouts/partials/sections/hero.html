@@ -1,13 +1,14 @@
 {{ $slides := .slides | default site.Home.Params.hero.slides }}
 {{ if not $slides }}{{ $slides = slice site.Home.Params.hero }}{{ end }}
 {{ $home := site.Home }}
+{{ $total := len $slides }}
 <section class="hero-section hero-section--fullscreen">
-  <div class="hero-carousel" data-hero-carousel>
+  <div class="hero-carousel" data-hero-carousel role="region" aria-roledescription="carousel" aria-label="{{ i18n "heroCarouselLabel" }}">
     {{ range $index, $slide := $slides }}
       {{ $imageRef := $slide.image }}
       {{ $imageURL := $imageRef | relURL }}
       {{ with $home.Resources.GetMatch $imageRef }}{{ $imageURL = .RelPermalink }}{{ end }}
-      <article class="hero-carousel__item{{ if eq $index 0 }} is-active{{ end }}" data-hero-slide>
+      <article class="hero-carousel__item{{ if eq $index 0 }} is-active{{ end }}" data-hero-slide role="group" aria-roledescription="slide" aria-label="{{ add $index 1 }} / {{ $total }}" aria-hidden="{{ if eq $index 0 }}false{{ else }}true{{ end }}">
         <div class="hero-banner__media">
           <img src="{{ $imageURL }}" alt="{{ $slide.imageAlt }}" loading="{{ if eq $index 0 }}eager{{ else }}lazy{{ end }}">
         </div>
@@ -27,11 +28,12 @@
         </div>
       </article>
     {{ end }}
-    {{ if gt (len $slides) 1 }}
+    {{ if gt $total 1 }}
+      <div class="sr-only" data-hero-status aria-live="polite" aria-atomic="true"></div>
       <div class="container hero-carousel__controls">
         <button type="button" class="hero-carousel__arrow" data-hero-prev aria-label="{{ i18n "previous" }}">←</button>
         <div class="hero-carousel__dots">
-          {{ range $index, $slide := $slides }}<button type="button" class="hero-carousel__dot{{ if eq $index 0 }} is-active{{ end }}" data-hero-dot="{{ $index }}" aria-label="{{ i18n "viewImage" }} {{ add $index 1 }}"></button>{{ end }}
+          {{ range $index, $slide := $slides }}<button type="button" class="hero-carousel__dot{{ if eq $index 0 }} is-active{{ end }}" data-hero-dot="{{ $index }}" aria-label="{{ i18n "viewImage" }} {{ add $index 1 }}" aria-current="{{ if eq $index 0 }}true{{ else }}false{{ end }}"></button>{{ end }}
         </div>
         <button type="button" class="hero-carousel__arrow" data-hero-next aria-label="{{ i18n "next" }}">→</button>
       </div>

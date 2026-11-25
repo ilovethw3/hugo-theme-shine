@@ -2,6 +2,10 @@
 title: "FAQ"
 eyebrow: "Common questions"
 description: "Clear answers about NexVolt's products, projects, and energy storage systems."
+banner:
+  background: "/images/banner-faq.jpg"
+  backgroundAlt: "NexVolt Systems frequently asked questions about energy storage"
+  overlay: 0.58
 faq:
   - question: "What battery chemistry does NexVolt use?"
     answer: "All NexVolt BESS products use lithium iron phosphate (LFP) cells sourced from Grade-A manufacturers. LFP chemistry offers superior thermal stability, a longer cycle life (≥ 6,000 cycles), and a safer operating profile compared to NMC — making it the preferred choice for commercial and industrial applications."

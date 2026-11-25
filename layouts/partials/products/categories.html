@@ -1,16 +1,20 @@
 {{ $page := .page }}
-{{ $categories := slice }}
+{{ $terms := slice }}
+{{ $seen := slice }}
 {{ range $page.Pages.ByWeight }}
-  {{ range (index .Params "product-categories") }}
-    {{ if not (in $categories .) }}{{ $categories = $categories | append . }}{{ end }}
+  {{ range (.GetTerms "product-categories") }}
+    {{ if not (in $seen .RelPermalink) }}
+      {{ $seen = $seen | append .RelPermalink }}
+      {{ $terms = $terms | append . }}
+    {{ end }}
   {{ end }}
 {{ end }}
-{{ if $categories }}
+{{ if $terms }}
 <section class="section section-products-categories">
   <div class="container">
     <nav class="filter-tabs" aria-label="{{ i18n "productCategories" }}">
       <a class="filter-tab is-active" href="{{ "products/" | relLangURL }}">{{ i18n "allProducts" }}</a>
-      {{ range sort $categories }}<a class="filter-tab" href="{{ printf "product-categories/%s/" (. | urlize) | relLangURL }}">{{ . }}</a>{{ end }}
+      {{ range sort $terms "LinkTitle" }}<a class="filter-tab" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
     </nav>
   </div>
 </section>
