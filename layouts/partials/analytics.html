@@ -5,10 +5,8 @@
 {{- $enabled := $analytics.enabled | default false -}}
 {{- $hasProvider := or $google.measurementID $tagManager.containerID $meta.pixelID -}}
 {{- if and $enabled $hasProvider -}}
-  {{- $consentRequired := true -}}
-  {{- if isset $analytics "consentRequired" }}{{ $consentRequired = $analytics.consentRequired }}{{ end -}}
-  {{- $preserveCampaignParams := true -}}
-  {{- if isset $analytics "preserveCampaignParams" }}{{ $preserveCampaignParams = $analytics.preserveCampaignParams }}{{ end -}}
+  {{- $consentRequired := ne $analytics.consentRequired false -}}
+  {{- $preserveCampaignParams := ne $analytics.preserveCampaignParams false -}}
   {{- $config := dict
     "consentRequired" $consentRequired
     "googleMeasurementID" ($google.measurementID | default "")
