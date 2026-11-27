@@ -179,7 +179,8 @@
 
 .section-projects-intro{padding-bottom:32px}
 .section-projects-intro .page-intro{margin-bottom:0}
-.section-projects-categories{padding-top:32px;padding-bottom:32px}
+.section-projects-categories{padding-top:64px;padding-bottom:32px}
+.section-projects-intro+.section-projects-categories{padding-top:32px}
 .section-projects-categories .filter-tabs{margin-bottom:0}
 .section-projects-categories+.section-projects-grid{padding-top:0}
 .project-card--featured{border-color:rgba(15,107,120,.35);box-shadow:0 12px 30px rgba(15,107,120,.08)}
@@ -213,11 +214,12 @@
 .project-related__group>h3{margin:0 0 20px;color:var(--brand);font-size:1.1rem}
 .project-detail-cta{margin-top:0}
 @media(max-width:900px){.project-overview__layout{gap:42px}.project-outcomes__grid{grid-template-columns:1fr 1fr}}
-@media(max-width:720px){.section-projects-categories{padding-top:24px;padding-bottom:24px}.project-overview__layout{grid-template-columns:1fr;gap:36px}.project-overview__layout--single{gap:0}.project-meta{grid-template-columns:1fr}.project-content .container--narrow{width:min(calc(100% - 32px),820px)}.project-outcomes__grid,.project-gallery{grid-template-columns:1fr}.project-related__group+.project-related__group{margin-top:40px}}
+@media(max-width:720px){.section-projects-categories{padding-top:48px;padding-bottom:24px}.section-projects-intro+.section-projects-categories{padding-top:24px}.project-overview__layout{grid-template-columns:1fr;gap:36px}.project-overview__layout--single{gap:0}.project-meta{grid-template-columns:1fr}.project-content .container--narrow{width:min(calc(100% - 32px),820px)}.project-outcomes__grid,.project-gallery{grid-template-columns:1fr}.project-related__group+.project-related__group{margin-top:40px}}
 
 .section-news-intro{padding-bottom:32px}
 .section-news-intro .page-intro{margin-bottom:0}
-.section-news-categories{padding-top:32px;padding-bottom:32px}
+.section-news-categories{padding-top:64px;padding-bottom:32px}
+.section-news-intro+.section-news-categories{padding-top:32px}
 .section-news-categories .filter-tabs{margin-bottom:0}
 .section-news-categories+.section-news-grid{padding-top:0}
 .news-card__meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
@@ -240,7 +242,7 @@
 .news-navigation__item--older{text-align:right}
 .news-related{padding-top:35px}
 .news-cta{margin-top:0}
-@media(max-width:720px){.section-news-categories{padding-top:24px;padding-bottom:24px}.news-content .container--narrow{width:min(calc(100% - 32px),820px)}.news-navigation{grid-template-columns:1fr}.news-navigation__item--older{text-align:left}}
+@media(max-width:720px){.section-news-categories{padding-top:48px;padding-bottom:24px}.section-news-intro+.section-news-categories{padding-top:24px}.news-content .container--narrow{width:min(calc(100% - 32px),820px)}.news-navigation{grid-template-columns:1fr}.news-navigation__item--older{text-align:left}}
 
 .product-content-section .prose{overflow-x:auto}
 .prose table{width:100%;min-width:980px;margin:28px 0;border-collapse:collapse;font-size:.9rem;line-height:1.45;background:#fff;table-layout:auto}

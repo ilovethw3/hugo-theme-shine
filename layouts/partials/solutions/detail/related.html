@@ -16,7 +16,7 @@
   <div class="container">
     <div class="section-heading"><div><span class="eyebrow">{{ $page.Params.relatedEyebrow | default (i18n "exploreMore") }}</span><h2>{{ $headingTitle }}</h2></div></div>
     {{ if $products }}<div class="solution-related__group">{{ if or $showGroupTitles (ne (lower $headingTitle) (lower (i18n "relatedProducts"))) }}<h3>{{ i18n "relatedProducts" }}</h3>{{ end }}<div class="card-grid card-grid--three">{{ range $products }}{{ partial "product-card.html" . }}{{ end }}</div></div>{{ end }}
-    {{ if $projects }}<div class="solution-related__group">{{ if or $showGroupTitles (ne (lower $headingTitle) (lower (i18n "relatedProjects"))) }}<h3>{{ i18n "relatedProjects" }}</h3>{{ end }}<div class="card-grid card-grid--three">{{ range $projects }}{{ partial "content-card.html" . }}{{ end }}</div></div>{{ end }}
+    {{ if $projects }}<div class="solution-related__group">{{ if or $showGroupTitles (ne (lower $headingTitle) (lower (i18n "relatedProjects"))) }}<h3>{{ i18n "relatedProjects" }}</h3>{{ end }}<div class="card-grid card-grid--three">{{ range $projects }}{{ partial "project-card.html" . }}{{ end }}</div></div>{{ end }}
   </div>
 </section>
 {{ end }}

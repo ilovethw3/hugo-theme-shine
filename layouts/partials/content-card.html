@@ -1,9 +1,15 @@
 <article class="content-card">
   {{ $page := . }}
+  {{- $eyebrow := i18n .Section -}}
+  {{- $catMap := dict "solutions" "solution-categories" "projects" "project-categories" "products" "product-categories" "news" "news-categories" -}}
+  {{- $cats := slice -}}
+  {{- with index $catMap .Section }}{{ with index $page.Params . }}{{ $cats = . }}{{ end }}{{ end -}}
+  {{- if not $cats }}{{ with $page.Params.categories }}{{ $cats = . }}{{ end }}{{ end -}}
+  {{- with $cats }}{{ $eyebrow = index . 0 }}{{ end -}}
   {{ with .Params.cover }}
     {{ $cover := . | relURL }}
     {{ with $page.Resources.GetMatch . }}{{ $cover = .RelPermalink }}{{ end }}
-    <a class="content-card__media" href="{{ $page.RelPermalink }}"><img src="{{ $cover }}" alt="{{ $page.Title }}" loading="lazy"></a>
+    <a class="content-card__media" href="{{ $page.RelPermalink }}"><img src="{{ $cover }}" alt="{{ $page.Params.coverAlt | default $page.Title }}" loading="lazy"></a>
   {{ end }}
-  <div class="content-card__body"><span class="eyebrow">{{ i18n .Section }}</span><h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>{{ $summary := .Params.summary | default (.Summary | plainify) }}<div class="content-card__summary">{{ $summary | markdownify }}</div><a class="text-link" href="{{ .RelPermalink }}">{{ i18n "learnMore" }} <span>↗</span></a></div>
+  <div class="content-card__body"><span class="eyebrow">{{ $eyebrow }}</span><h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>{{ $summary := .Params.summary | default (.Summary | plainify) }}<div class="content-card__summary">{{ $summary | markdownify }}</div><a class="text-link" href="{{ .RelPermalink }}">{{ i18n "learnMore" }} <span>↗</span></a></div>
 </article>
