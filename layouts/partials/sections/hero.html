@@ -16,7 +16,7 @@
         <div class="container hero-banner__content">
           <div class="hero-banner__copy">
             {{ with $slide.eyebrow }}<span class="eyebrow">{{ . }}</span>{{ end }}
-            {{ with $slide.title }}<h1>{{ . }}</h1>{{ end }}
+            {{ with $slide.title }}{{ if eq $index 0 }}<h1 class="hero-banner__title">{{ . }}</h1>{{ else }}<h2 class="hero-banner__title">{{ . }}</h2>{{ end }}{{ end }}
             {{ with $slide.description }}<p>{{ . }}</p>{{ end }}
             {{ if or $slide.primaryButton $slide.secondaryButton }}
               <div class="button-row">

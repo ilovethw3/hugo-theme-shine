@@ -1,11 +1,23 @@
 {{ $banner := .Params.banner }}
+{{ $bannerPage := . }}
+{{ if not $banner }}
+  {{ $parentMap := dict "product-categories" "products" "solution-categories" "solutions" "project-categories" "projects" "news-categories" "news" }}
+  {{ with index $parentMap .Section }}
+    {{ with site.GetPage "section" . }}
+      {{ if .Params.banner }}
+        {{ $banner = .Params.banner }}
+        {{ $bannerPage = . }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
 {{ $overlay := $banner.overlay | default 0.45 }}
 {{ $backgroundRef := $banner.background }}
 {{ $background := "" }}
 {{ $eyebrow := .Params.eyebrow | default (i18n .Section) }}
 {{ with $backgroundRef }}
   {{ $background = . | relURL }}
-  {{ with $.Resources.GetMatch . }}{{ $background = .RelPermalink }}{{ end }}
+  {{ with $bannerPage.Resources.GetMatch . }}{{ $background = .RelPermalink }}{{ end }}
 {{ end }}
 <section class="page-hero{{ with $banner.background }} page-hero--image{{ end }}">
   {{ with $backgroundRef }}

@@ -1,0 +1,11 @@
+{{ define "main" }}
+  {{ partial "page-hero.html" . }}
+  <section class="section team-list-section">
+    <div class="container">
+      <div class="card-grid card-grid--four team-grid">
+        {{ range .Pages.ByWeight }}{{ partial "team-card.html" . }}{{ else }}<p class="empty-state">{{ i18n "noContent" }}</p>{{ end }}
+      </div>
+    </div>
+  </section>
+  {{ partial "quote-section.html" . }}
+{{ end }}

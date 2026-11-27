@@ -1,0 +1,20 @@
+{{ define "main" }}
+  {{ $photoRef := .Params.photo | default (site.Params.brand.placeholderImage | default "/images/placeholder.svg") }}
+  {{ $photoURL := $photoRef | relURL }}
+  {{ with .Resources.GetMatch $photoRef }}{{ $photoURL = .RelPermalink }}{{ end }}
+  {{ partial "page-hero.html" . }}
+  <section class="section team-member-section">
+    <div class="container container--narrow">
+      <div class="team-member-profile">
+        <div class="team-member-profile__media"><img src="{{ $photoURL }}" alt="{{ .Title }}" loading="eager"></div>
+        <div class="team-member-profile__body">
+          {{ with .Params.role }}<span class="eyebrow">{{ . }}</span>{{ end }}
+          <h2>{{ .Title }}</h2>
+          {{ with .Params.summary }}<div class="prose">{{ . | markdownify }}</div>{{ end }}
+        </div>
+      </div>
+      {{ with .Content }}<div class="prose team-member-profile__content">{{ . }}</div>{{ end }}
+    </div>
+  </section>
+  {{ partial "quote-section.html" . }}
+{{ end }}

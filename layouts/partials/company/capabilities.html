@@ -2,7 +2,7 @@
 {{ with $page.Params.capabilities }}
 <section class="section section--muted company-capabilities">
   <div class="container">
-    <div class="section-heading section-heading--center">
+    <div class="section-heading{{ if eq .align "center" }} section-heading--center{{ end }}">
       <div><span class="eyebrow">{{ .eyebrow }}</span><h2>{{ .title }}</h2></div>
     </div>
     <div class="company-capability-grid">

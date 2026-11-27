@@ -186,7 +186,7 @@
           dot.setAttribute('aria-current', active ? 'true' : 'false');
         });
         if (announce && status) {
-          const heading = slides[current]?.querySelector('h1')?.textContent?.trim();
+          const heading = slides[current]?.querySelector('h1, .hero-banner__title')?.textContent?.trim();
           const summary = statusTemplate.replace('{current}', String(current + 1)).replace('{total}', String(slides.length));
           status.textContent = heading ? `${summary}: ${heading}` : summary;
         }

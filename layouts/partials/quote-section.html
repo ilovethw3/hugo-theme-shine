@@ -1,1 +1,14 @@
-{{ if site.Params.features.quoteForm }}<section class="quote-section"><div class="container quote-section__inner"><div><span class="eyebrow">{{ i18n "getInTouch" }}</span><h2>{{ site.Home.Params.quote.title | default (i18n "quoteTitle") }}</h2><p>{{ site.Home.Params.quote.description | default (i18n "quoteDescription") }}</p></div><a class="button button--light" href="{{ "contact/" | relLangURL }}">{{ i18n "requestQuote" }} <span>↗</span></a></div></section>{{ end }}
+{{ if site.Params.features.quoteForm }}
+  {{ $quote := site.Params.quote | default site.Home.Params.quote | default dict }}
+  {{ $eyebrow := $quote.eyebrow | default (i18n "getInTouch") }}
+  {{ $title := $quote.title | default (i18n "quoteTitle") }}
+  {{ $description := $quote.description | default (i18n "quoteDescription") }}
+  {{ $buttonLabel := $quote.buttonLabel | default (i18n "requestQuote") }}
+  {{ $buttonUrl := $quote.buttonUrl | default "contact/" }}
+  <section class="quote-section">
+    <div class="container quote-section__inner">
+      <div><span class="eyebrow">{{ $eyebrow }}</span><h2>{{ $title }}</h2><p>{{ $description }}</p></div>
+      <a class="button button--light" href="{{ $buttonUrl | relLangURL }}">{{ $buttonLabel }} <span>↗</span></a>
+    </div>
+  </section>
+{{ end }}
