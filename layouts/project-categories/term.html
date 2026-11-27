@@ -1,5 +1,8 @@
 {{ define "main" }}
   {{ partial "page-hero.html" . }}
+  {{ $showCategories := true }}
+  {{ range hugo.Data.projects.sections }}{{ if and (eq .type "categories") (eq .enabled false) }}{{ $showCategories = false }}{{ end }}{{ end }}
+  {{ if $showCategories }}{{ partial "projects/categories.html" (dict "page" .) }}{{ end }}
   <section class="section section-projects-grid"><div class="container"><div class="card-grid card-grid--three">{{ range .Pages.ByWeight }}{{ partial "project-card.html" . }}{{ else }}<p class="empty-state">{{ i18n "noContent" }}</p>{{ end }}</div></div></section>
   {{ partial "quote-section.html" . }}
 {{ end }}

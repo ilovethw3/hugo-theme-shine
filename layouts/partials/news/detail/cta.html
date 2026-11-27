@@ -3,7 +3,7 @@
 <section class="cta-section news-detail-cta">
   <div class="container cta-section__inner">
     <div><span class="eyebrow">{{ $page.Params.ctaEyebrow | default (i18n "getInTouch") }}</span><h2>{{ $page.Params.ctaTitle | default (i18n "quoteTitle") }}</h2>{{ with $page.Params.ctaDescription }}<p>{{ . }}</p>{{ end }}</div>
-    <a class="button button--light" href="{{ "contact/" | relLangURL }}">{{ i18n "contactUs" }} <span>↗</span></a>
+    <a class="button button--light" href="{{ $page.Params.ctaButtonUrl | default "contact/" | relLangURL }}">{{ $page.Params.ctaButtonLabel | default (i18n "contactUs") }} <span>↗</span></a>
   </div>
 </section>
 {{ end }}

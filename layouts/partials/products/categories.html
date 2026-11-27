@@ -1,7 +1,8 @@
 {{ $page := .page }}
+{{ $sectionPage := site.GetPage "section" "products" | default $page }}
 {{ $terms := slice }}
 {{ $seen := slice }}
-{{ range $page.Pages.ByWeight }}
+{{ range $sectionPage.Pages.ByWeight }}
   {{ range (.GetTerms "product-categories") }}
     {{ if not (in $seen .RelPermalink) }}
       {{ $seen = $seen | append .RelPermalink }}
@@ -10,11 +11,12 @@
   {{ end }}
 {{ end }}
 {{ if $terms }}
+{{ $allURL := "products/" | relLangURL }}
 <section class="section section-products-categories">
   <div class="container">
     <nav class="filter-tabs" aria-label="{{ i18n "productCategories" }}">
-      <a class="filter-tab is-active" href="{{ "products/" | relLangURL }}">{{ i18n "allProducts" }}</a>
-      {{ range sort $terms "LinkTitle" }}<a class="filter-tab" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+      <a class="filter-tab{{ if eq $page.RelPermalink $allURL }} is-active{{ end }}" href="{{ $allURL }}">{{ i18n "allProducts" }}</a>
+      {{ range sort $terms "LinkTitle" }}<a class="filter-tab{{ if eq $page.RelPermalink .RelPermalink }} is-active{{ end }}" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
     </nav>
   </div>
 </section>

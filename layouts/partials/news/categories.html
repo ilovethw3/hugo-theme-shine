@@ -1,7 +1,8 @@
 {{ $page := .page }}
+{{ $sectionPage := site.GetPage "section" "news" | default $page }}
 {{ $terms := slice }}
 {{ $seen := slice }}
-{{ range $page.Pages.ByDate.Reverse }}
+{{ range $sectionPage.Pages.ByDate.Reverse }}
   {{ $pageTerms := .GetTerms "news-categories" }}
   {{ if not $pageTerms }}{{ $pageTerms = .GetTerms "categories" }}{{ end }}
   {{ range $pageTerms }}
@@ -12,11 +13,12 @@
   {{ end }}
 {{ end }}
 {{ if $terms }}
+{{ $allURL := "news/" | relLangURL }}
 <section class="section section-news-categories">
   <div class="container">
     <nav class="filter-tabs" aria-label="{{ i18n "newsCategories" }}">
-      <a class="filter-tab is-active" href="{{ "news/" | relLangURL }}">{{ i18n "allNews" }}</a>
-      {{ range sort $terms "LinkTitle" }}<a class="filter-tab" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+      <a class="filter-tab{{ if eq $page.RelPermalink $allURL }} is-active{{ end }}" href="{{ $allURL }}">{{ i18n "allNews" }}</a>
+      {{ range sort $terms "LinkTitle" }}<a class="filter-tab{{ if eq $page.RelPermalink .RelPermalink }} is-active{{ end }}" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
     </nav>
   </div>
 </section>

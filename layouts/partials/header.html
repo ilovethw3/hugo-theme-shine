@@ -5,6 +5,8 @@
     </a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation"><span></span><span></span><span></span><span class="sr-only">{{ i18n "toggleMenu" }}</span></button>
     <nav id="site-navigation" class="site-nav" aria-label="{{ i18n "primaryNavigation" }}">
+      {{ $taxonomyParentMap := dict "product-categories" "products" "solution-categories" "solutions" "project-categories" "projects" "news-categories" "news" }}
+      {{ $mappedParent := index $taxonomyParentMap $.Section }}
       {{ range site.Menus.main }}
         {{ $dropdown := "" }}
         {{ if isset .Params "dropdown" }}
@@ -14,13 +16,15 @@
         {{ else if eq .PageRef "solutions" }}
           {{ $dropdown = "solutions" }}
         {{ end }}
+        {{ $menuKey := trim (.PageRef | default .URL) "/" }}
+        {{ $isActive := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) (and $mappedParent (or (eq $menuKey $mappedParent) (hasSuffix $menuKey (printf "/%s" $mappedParent)))) }}
         {{ if or (eq $dropdown "products") (eq $dropdown "solutions") }}
           <div class="nav-item nav-item--dropdown">
-            <a class="nav-link{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} is-active{{ end }}" href="{{ .URL | relLangURL }}" aria-haspopup="true">{{ .Name }}</a>
+            <a class="nav-link{{ if $isActive }} is-active{{ end }}" href="{{ .URL | relLangURL }}" aria-haspopup="true">{{ .Name }}</a>
             {{ if eq $dropdown "products" }}{{ partial "product-category-menu.html" $ }}{{ else }}{{ partial "solution-category-menu.html" $ }}{{ end }}
           </div>
         {{ else }}
-          <a class="nav-link{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} is-active{{ end }}" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+          <a class="nav-link{{ if $isActive }} is-active{{ end }}" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
         {{ end }}
       {{ end }}
       {{- $languagePagesMobile := $.AllTranslations -}}
